@@ -32,5 +32,7 @@ function FatBirdAnimation() {
     scene.addChild(fatBird);
 }
 
+var asd;
+
 
 
