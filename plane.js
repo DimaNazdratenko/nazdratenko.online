@@ -1,4 +1,4 @@
- var plane;
+var plane;
 
 function PlaneAnimation() {
     var frames = [];
