@@ -95,5 +95,3 @@ pixiLoader
 function onProgressCallback(event) {
     console.log("progress: " +  Math.round(event.progress) + '%');
 }
-
-var asd;
