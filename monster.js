@@ -1,4 +1,11 @@
 var monster;
+const Position = {
+    START_X: 1920,
+    START_Y: 0,
+    END_X: 0,
+    END_Y: 1080 - 140,
+    SHIFT_X: 5
+};
 
 function monsterAnimation() {
     var monsterImages = [
@@ -17,8 +24,8 @@ function monsterAnimation() {
 
     monster = new PIXI.extras.MovieClip(frames);
 
-    monster.x = 1600;
-    monster.y = 100;
+    monster.x = Position.START_X;
+    monster.y = getRandomIntValue(Position.START_Y, Position.END_Y);
     monster.scale.x = -1;
     monster.width = 175;
     monster.height = 140;
@@ -30,3 +37,17 @@ function monsterAnimation() {
 
 
 
+function monsterUpdate() {
+    if (monster.x > Position.END_X) {
+        monster.x -= Position.SHIFT_X;
+    }
+    else {
+        monster.x = Position.START_X;
+        monster.y = getRandomIntValue(Position.START_Y, Position.END_Y);
+    }
+}
+
+function getRandomIntValue(min, max)
+{
+    return Math.round(Math.random() * (max - min) + min);
+};

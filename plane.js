@@ -1,6 +1,6 @@
 var plane;
 
-function PlaneAnimation() {
+function planeAnimation() {
     var frames = [];
 
     for (var i = 0; i < 30; i++) {

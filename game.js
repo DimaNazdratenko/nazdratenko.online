@@ -47,6 +47,7 @@ function animate() {
     backgroundLogic(layer.layer5, layer.layer50, 60, gameTime);
     planeVerticalMove(velocityVertical);
     planeHorizontalMove(velocityHorizontal);
+    monsterUpdate();
 
 // render the container_________________________________________________________________________________________________
     renderer.render(scene);
@@ -87,7 +88,7 @@ pixiLoader
         console.log("All files loaded");
         backgroundAddOnScene();
         monsterAnimation();
-        PlaneAnimation();
+        planeAnimation();
         animate();
         //FatBirdAnimation();
     });
