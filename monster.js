@@ -3,7 +3,7 @@ const Position = {
     START_Y: 0,
     END_X: 0,
     END_Y: 1080 - 140,
-    SHIFT_X: 7
+    SHIFT_X: 8
 };
 
 
