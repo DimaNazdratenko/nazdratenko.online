@@ -78,22 +78,6 @@ var imageLinks = {
 };
 
 var pixiLoader = PIXI.loader;
-var monster1 = new Monster();
-var monster1Images = [
-    imageLinks.monsterFly4,
-    imageLinks.monsterFly3,
-    imageLinks.monsterFly2,
-    imageLinks.monsterFly1
-    ];
-
-var monster2 = new Monster();
-var monster2Images = [
-    imageLinks.fatBird4,
-    imageLinks.fatBird3,
-    imageLinks.fatBird2,
-    imageLinks.fatBird1
-    ];
-
 for (var key in imageLinks) {
     pixiLoader = pixiLoader.add(imageLinks[key]);
 }
@@ -107,9 +91,29 @@ pixiLoader
         monster2.createAnimation(monster2Images);
         planeAnimation();
         animate();
-        //FatBirdAnimation();
     });
 
 function onProgressCallback(event) {
     console.log("progress: " +  Math.round(event.progress) + '%');
 }
+
+//______________________________________________________________________________________________________________________
+var monster1 = new Monster();
+var monster1Images = [
+    imageLinks.monsterFly4,
+    imageLinks.monsterFly3,
+    imageLinks.monsterFly2,
+    imageLinks.monsterFly1
+];
+
+var monster2 = new Monster();
+var monster2Images = [
+    imageLinks.fatBird8,
+    imageLinks.fatBird7,
+    imageLinks.fatBird6,
+    imageLinks.fatBird5,
+    imageLinks.fatBird4,
+    imageLinks.fatBird3,
+    imageLinks.fatBird2,
+    imageLinks.fatBird1
+];

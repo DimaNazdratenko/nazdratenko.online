@@ -3,9 +3,8 @@ const Position = {
     START_Y: 0,
     END_X: 0,
     END_Y: 1080 - 140,
-    SHIFT_X: 9
+    SHIFT_X: 10
 };
-
 
 //class Monster
 function Monster() {
@@ -15,13 +14,6 @@ function Monster() {
 Monster.prototype = Object.create(null);
 
 Monster.prototype.createAnimation = function (monsterImages) {
-    /*var monster1Images = [
-        imageLinks.monsterFly4,
-        imageLinks.monsterFly3,
-        imageLinks.monsterFly2,
-        imageLinks.monsterFly1
-    ];*/
-
     var frames = [];
 
     for (var i = 0; i < monsterImages.length; i++) {
@@ -43,10 +35,8 @@ Monster.prototype.createAnimation = function (monsterImages) {
 };
 
 
-
 Monster.prototype.updatePosition = function () {
     if (this.monster.x > Position.END_X) {
-        //this.monster.x -= Position.SHIFT_X;
         this.monster.x -= this.speed;
     }
     else {
@@ -55,11 +45,10 @@ Monster.prototype.updatePosition = function () {
     }
 };
 
-function getRandomNumberValue(min, max)
-{
+function getRandomNumberValue(min, max) {
     return (Math.random() * (max - min) + min);
 }
-function getRandomIntValue(min, max)
-{
+
+function getRandomIntValue(min, max) {
     return Math.round(Math.random() * (max - min) + min);
 }
