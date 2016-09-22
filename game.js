@@ -47,7 +47,8 @@ function animate() {
     backgroundLogic(layer.layer5, layer.layer50, 60, gameTime);
     planeVerticalMove(velocityVertical);
     planeHorizontalMove(velocityHorizontal);
-    monsterUpdate();
+    monster1.updatePosition();
+    monster2.updatePosition();
 
 // render the container_________________________________________________________________________________________________
     renderer.render(scene);
@@ -77,6 +78,21 @@ var imageLinks = {
 };
 
 var pixiLoader = PIXI.loader;
+var monster1 = new Monster();
+var monster1Images = [
+    imageLinks.monsterFly4,
+    imageLinks.monsterFly3,
+    imageLinks.monsterFly2,
+    imageLinks.monsterFly1
+    ];
+
+var monster2 = new Monster();
+var monster2Images = [
+    imageLinks.fatBird4,
+    imageLinks.fatBird3,
+    imageLinks.fatBird2,
+    imageLinks.fatBird1
+    ];
 
 for (var key in imageLinks) {
     pixiLoader = pixiLoader.add(imageLinks[key]);
@@ -87,7 +103,8 @@ pixiLoader
     .load(function () {
         console.log("All files loaded");
         backgroundAddOnScene();
-        monsterAnimation();
+        monster1.createAnimation(monster1Images);
+        monster2.createAnimation(monster2Images);
         planeAnimation();
         animate();
         //FatBirdAnimation();
