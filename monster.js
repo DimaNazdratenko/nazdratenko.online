@@ -2,17 +2,18 @@ const Position = {
     START_X: 1920,
     START_Y: 0,
     END_X: 0,
-    END_Y: 1080 - 140,
-    SHIFT_X: 10
+    END_Y: 770,
+    STEP_X: 10
 };
 
-//class Monster
+// Class Monster =======================================================================================================
 function Monster() {
     this.monster = null;
-    this.speed = getRandomIntValue(Position.SHIFT_X/2, Position.SHIFT_X*2);
+    this.speed = getRandomIntValue(Position.STEP_X/2, Position.STEP_X*2);
 }
-Monster.prototype = Object.create(null);
 
+// Prototype createAnimation ===========================================================================================
+Monster.prototype = Object.create(null);
 Monster.prototype.createAnimation = function (monsterImages) {
     var frames = [];
 
@@ -34,7 +35,7 @@ Monster.prototype.createAnimation = function (monsterImages) {
     scene.addChild(this.monster);
 };
 
-
+// Prototype updatePosition ============================================================================================
 Monster.prototype.updatePosition = function () {
     if (this.monster.x > Position.END_X) {
         this.monster.x -= this.speed;
@@ -45,10 +46,7 @@ Monster.prototype.updatePosition = function () {
     }
 };
 
-function getRandomNumberValue(min, max) {
-    return (Math.random() * (max - min) + min);
-}
-
+// Function which return random Int value ==============================================================================
 function getRandomIntValue(min, max) {
     return Math.round(Math.random() * (max - min) + min);
 }
