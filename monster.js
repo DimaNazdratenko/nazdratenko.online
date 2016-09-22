@@ -9,7 +9,7 @@ const Position = {
 // Class Monster =======================================================================================================
 function Monster() {
     this.monster = null;
-    this.speed = getRandomIntValue(Position.STEP_X/2, Position.STEP_X*2);
+    //this.speed = getRandomIntValue(Position.STEP_X/2, Position.STEP_X*2);
 }
 
 // Prototype createAnimation ===========================================================================================
@@ -38,7 +38,7 @@ Monster.prototype.createAnimation = function (monsterImages) {
 // Prototype updatePosition ============================================================================================
 Monster.prototype.updatePosition = function () {
     if (this.monster.x > Position.END_X) {
-        this.monster.x -= this.speed;
+        this.monster.x -= Position.STEP_X;
     }
     else {
         this.monster.x = Position.START_X;
