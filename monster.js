@@ -8,12 +8,12 @@ const Position = {
 
 // Class Monster =======================================================================================================
 function Monster() {
-    this.monster = null;
+    this.movieclip = null;
 }
+Monster.prototype = Object.create(null);
 
 // Prototype createAnimation ===========================================================================================
-Monster.prototype = Object.create(null);
-Monster.prototype.createAnimation = function (monsterImages) {
+Monster.prototype.createAnimation = function (monsterImages, startX) {
     var frames = [];
 
     for (var i = 0; i < monsterImages.length; i++) {
@@ -21,27 +21,32 @@ Monster.prototype.createAnimation = function (monsterImages) {
         frames.push(texture);
     }
 
-    this.monster = new PIXI.extras.MovieClip(frames);
+    this.movieclip = new PIXI.extras.MovieClip(frames);
 
-    this.monster.x = Position.START_X;
-    this.monster.y = getRandomIntValue(Position.START_Y, Position.END_Y);
-    this.monster.scale.x = -1;
-    this.monster.width = 170;
-    this.monster.height = 140;
-    this.monster.animationSpeed = 0.4;
+    this.movieclip.x = startX;
+    this.movieclip.y = getRandomIntValue(Position.START_Y, Position.END_Y);
+    this.movieclip.scale.x = -1;
+    this.movieclip.width = 170;
+    this.movieclip.height = 140;
+    this.movieclip.animationSpeed = 0.4;
 
-    this.monster.play();
-    scene.addChild(this.monster);
+    this.movieclip.play();
+    scene.addChild(this.movieclip);
 };
+
+/*Monster.prototype.setPosition = function (x, y) {
+    this.movieclip.x = x ||Position.START_X;
+    this.movieclip.y = y || getRandomIntValue(Position.START_Y, Position.END_Y);
+};*/
 
 // Prototype updatePosition ============================================================================================
 Monster.prototype.updatePosition = function () {
-    if (this.monster.x > Position.END_X) {
-        this.monster.x -= Position.STEP_X;
+    if (this.movieclip.x > Position.END_X) {
+        this.movieclip.x -= Position.STEP_X;
     }
     else {
-        this.monster.x = Position.START_X;
-        this.monster.y = getRandomIntValue(Position.START_Y, Position.END_Y);
+        this.movieclip.x = Position.START_X;
+        this.movieclip.y = getRandomIntValue(Position.START_Y, Position.END_Y);
     }
 };
 

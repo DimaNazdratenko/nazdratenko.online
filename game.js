@@ -101,10 +101,14 @@ pixiLoader
     .load(function () {
         console.log("All files loaded");
         backgroundAddOnScene();
-        monster.createAnimation(monsterImages);
-        fatBird.createAnimation(fatBirdImages);
-        stupidBird.createAnimation(stupidBirdImages);
-        chicken.createAnimation(chickenImages);
+        monster.createAnimation(monsterImages, 1920 + 170);
+        fatBird.createAnimation(fatBirdImages, 1920 + 170 + 500);
+        stupidBird.createAnimation(stupidBirdImages, 1920 + 170 + 1000);
+        chicken.createAnimation(chickenImages, 1920 + 170 + 1500);
+        //monster.setPosition(Position.START_X);
+        //fatBird.setPosition(Position.START_X + 200);
+        //stupidBird.setPosition(Position.START_X + 400);
+        //chicken.setPosition(Position.START_X + 600);
         planeAnimation();
         animate();
     });
