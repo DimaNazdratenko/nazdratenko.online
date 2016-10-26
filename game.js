@@ -5,7 +5,8 @@ document.body.appendChild(renderer.view);
 var scene = new PIXI.Container();
 
 var velocityVertical = 0,
-    velocityHorizontal = 0;
+    velocityHorizontal = 0,
+    distance = 0;
 
 document.body.addEventListener('keydown', function (e) {
     switch (e.keyCode) {
@@ -32,6 +33,7 @@ document.body.addEventListener('keyup', function (e) {
         velocityHorizontal = 0;
     }
 });
+
 // Start animating =====================================================================================================
 var startTime = Date.now();
 function animate() {
@@ -51,6 +53,7 @@ function animate() {
     fatBird.updatePosition();
     stupidBird.updatePosition();
     chicken.updatePosition();
+    scoreChange(gameTime);
 
 // Render the container ================================================================================================
     renderer.render(scene);
@@ -105,11 +108,8 @@ pixiLoader
         fatBird.createAnimation(fatBirdImages, 1920 + 170 + 500);
         stupidBird.createAnimation(stupidBirdImages, 1920 + 170 + 1000);
         chicken.createAnimation(chickenImages, 1920 + 170 + 1500);
-        //monster.setPosition(Position.START_X);
-        //fatBird.setPosition(Position.START_X + 200);
-        //stupidBird.setPosition(Position.START_X + 400);
-        //chicken.setPosition(Position.START_X + 600);
         planeAnimation();
+        scoreAdd();
         animate();
     });
 
@@ -157,3 +157,4 @@ var chickenImages = [
     imageLinks.chickenFly3,
     imageLinks.chickenFly4
 ];
+
