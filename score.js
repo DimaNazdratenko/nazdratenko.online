@@ -26,5 +26,5 @@ function scoreAdd() {
 
 function scoreChange(gameTime){
     distance = Math.round(gameTime / 1000 * 10);
-    score.setText('Score: ' + distance);
+    score.text = 'Score: ' + distance
 }

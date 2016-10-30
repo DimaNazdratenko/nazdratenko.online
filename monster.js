@@ -34,11 +34,6 @@ Monster.prototype.createAnimation = function (monsterImages, startX) {
     scene.addChild(this.movieclip);
 };
 
-/*Monster.prototype.setPosition = function (x, y) {
-    this.movieclip.x = x ||Position.START_X;
-    this.movieclip.y = y || getRandomIntValue(Position.START_Y, Position.END_Y);
-};*/
-
 // Prototype updatePosition ============================================================================================
 Monster.prototype.updatePosition = function () {
     if (this.movieclip.x > Position.END_X) {
