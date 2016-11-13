@@ -6,10 +6,11 @@ var Container = PIXI.Container,
     Text = PIXI.Text;
 
 var renderer = autoDetectRenderer(1920, 1080),
-    scene = new Container();
+    stage = new Container();
 document.body.appendChild(renderer.view);
 
-var layer, score, plane, distance;
+var state, layer, score, message, plane, distance, monster, fatBird, stupidBird, chicken, monsterImages, fatBirdImages,
+    stupidBirdImages, chickenImages, gameTime, startTime;
 var velocityVertical = 0,
     velocityHorizontal = 0;
 const Position = {
@@ -18,6 +19,21 @@ const Position = {
     END_X: 0,
     END_Y: 770,
     STEP_X: 10
+};
+const style = {
+    fontFamily: 'Arial',
+    fontSize: '60px',
+    fontStyle: 'italic',
+    fontWeight: 'bold',
+    fill: 'white',
+    stroke: '#4a1850',
+    strokeThickness: 5,
+    dropShadow: true,
+    dropShadowColor: '#000000',
+    dropShadowAngle: Math.PI / 6,
+    dropShadowDistance: 6,
+    wordWrap: true,
+    wordWrapWidth: 440
 };
 
 var imageLinks = {
@@ -54,47 +70,6 @@ var imageLinks = {
     planeJSON: 'images/plane/fighter.json'
 };
 
-var monster = new Monster(),
-    fatBird = new Monster(),
-    stupidBird = new Monster(),
-    chicken = new Monster();
-
-var monsterImages = [
-    imageLinks.monsterFly1,
-    imageLinks.monsterFly2,
-    imageLinks.monsterFly3,
-    imageLinks.monsterFly4
-];
-
-var fatBirdImages = [
-    imageLinks.fatBird1,
-    imageLinks.fatBird2,
-    imageLinks.fatBird3,
-    imageLinks.fatBird4,
-    imageLinks.fatBird5,
-    imageLinks.fatBird6,
-    imageLinks.fatBird7,
-    imageLinks.fatBird8
-];
-
-var stupidBirdImages = [
-    imageLinks.stupidBirdFly1,
-    imageLinks.stupidBirdFly2,
-    imageLinks.stupidBirdFly3,
-    imageLinks.stupidBirdFly4,
-    imageLinks.stupidBirdFly5,
-    imageLinks.stupidBirdFly6,
-    imageLinks.stupidBirdFly7,
-    imageLinks.stupidBirdFly8
-];
-
-var chickenImages = [
-    imageLinks.chickenFly1,
-    imageLinks.chickenFly2,
-    imageLinks.chickenFly3,
-    imageLinks.chickenFly4
-];
-
 for (var key in imageLinks) {
     loader = loader.add(imageLinks[key]);
 }
@@ -103,14 +78,7 @@ loader
     .on('progress', onProgressCallback)
     .load(function () {
         console.log("All files loaded");
-        backgroundAddOnScene();
-        monster.createAnimation(monsterImages, 1920 + 170);
-        fatBird.createAnimation(fatBirdImages, 1920 + 170 + 500);
-        stupidBird.createAnimation(stupidBirdImages, 1920 + 170 + 1000);
-        chicken.createAnimation(chickenImages, 1920 + 170 + 1500);
-        planeAnimation();
-        scoreAdd();
-        animate();
+        setup();
     });
 
 function onProgressCallback(event) {
@@ -143,53 +111,21 @@ document.body.addEventListener('keyup', function (e) {
     }
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
+function getRandomIntValue(min, max) {
+    return Math.round(Math.random() * (max - min) + min);
+}
 
 // Start animating =====================================================================================================
-var startTime = Date.now();
-function animate() {
+startTime = Date.now();
+function gameLoop() {
     var now = Date.now();
-    var gameTime = now - startTime;
-    requestAnimationFrame(animate);
+    gameTime = now - startTime;
+    requestAnimationFrame(gameLoop);
 
-    if (detectCollision(plane, chicken)) {
-        //There's a collision
-        planeVerticalMove(velocityVertical);
-        planeHorizontalMove(velocityHorizontal);
-        monster.updatePosition();
-        fatBird.updatePosition();
-        stupidBird.updatePosition();
+    //Update the current game state
+    state();
 
-    } else {
-        //There's no collision
-        //Update
-        backgroundLogic(layer.layer1, layer.layer10, 200, gameTime);
-        backgroundLogic(layer.layer2, layer.layer20, 160, gameTime);
-        backgroundLogic(layer.layer3, layer.layer30, 120, gameTime);
-        backgroundLogic(layer.layer4, layer.layer40, 80, gameTime);
-        backgroundLogic(layer.layer5, layer.layer50, 60, gameTime);
-        planeVerticalMove(velocityVertical);
-        planeHorizontalMove(velocityHorizontal);
-        monster.updatePosition();
-        fatBird.updatePosition();
-        stupidBird.updatePosition();
-        chicken.updatePosition();
-        scoreChange(gameTime);
-    }
-
-
-    renderer.render(scene);
+    renderer.render(stage);
 }
 
 

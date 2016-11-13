@@ -21,7 +21,7 @@ function backgroundAddOnScene() {
     };
 
     for (var key in layer) {
-        scene.addChild(layer[key]);
+        gameScene.addChild(layer[key]);
     }
 }
 

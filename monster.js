@@ -23,7 +23,7 @@ Monster.prototype.createAnimation = function (monsterImages, startX) {
     this.movieclip.animationSpeed = 0.4;
 
     this.movieclip.play();
-    scene.addChild(this.movieclip);
+    gameScene.addChild(this.movieclip);
 };
 
 // Prototype updatePosition ============================================================================================
@@ -36,8 +36,3 @@ Monster.prototype.updatePosition = function () {
         this.movieclip.y = getRandomIntValue(Position.START_Y, Position.END_Y);
     }
 };
-
-// Function which return random Int value ==============================================================================
-function getRandomIntValue(min, max) {
-    return Math.round(Math.random() * (max - min) + min);
-}

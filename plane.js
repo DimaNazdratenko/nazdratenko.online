@@ -15,7 +15,7 @@ function planeAnimation() {
     plane.rotation = Math.PI/2;
 
     plane.play();
-    scene.addChild(plane);
+    gameScene.addChild(plane);
 }
 
 function planeVerticalMove () {

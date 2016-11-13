@@ -6880,7 +6880,7 @@ var AccessibilityManager = function () {
     };
 
     /**
-     * This recursive function will run throught he scene graph and add any new accessible objects to the DOM layer.
+     * This recursive function will run throught he stage graph and add any new accessible objects to the DOM layer.
      *
      * @private
      * @param {PIXI.Container} displayObject - The DisplayObject to check.
@@ -8861,7 +8861,7 @@ var DisplayObject = function (_EventEmitter) {
     /**
      * Retrieves the bounds of the displayObject as a rectangle object.
      *
-     * @param {boolean} skipUpdate - setting to true will stop the transforms of the scene graph from
+     * @param {boolean} skipUpdate - setting to true will stop the transforms of the stage graph from
      *  being updated. This means the calculation returned MAY be out of date BUT will give you a
      *  nice performance boost
      * @param {PIXI.Rectangle} rect - Optional rectangle to store the result of the bounds calculation
@@ -14680,7 +14680,7 @@ var tempMatrix = new _math.Matrix();
 
 /**
  * The SystemRenderer is the base for a Pixi Renderer. It is extended by the {@link PIXI.CanvasRenderer}
- * and {@link PIXI.WebGLRenderer} which can be used for rendering a Pixi scene.
+ * and {@link PIXI.WebGLRenderer} which can be used for rendering a Pixi stage.
  *
  * @abstract
  * @class
@@ -14798,8 +14798,8 @@ var SystemRenderer = function (_EventEmitter) {
 
     /**
      * This sets if the CanvasRenderer will clear the canvas or not before the new render pass.
-     * If the scene is NOT transparent Pixi will use a canvas sized fillRect operation every
-     * frame to set the canvas background color. If the scene is transparent Pixi will use clearRect
+     * If the stage is NOT transparent Pixi will use a canvas sized fillRect operation every
+     * frame to set the canvas background color. If the stage is transparent Pixi will use clearRect
      * to clear the canvas every frame. Disable this by setting this to false. For example if
      * your game has a canvas filling background image you often don't need this set.
      *
@@ -15012,7 +15012,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 /**
- * The CanvasRenderer draws the scene and all its content onto a 2d canvas. This renderer should
+ * The CanvasRenderer draws the stage and all its content onto a 2d canvas. This renderer should
  * be used for browsers that do not support WebGL. Don't forget to add the CanvasRenderer.view to
  * your DOM or you will not see anything :)
  *
@@ -15145,7 +15145,7 @@ var CanvasRenderer = function (_SystemRenderer) {
         }
 
         if (!skipUpdateTransform) {
-            // update the scene graph
+            // update the stage graph
             var cacheParent = displayObject.parent;
             var tempWt = this._tempDisplayObjectParent.transform.worldTransform;
 
@@ -16088,7 +16088,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var CONTEXT_UID = 0;
 
 /**
- * The WebGLRenderer draws the scene and all its content onto a webGL enabled canvas. This renderer
+ * The WebGLRenderer draws the stage and all its content onto a webGL enabled canvas. This renderer
  * should be used for browsers that support webGL. This Render works by automatically managing webGLBatchs.
  * So no need for Sprite Batches or Sprite Clouds.
  * Don't forget to add the view to your DOM or you will not see anything :)
@@ -16304,7 +16304,7 @@ var WebGLRenderer = function (_SystemRenderer) {
         }
 
         if (!skipUpdateTransform) {
-            // update the scene graph
+            // update the stage graph
             var cacheParent = displayObject.parent;
 
             displayObject.parent = this._tempDisplayObjectParent;
@@ -24268,12 +24268,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * // Or you can just update it manually.
  * ticker.autoStart = false;
  * ticker.stop();
- * function animate(time) {
+ * function gameLoop(time) {
  *     ticker.update(time);
  *     renderer.render(stage);
- *     requestAnimationFrame(animate);
+ *     requestAnimationFrame(gameLoop);
  * }
- * animate(performance.now());
+ * gameLoop(performance.now());
  *
  * @type {PIXI.ticker.Ticker}
  * @memberof PIXI.ticker
@@ -27605,7 +27605,7 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
  *
  * @memberof PIXI.DisplayObject#
  * @param {Point} point - the point to write the global value to. If null a new point will be returned
- * @param {boolean} skipUpdate - setting to true will stop the transforms of the scene graph from
+ * @param {boolean} skipUpdate - setting to true will stop the transforms of the stage graph from
  *  being updated. This means the calculation returned MAY be out of date BUT will give you a
  *  nice performance boost
  * @return {Point} The updated point
@@ -29077,7 +29077,7 @@ var DisplacementFilter = function (_core$Filter) {
     _inherits(DisplacementFilter, _core$Filter);
 
     /**
-     * @param {PIXI.Sprite} sprite - The sprite used for the displacement map. (make sure its added to the scene!)
+     * @param {PIXI.Sprite} sprite - The sprite used for the displacement map. (make sure its added to the stage!)
      * @param {number} scale - The scale of the displacement
      */
     function DisplacementFilter(sprite, scale) {
@@ -30330,7 +30330,7 @@ var InteractionManager = function (_EventEmitter) {
     };
 
     /**
-     * This function is provides a neat way of crawling through the scene graph and running a
+     * This function is provides a neat way of crawling through the stage graph and running a
      * specified function on all interactive objects it finds. It will also take care of hit
      * testing the interactive objects and passes the hit across in the function.
      *
@@ -30388,7 +30388,7 @@ var InteractionManager = function (_EventEmitter) {
         }
 
         // ** FREE TIP **! If an object is not interactive or has no buttons in it
-        // (such as a game scene!) set interactiveChildren to false for that displayObject.
+        // (such as a game stage!) set interactiveChildren to false for that displayObject.
         // This will allow pixi to completly ignore and bypass checking the displayObjects children.
         if (displayObject.interactiveChildren && displayObject.children) {
             var children = displayObject.children;
