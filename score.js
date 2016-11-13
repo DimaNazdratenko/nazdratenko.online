@@ -1,5 +1,3 @@
-var score;
-
 function scoreAdd() {
     var style = {
         fontFamily: 'Arial',
@@ -17,7 +15,7 @@ function scoreAdd() {
         wordWrapWidth: 440
     };
 
-    score = new PIXI.Text('Score: ' + distance, style);
+    score = new Text('Score: ' + distance, style);
     score.x = 50;
     score.y = 960;
 
