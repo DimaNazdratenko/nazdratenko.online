@@ -4,13 +4,15 @@ var Container = PIXI.Container,
     Texture = PIXI.Texture,
     Sprite = PIXI.Sprite,
     Text = PIXI.Text;
+    Graphics = PIXI.Graphics;
+
 
 var renderer = autoDetectRenderer(1920, 1080),
     stage = new Container();
 document.body.appendChild(renderer.view);
 
-var state, layer, score, message, plane, distance, monster, fatBird, stupidBird, chicken, monsterImages, fatBirdImages,
-    stupidBirdImages, chickenImages, gameTime, startTime;
+var state, gameScene, gameOverScene, layer, score, message, plane, distance, monster, fatBird, stupidBird, chicken, monsterImages,
+    fatBirdImages, stupidBirdImages, chickenImages, gameTime, startTime, graphics;
 var velocityVertical = 0,
     velocityHorizontal = 0;
 const Position = {

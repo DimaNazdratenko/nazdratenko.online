@@ -60,6 +60,12 @@ function setup() {
     //Make the `gameOver` stage invisible when the game first starts
     gameOverScene.visible = false;
 
+    // Create the black effect in gameOverScene
+    graphics = new Graphics();
+    graphics.beginFill('black', 0.6);
+    graphics.drawRect(0, 0, 1920, 1080);
+    gameOverScene.addChild(graphics);
+
     //Create the text sprite and add it to the `gameOver` stage
     message = new Text('Game over!', style);
     message.x = renderer.width / 2 - message.width / 2;
