@@ -10,5 +10,7 @@ function reset() {
     stupidBird.movieclip.x = 1920 + 170 + 1000;
     chicken.movieclip.x = 1920 + 170 + 1500;
 
+    gameScene.filters = false;
+
     state = play;
 }

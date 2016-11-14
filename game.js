@@ -3,8 +3,9 @@ var Container = PIXI.Container,
     loader = PIXI.loader,
     Texture = PIXI.Texture,
     Sprite = PIXI.Sprite,
-    Text = PIXI.Text;
-    Graphics = PIXI.Graphics;
+    Text = PIXI.Text,
+    Graphics = PIXI.Graphics,
+    filters = PIXI.filters;
 
 
 var renderer = autoDetectRenderer(1920, 1080),
@@ -13,7 +14,7 @@ document.body.appendChild(renderer.view);
 
 var state, gameScene, gameOverScene, layer, score, message, plane, distance, monster, fatBird, stupidBird, chicken, monsterImages,
     fatBirdImages, stupidBirdImages, chickenImages, gameTime, startTime, darkEffect, textureButton, textureButtonDown,
-    textureButtonOver, buttonReplay;
+    textureButtonOver, buttonReplay, blurFilter;
 var velocityVertical = 0,
     velocityHorizontal = 0;
 const Position = {
