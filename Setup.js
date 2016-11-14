@@ -67,6 +67,7 @@ function setup() {
     gameOverScene.addChild(graphics);
 
     //Create the text sprite and add it to the `gameOver` stage
+    style.fontSize = '100px';
     message = new Text('Game over!', style);
     message.x = renderer.width / 2 - message.width / 2;
     message.y = renderer.height / 2 - message.height / 2;
