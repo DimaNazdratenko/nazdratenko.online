@@ -1,5 +1,3 @@
-
-
 function setup() {
     monster = new Monster();
     fatBird = new Monster();
@@ -61,17 +59,86 @@ function setup() {
     gameOverScene.visible = false;
 
     // Create the black effect in gameOverScene
-    graphics = new Graphics();
-    graphics.beginFill('black', 0.6);
-    graphics.drawRect(0, 0, 1920, 1080);
-    gameOverScene.addChild(graphics);
+    darkEffect = new Graphics();
+    darkEffect.beginFill('black', 0.6);
+    darkEffect.drawRect(0, 0, 1920, 1080);
+    gameOverScene.addChild(darkEffect);
 
     //Create the text sprite and add it to the `gameOver` stage
     style.fontSize = '100px';
     message = new Text('Game over!', style);
     message.x = renderer.width / 2 - message.width / 2;
-    message.y = renderer.height / 2 - message.height / 2;
+    message.y = renderer.height / 3 - message.height / 2;
     gameOverScene.addChild(message);
+
+// Добавляем кнопку Replay----------------------------------------------------------------------------------------------
+    textureButton = Texture.fromImage(imageLinks.replay_button);
+    textureButtonDown = Texture.fromImage(imageLinks.replay_button_down);
+    textureButtonOver = Texture.fromImage(imageLinks.replay_button_over);
+
+    buttonReplay = new Sprite(textureButton);
+    buttonReplay.buttonMode = true;
+    buttonReplay.scale.x = 0.5;
+    buttonReplay.scale.y = 0.5;
+    buttonReplay.x = renderer.width / 2 - buttonReplay.width / 2;
+    buttonReplay.y = renderer.height / 3 + message.height - message.height / 2;
+
+    // make the button interactive...
+    buttonReplay.interactive = true;
+
+    buttonReplay
+        // set the mousedown callback...
+        .on('mousedown', onButtonDown)
+
+        // set the mouseup callback...
+        .on('mouseup', onButtonUp)
+        .on('mouseupoutside', onButtonUp)
+
+        // set the mouseover callback...
+        .on('mouseover', onButtonOver)
+
+        // set the mouseout callback...
+        .on('mouseout', onButtonOut);
+
+    // add it to the stage
+    gameOverScene.addChild(buttonReplay);
+
+function onButtonDown() {
+    this.isdown = true;
+    this.texture = textureButtonDown;
+    this.alpha = 1;
+}
+
+function onButtonUp() {
+    this.isdown = false;
+
+    if (this.isOver) {
+        this.texture = textureButtonOver;
+        state = reset;
+        console.log('1')
+    } else {
+        this.texture = textureButton;
+    }
+}
+
+function onButtonOver() {
+    this.isOver = true;
+
+    if (this.isdown) {
+        return;
+    }
+    this.texture = textureButtonOver;
+}
+
+function onButtonOut() {
+    this.isOver = false;
+
+    if (this.isdown) {
+        return;
+    }
+    this.texture = textureButton;
+}
+//----------------------------------------------------------------------------------------------------------------------
 
     //Set the game state
     state = play;
