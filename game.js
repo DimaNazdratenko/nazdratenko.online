@@ -22,7 +22,7 @@ const Position = {
     END_Y: 770,
     STEP_X: 10
 };
-const style = {
+var style = {
     fontFamily: 'Arial',
     fontSize: '60px',
     fontStyle: 'italic',
@@ -33,9 +33,7 @@ const style = {
     dropShadow: true,
     dropShadowColor: '#000000',
     dropShadowAngle: Math.PI / 6,
-    dropShadowDistance: 6,
-    wordWrap: true,
-    wordWrapWidth: 440
+    dropShadowDistance: 6
 };
 
 var imageLinks = {
