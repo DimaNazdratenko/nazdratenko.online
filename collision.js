@@ -9,8 +9,8 @@ function detectCollision(r1, r2) {
     //Find the center points of each sprite
     r1.centerX = r1.x;
     r1.centerY = r1.y;
-    r2.movieclip.centerX = r2.movieclip.x - r2.movieclip.width / 2;
-    r2.movieclip.centerY = r2.movieclip.y + r2.movieclip.height / 2;
+    r2.movieclip.centerX = r2.movieclip.x;
+    r2.movieclip.centerY = r2.movieclip.y;
 
     //Find the half-widths and half-heights of each sprite
     r1.halfWidth = r1.width / 2;
