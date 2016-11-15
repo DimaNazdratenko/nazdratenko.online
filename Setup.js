@@ -60,7 +60,7 @@ function setup() {
 
     // Create the black effect in gameOverScene
     darkEffect = new Graphics();
-    darkEffect.beginFill('black', 0.6);
+    darkEffect.beginFill(0x000000, 0.6);
     darkEffect.drawRect(0, 0, 1920, 1080);
     gameOverScene.addChild(darkEffect);
 
