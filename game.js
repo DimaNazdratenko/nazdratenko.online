@@ -87,7 +87,7 @@ loader
     });
 
 function onProgressCallback(event) {
-    console.log("progress: " +  Math.round(event.progress) + '%');
+    console.log("progress: " + Math.round(event.progress) + '%');
 }
 
 document.body.addEventListener('keydown', function (e) {

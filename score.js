@@ -5,7 +5,7 @@ function scoreAdd() {
     gameScene.addChild(score);
 }
 
-function scoreChange(gameTime){
+function scoreChange(gameTime) {
     distance = Math.round(gameTime / 1000 * 10);
     score.text = 'Score: ' + distance
 }
