@@ -115,7 +115,6 @@ function setup() {
         if (this.isOver) {
             this.texture = textureButtonOver;
             state = reset;
-            console.log('1')
         } else {
             this.texture = textureButton;
         }
