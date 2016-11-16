@@ -71,9 +71,9 @@ var imageLinks = {
     chickenFly4: 'images/chicken/fly/4.png',
     plane: 'images/plane/fighter.png',
     planeJSON: 'images/plane/fighter.json',
-    replay_button: 'images/replay_button_1.png',
-    replay_button_down: 'images/replay_button_2.png',
-    replay_button_over: 'images/replay_button_3.png'
+    replay_button: 'images/replay_button/replay_button_1.png',
+    replay_button_down: 'images/replay_button/replay_button_2.png',
+    replay_button_over: 'images/replay_button/replay_button_3.png'
 };
 
 for (var key in imageLinks) {

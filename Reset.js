@@ -22,6 +22,9 @@ function reset() {
     chicken.movieclip.y = getRandomIntValue(Position.START_Y + chicken.movieclip.height / 2, Position.END_Y + chicken.movieclip.height / 2);
     chicken.movieclip.rotation = 0;
 
+    gameScene.addChild(score);
+    gameOverScene.removeChild(score);
+
     score.x = 50;
     score.y = 960;
     score.scale.x = 1;
