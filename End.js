@@ -67,6 +67,8 @@ function end() {
         score.scale.x += 0.002;
         score.scale.y += 0.002;
     }
+
+    preLoader.rotation += 0.1;
 }
 
 

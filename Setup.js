@@ -140,6 +140,14 @@ function setup() {
 
 //----------------------------------------------------------------------------------------------------------------------
 
+    texturePreLoader = Texture.fromImage(imageLinks.preLoader);
+    preLoader = new Sprite(texturePreLoader);
+    preLoader.anchor.set(0.5);
+    preLoader.x = 200;
+    preLoader.y = 200;
+    gameOverScene.addChild(preLoader);
+
+
     //Set the game state
     state = play;
 

@@ -14,7 +14,7 @@ document.body.appendChild(renderer.view);
 
 var state, gameScene, gameOverScene, layer, score, message, plane, distance, monster, fatBird, stupidBird, chicken, monsterImages,
     fatBirdImages, stupidBirdImages, chickenImages, gameTime, startTime, darkEffect, textureButton, textureButtonDown,
-    textureButtonOver, buttonReplay, flag;
+    textureButtonOver, buttonReplay, flag, texturePreLoader, preLoader;
 var velocityVertical = 0,
     velocityHorizontal = 0;
 const Position = {
@@ -73,7 +73,8 @@ var imageLinks = {
     planeJSON: 'images/plane/fighter.json',
     replay_button: 'images/replay_button/replay_button_1.png',
     replay_button_down: 'images/replay_button/replay_button_2.png',
-    replay_button_over: 'images/replay_button/replay_button_3.png'
+    replay_button_over: 'images/replay_button/replay_button_3.png',
+    preLoader: 'images/preLoader.png'
 };
 
 for (var key in imageLinks) {
