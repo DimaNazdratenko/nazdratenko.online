@@ -1,5 +1,4 @@
 function reset() {
-    startTime = Date.now();
     gameOverScene.visible = false;
 
     plane.x = 200;
@@ -30,7 +29,6 @@ function reset() {
     score.scale.x = 1;
     score.scale.y = 1;
 
-    gameScene.filters = false;
-
+    startTime = Date.now();
     state = play;
 }

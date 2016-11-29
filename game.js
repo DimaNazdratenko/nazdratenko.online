@@ -12,9 +12,9 @@ var renderer = autoDetectRenderer(1920, 1080),
     stage = new Container();
 document.body.appendChild(renderer.view);
 
-var state, gameScene, gameOverScene, layer, score, message, plane, distance, monster, fatBird, stupidBird, chicken, monsterImages,
-    fatBirdImages, stupidBirdImages, chickenImages, gameTime, startTime, darkEffect, textureButton, textureButtonDown,
-    textureButtonOver, buttonReplay, flag, texturePreLoader, preLoader;
+var state, preLoaderScene, gameScene, gameOverScene, layer, score, message, plane, distance, monster, fatBird, stupidBird, chicken, monsterImages,
+    fatBirdImages, stupidBirdImages, chickenImages, gameTime, startTime, darkEffectEndGame, darkEffectPreLoader, textureButton, textureButtonDown,
+    textureButtonOver, buttonReplay, textureButtonStart, textureButtonDownStart, textureButtonOverStart, buttonStart, flag, texturePreLoader, preLoader;
 var velocityVertical = 0,
     velocityHorizontal = 0;
 const Position = {
@@ -74,23 +74,12 @@ var imageLinks = {
     replay_button: 'images/replay_button/replay_button_1.png',
     replay_button_down: 'images/replay_button/replay_button_2.png',
     replay_button_over: 'images/replay_button/replay_button_3.png',
-    preLoader: 'images/preLoader.png'
+    start_button: 'images/start_button/start_button_1.png',
+    start_button_down: 'images/start_button/start_button_2.png',
+    start_button_over: 'images/start_button/start_button_3.png'
 };
 
-for (var key in imageLinks) {
-    loader = loader.add(imageLinks[key]);
-}
-
-loader
-    .on('progress', onProgressCallback)
-    .load(function () {
-        console.log("All files loaded");
-        setup();
-    });
-
-function onProgressCallback(event) {
-    console.log("progress: " + Math.round(event.progress) + '%');
-}
+preLoaderFunc();
 
 document.body.addEventListener('keydown', function (e) {
     switch (e.keyCode) {
@@ -129,7 +118,7 @@ function gameLoop() {
     gameTime = now - startTime;
     requestAnimationFrame(gameLoop);
 
-    //Update the current game state
+// Update the current game state
     state();
 
     renderer.render(stage);

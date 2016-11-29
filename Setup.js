@@ -59,12 +59,12 @@ function setup() {
     gameOverScene.visible = false;
 
     // Create the black effect in gameOverScene
-    darkEffect = new Graphics();
-    darkEffect.beginFill(0x000000, 0.6);
-    darkEffect.drawRect(0, 0, 1920, 1080);
-    gameOverScene.addChild(darkEffect);
+    darkEffectEndGame = new Graphics();
+    darkEffectEndGame.beginFill(0x000000, 0.6);
+    darkEffectEndGame.drawRect(0, 0, 1920, 1080);
+    gameOverScene.addChild(darkEffectEndGame);
 
-    //Create the text sprite and add it to the `gameOver` stage
+// Create the text sprite and add it to the `gameOver` stage
     style.fontSize = '100px';
     message = new Text('Game over!', style);
     message.x = renderer.width / 2 - message.width / 2;
@@ -83,7 +83,7 @@ function setup() {
     buttonReplay.x = renderer.width / 2 - buttonReplay.width / 2;
     buttonReplay.y = renderer.height / 3 + message.height - message.height / 2;
 
-    // make the button interactive...
+// make the button interactive...
     buttonReplay.interactive = true;
 
     buttonReplay
@@ -140,17 +140,7 @@ function setup() {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-    texturePreLoader = Texture.fromImage(imageLinks.preLoader);
-    preLoader = new Sprite(texturePreLoader);
-    preLoader.anchor.set(0.5);
-    preLoader.x = 200;
-    preLoader.y = 200;
-    gameOverScene.addChild(preLoader);
-
-
-    //Set the game state
+// Set the game state and refresh time
+    startTime = Date.now();
     state = play;
-
-    //Start the game loop
-    gameLoop();
 }

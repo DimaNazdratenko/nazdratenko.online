@@ -1,7 +1,7 @@
 function end() {
     gameOverScene.visible = true;
 
-//Падение птиц и самолета при столкновении------------------------------------------------------------------------------
+// Падение птиц и самолета при столкновении------------------------------------------------------------------------------
     if (detectCollision(plane, chicken)) {
         flag = 'chicken';
     } else if (detectCollision(plane, stupidBird)) {
@@ -53,11 +53,11 @@ function end() {
         stupidBird.movieclip.y += Position.STEP_Y / 2;
         fatBird.movieclip.y += Position.STEP_Y / 2;
     }
-//Изменения сцены для текста Score, что бы он был сверху над темным фоном
+// Изменения сцены для текста Score, что бы он был сверху над темным фоном
     gameOverScene.addChild(score);
     gameScene.removeChild(score);
 
-//Движение текста Score в центр экрана и увеличение---------------------------------------------------------------------
+// Движение текста Score в центр экрана и увеличение--------------------------------------------------------------------
     if (score.x <= renderer.width / 2 - score.width / 2 && score.y >= renderer.height / 3 - score.height / 2 - message.height) {
         score.x += 6;
         score.y -= 6;
@@ -67,8 +67,6 @@ function end() {
         score.scale.x += 0.002;
         score.scale.y += 0.002;
     }
-
-    preLoader.rotation += 0.1;
 }
 
 
