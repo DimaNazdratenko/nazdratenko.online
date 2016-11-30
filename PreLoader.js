@@ -19,7 +19,7 @@ function preLoaderFunc() {
     preLoader.y = renderer.height / 2 - preLoader.height / 2;
     preLoaderScene.addChild(preLoader);
 
-// Downloading assets
+// Downloading assets---------------------------------------------------------------------------------------------------
     for (var key in imageLinks) {
         loader = loader.add(imageLinks[key]);
     }
@@ -29,10 +29,24 @@ function preLoaderFunc() {
         .load(function () {
             console.log("All files loaded");
             preLoaderScene.removeChild(preLoader);
+
 // add start button
             createStartButton();
         });
+//--------------------------------------------------
+    sounds.load([
+        "music/music.mp3"
+    ]);
 
+    sounds.whenLoaded = qwerty;
+
+    function qwerty () {
+        console.log('qwerty')
+    }
+
+    music = sounds["music/music.mp3"];
+
+//-------------------------------------------------
     function onProgressCallback(event) {
         console.log("progress: " + Math.round(event.progress) + '%');
     }

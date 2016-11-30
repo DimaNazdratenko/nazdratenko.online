@@ -143,4 +143,6 @@ function setup() {
 // Set the game state and refresh time
     startTime = Date.now();
     state = play;
+
+    music.play();
 }
