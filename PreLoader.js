@@ -10,7 +10,7 @@ function preLoaderFunc() {
     preLoaderScene.addChild(darkEffectPreLoader);
 
 // Create loader and add it into preLoaderScene
-    var preLoaderImg = 'images/preLoader.png';
+    var preLoaderImg = 'assets/images/preLoader.png';
     loader.add(preLoaderImg);
     texturePreLoader = Texture.fromImage(preLoaderImg);
     preLoader = new Sprite(texturePreLoader);
@@ -35,7 +35,7 @@ function preLoaderFunc() {
         });
 //--------------------------------------------------
     sounds.load([
-        "music/music.mp3"
+        "assets/music/music.mp3"
     ]);
 
     sounds.whenLoaded = qwerty;
@@ -44,7 +44,7 @@ function preLoaderFunc() {
         console.log('qwerty')
     }
 
-    music = sounds["music/music.mp3"];
+    music = sounds["assets/music/music.mp3"];
 
 //-------------------------------------------------
     function onProgressCallback(event) {
