@@ -144,5 +144,4 @@ function setup() {
     startTime = Date.now();
     state = play;
 
-    music.play();
 }

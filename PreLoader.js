@@ -30,23 +30,10 @@ function preLoaderFunc() {
             console.log("All files loaded");
             preLoaderScene.removeChild(preLoader);
 
-// add start button
+            // add start button
             createStartButton();
         });
-//--------------------------------------------------
-    sounds.load([
-        "assets/music/music.mp3"
-    ]);
 
-    sounds.whenLoaded = qwerty;
-
-    function qwerty () {
-        console.log('qwerty')
-    }
-
-    music = sounds["assets/music/music.mp3"];
-
-//-------------------------------------------------
     function onProgressCallback(event) {
         console.log("progress: " + Math.round(event.progress) + '%');
     }
