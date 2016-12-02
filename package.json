@@ -1,0 +1,22 @@
+{
+  "name": "Diploma-HTML5",
+  "version": "1.0.0",
+  "description": "Some game which will be diploma work after graduated HTML 5 and JS course",
+  "main": "End.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://DimaNazdratenko:T9rquxhb@github.com/DimaNazdratenko/Diploma-HTML5.git"
+  },
+  "author": "Dima Nazdratenko https://www.linkedin.com/profile/preview?locale=ru_RU&trk=prof-0-sb-preview-primary-button",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DimaNazdratenko/Diploma-HTML5/issues"
+  },
+  "homepage": "https://github.com/DimaNazdratenko/Diploma-HTML5#readme",
+  "dependencies": {
+    "howler": "^2.0.1"
+  }
+}
