@@ -1,4 +1,10 @@
 function setup() {
+
+// Create gameScene
+    gameScene = new Container();
+    stage.addChild(gameScene);
+
+// Create monsters
     monster = new Monster();
     fatBird = new Monster();
     stupidBird = new Monster();
@@ -40,9 +46,7 @@ function setup() {
         imageLinks.chickenFly4
     ];
 
-    gameScene = new Container();
-    stage.addChild(gameScene);
-
+// Add monsters and background on the scene
     backgroundAddOnScene();
     monster.createAnimation(monsterImages, 1920 + 170);
     fatBird.createAnimation(fatBirdImages, 1920 + 170 + 500);
@@ -51,27 +55,38 @@ function setup() {
     planeAnimation();
     scoreAdd();
 
-    //Create the `gameOver` stage
+// Create musics
+    musicBackground = new Howl({
+        src: ['assets/music/background_music.mp3'],
+        volume: 0.5
+    });
+
+    musicGameOver = new Howl({
+        src: ['assets/music/game_over_music.mp3'],
+        volume: 0.5
+    });
+
+// Create the gameOverScene
     gameOverScene = new Container();
     stage.addChild(gameOverScene);
 
-    //Make the `gameOver` stage invisible when the game first starts
+// Make the gameOverScene invisible when the game first starts
     gameOverScene.visible = false;
 
-    // Create the black effect in gameOverScene
+// Create the black effect in gameOverScene
     darkEffectEndGame = new Graphics();
     darkEffectEndGame.beginFill(0x000000, 0.6);
     darkEffectEndGame.drawRect(0, 0, 1920, 1080);
     gameOverScene.addChild(darkEffectEndGame);
 
-// Create the text sprite and add it to the `gameOver` stage
+// Create the text sprite and add it to the gameOverScene
     style.fontSize = '100px';
     message = new Text('Game over!', style);
     message.x = renderer.width / 2 - message.width / 2;
     message.y = renderer.height / 3 - message.height / 2;
     gameOverScene.addChild(message);
 
-// Добавляем кнопку Replay----------------------------------------------------------------------------------------------
+// Add Replay button
     textureButton = Texture.fromImage(imageLinks.replay_button);
     textureButtonDown = Texture.fromImage(imageLinks.replay_button_down);
     textureButtonOver = Texture.fromImage(imageLinks.replay_button_over);
@@ -83,7 +98,7 @@ function setup() {
     buttonReplay.x = renderer.width / 2 - buttonReplay.width / 2;
     buttonReplay.y = renderer.height / 3 + message.height - message.height / 2;
 
-// make the button interactive...
+// Make the button interactive
     buttonReplay.interactive = true;
 
     buttonReplay
@@ -100,7 +115,7 @@ function setup() {
         // set the mouseout callback...
         .on('mouseout', onButtonOut);
 
-    // add it to the stage
+// Add it to the gameOverScene
     gameOverScene.addChild(buttonReplay);
 
     function onButtonDown() {
@@ -115,6 +130,7 @@ function setup() {
         if (this.isOver) {
             this.texture = textureButtonOver;
             state = reset;
+            musicGameOver.stop();
         } else {
             this.texture = textureButton;
         }
@@ -138,10 +154,10 @@ function setup() {
         this.texture = textureButton;
     }
 
-//----------------------------------------------------------------------------------------------------------------------
-
 // Set the game state and refresh time
     startTime = Date.now();
     state = play;
+    musicBackground.play();
+
 
 }

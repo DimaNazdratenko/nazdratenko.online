@@ -31,4 +31,5 @@ function reset() {
 
     startTime = Date.now();
     state = play;
+    musicBackground.play();
 }

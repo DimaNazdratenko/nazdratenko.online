@@ -3,6 +3,8 @@ function play() {
     if (detectCollision(plane, chicken) || detectCollision(plane, stupidBird) || detectCollision(plane, fatBird) || detectCollision(plane, monster)) {
 // There's a collision
         state = end;
+        musicBackground.stop();
+        musicGameOver.play();
     } else {
 // There's no collision
 // Update

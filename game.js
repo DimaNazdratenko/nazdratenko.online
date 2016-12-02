@@ -14,7 +14,8 @@ document.body.appendChild(renderer.view);
 
 var state, preLoaderScene, gameScene, gameOverScene, layer, score, message, plane, distance, monster, fatBird, stupidBird, chicken, monsterImages,
     fatBirdImages, stupidBirdImages, chickenImages, gameTime, startTime, darkEffectEndGame, darkEffectPreLoader, textureButton, textureButtonDown,
-    textureButtonOver, buttonReplay, textureButtonStart, textureButtonDownStart, textureButtonOverStart, buttonStart, flag, texturePreLoader, preLoader, music;
+    textureButtonOver, buttonReplay, textureButtonStart, textureButtonDownStart, textureButtonOverStart, buttonStart, flag, texturePreLoader, preLoader,
+    musicBackground, musicGameOver;
 var velocityVertical = 0,
     velocityHorizontal = 0;
 const Position = {
