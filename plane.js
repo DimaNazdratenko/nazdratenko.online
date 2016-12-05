@@ -18,7 +18,7 @@ function planeAnimation() {
     gameScene.addChild(plane);
 }
 
-function planeVerticalMove () {
+function planeVerticalMove (velocityVertical) {
     if (!plane) return;
     plane.y -= velocityVertical;
     if (plane.y <= 100) {
