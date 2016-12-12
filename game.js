@@ -5,7 +5,7 @@ var Container = PIXI.Container,
     Sprite = PIXI.Sprite,
     Text = PIXI.Text,
     Graphics = PIXI.Graphics,
-    filters = PIXI.filters;
+    filters = PIXI.filters1;
 
 
 var renderer = autoDetectRenderer(1920, 1080),
