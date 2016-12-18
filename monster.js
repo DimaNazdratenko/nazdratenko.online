@@ -31,8 +31,9 @@ Monster.prototype.createAnimation = function (monsterImages, startX) {
 Monster.prototype.updatePosition = function () {
     if (this.movieclip.x > Position.END_X - this.movieclip.width / 2) {
         this.movieclip.x -= Position.STEP_X;
-    }
-    else {
+    } else {
+        this.createAnimation(monsterSprites[getRandomIntValue(0,monsterSprites.length - 1)]);
+
         this.movieclip.x = Position.START_X - this.movieclip.width / 2;
         this.movieclip.y = getRandomIntValue(Position.START_Y + this.movieclip.height / 2, Position.END_Y + this.movieclip.height / 2);
     }

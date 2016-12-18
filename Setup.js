@@ -46,6 +46,8 @@ function setup() {
         imageLinks.chickenFly4
     ];
 
+    monsterSprites = [monsterImages, fatBirdImages, stupidBirdImages, chickenImages];
+
 // Add monsters and background on the scene
     backgroundAddOnScene();
     monster.createAnimation(monsterImages, 1920 + 170);
@@ -158,6 +160,4 @@ function setup() {
     startTime = Date.now();
     state = play;
     musicBackground.play();
-
-
 }
