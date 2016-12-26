@@ -4,56 +4,18 @@ function setup() {
     gameScene = new Container();
     stage.addChild(gameScene);
 
-// Create monsters
-    monster = new Monster();
-    fatBird = new Monster();
-    stupidBird = new Monster();
-    chicken = new Monster();
-
-    monsterImages = [
-        imageLinks.monsterFly1,
-        imageLinks.monsterFly2,
-        imageLinks.monsterFly3,
-        imageLinks.monsterFly4
-    ];
-
-    fatBirdImages = [
-        imageLinks.fatBird1,
-        imageLinks.fatBird2,
-        imageLinks.fatBird3,
-        imageLinks.fatBird4,
-        imageLinks.fatBird5,
-        imageLinks.fatBird6,
-        imageLinks.fatBird7,
-        imageLinks.fatBird8
-    ];
-
-    stupidBirdImages = [
-        imageLinks.stupidBirdFly1,
-        imageLinks.stupidBirdFly2,
-        imageLinks.stupidBirdFly3,
-        imageLinks.stupidBirdFly4,
-        imageLinks.stupidBirdFly5,
-        imageLinks.stupidBirdFly6,
-        imageLinks.stupidBirdFly7,
-        imageLinks.stupidBirdFly8
-    ];
-
-    chickenImages = [
-        imageLinks.chickenFly1,
-        imageLinks.chickenFly2,
-        imageLinks.chickenFly3,
-        imageLinks.chickenFly4
-    ];
-
-    monsterSprites = [monsterImages, fatBirdImages, stupidBirdImages, chickenImages];
-
 // Add monsters and background on the scene
     backgroundAddOnScene();
-    monster.createAnimation(monsterImages, 1920 + 170);
-    fatBird.createAnimation(fatBirdImages, 1920 + 170 + 500);
-    stupidBird.createAnimation(stupidBirdImages, 1920 + 170 + 1000);
-    chicken.createAnimation(chickenImages, 1920 + 170 + 1500);
+
+    for (var i = 0; i < 4; i++) {
+        enemy[i] = new Monster(monsterSprites[i], 1920 + 170 + gapBetweenBirds);
+        gapBetweenBirds+=500;
+    }
+
+    // monster = new Monster(monsterImages, 1920 + 170);
+    // fatBird = new Monster(fatBirdImages, 1920 + 170 + 500);
+    // stupidBird = new Monster(stupidBirdImages, 1920 + 170 + 1000);
+    // chicken = new Monster(chickenImages, 1920 + 170 + 1500);
     planeAnimation();
     scoreAdd();
 
@@ -155,7 +117,6 @@ function setup() {
         }
         this.texture = textureButton;
     }
-
 // Set the game state and refresh time
     startTime = Date.now();
     state = play;

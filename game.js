@@ -12,12 +12,13 @@ var renderer = autoDetectRenderer(1920, 1080),
     stage = new Container();
 document.body.appendChild(renderer.view);
 
-var state, preLoaderScene, gameScene, gameOverScene, layer, score, message, plane, distance, monster, fatBird, stupidBird, chicken, monsterImages,
-    fatBirdImages, stupidBirdImages, chickenImages, monsterSprites, gameTime, startTime, darkEffectEndGame, darkEffectPreLoader, textureButton, textureButtonDown,
-    textureButtonOver, buttonReplay, textureButtonStart, textureButtonDownStart, textureButtonOverStart, buttonStart, flag, texturePreLoader, preLoader,
-    musicBackground, musicGameOver;
+var state, preLoaderScene, gameScene, gameOverScene, layer, score, message, plane, distance, monster, fatBird, stupidBird, chicken, gameTime, startTime,
+    darkEffectEndGame, darkEffectPreLoader, textureButton, textureButtonDown, textureButtonOver, buttonReplay, textureButtonStart, textureButtonDownStart,
+    textureButtonOverStart, buttonStart, flag, texturePreLoader, preLoader, musicBackground, musicGameOver;
 var velocityVertical = 0,
-    velocityHorizontal = 0;
+    velocityHorizontal = 0,
+    gapBetweenBirds = 0,
+    enemy = [];
 const Position = {
     START_X: 1920 + 170,
     START_Y: 0,
@@ -79,6 +80,44 @@ var imageLinks = {
     start_button_down: 'assets/images/start_button/start_button_2.png',
     start_button_over: 'assets/images/start_button/start_button_3.png'
 };
+
+var monsterImages = [
+    imageLinks.monsterFly1,
+    imageLinks.monsterFly2,
+    imageLinks.monsterFly3,
+    imageLinks.monsterFly4
+];
+
+var fatBirdImages = [
+    imageLinks.fatBird1,
+    imageLinks.fatBird2,
+    imageLinks.fatBird3,
+    imageLinks.fatBird4,
+    imageLinks.fatBird5,
+    imageLinks.fatBird6,
+    imageLinks.fatBird7,
+    imageLinks.fatBird8
+];
+
+var stupidBirdImages = [
+    imageLinks.stupidBirdFly1,
+    imageLinks.stupidBirdFly2,
+    imageLinks.stupidBirdFly3,
+    imageLinks.stupidBirdFly4,
+    imageLinks.stupidBirdFly5,
+    imageLinks.stupidBirdFly6,
+    imageLinks.stupidBirdFly7,
+    imageLinks.stupidBirdFly8
+];
+
+var chickenImages = [
+    imageLinks.chickenFly1,
+    imageLinks.chickenFly2,
+    imageLinks.chickenFly3,
+    imageLinks.chickenFly4
+];
+
+var monsterSprites = [monsterImages, fatBirdImages, stupidBirdImages, chickenImages];
 
 preLoaderFunc();
 

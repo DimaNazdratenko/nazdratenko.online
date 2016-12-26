@@ -1,6 +1,6 @@
 function play() {
 
-    if (detectCollision(plane, chicken) || detectCollision(plane, stupidBird) || detectCollision(plane, fatBird) || detectCollision(plane, monster)) {
+    if (detectCollision(plane, enemy[0]) || detectCollision(plane, enemy[1]) || detectCollision(plane, enemy[2]) || detectCollision(plane, enemy[3])) {
 // There's a collision
         state = end;
         musicBackground.stop();
@@ -15,10 +15,11 @@ function play() {
         backgroundLogic(layer.layer5, layer.layer50, 60, gameTime);
         planeVerticalMove(velocityVertical);
         planeHorizontalMove(velocityHorizontal);
-        monster.updatePosition();
-        fatBird.updatePosition();
-        stupidBird.updatePosition();
-        chicken.updatePosition();
+
+        for (var i = 0; i < enemy.length; i++) {
+            enemy[i].updatePosition();
+        }
+
         scoreChange(gameTime);
     }
 }

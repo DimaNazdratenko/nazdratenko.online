@@ -1,11 +1,5 @@
 // Class Monster =======================================================================================================
-function Monster() {
-    this.movieclip = null;
-}
-Monster.prototype = Object.create(null);
-
-// Prototype createAnimation ===========================================================================================
-Monster.prototype.createAnimation = function (monsterImages, startX) {
+function Monster (monsterImages, startX) {
     var frames = [];
 
     for (var i = 0; i < monsterImages.length; i++) {
@@ -25,14 +19,14 @@ Monster.prototype.createAnimation = function (monsterImages, startX) {
 
     this.movieclip.play();
     gameScene.addChild(this.movieclip);
-};
+}
 
 // Prototype updatePosition ============================================================================================
 Monster.prototype.updatePosition = function () {
     if (this.movieclip.x > Position.END_X - this.movieclip.width / 2) {
         this.movieclip.x -= Position.STEP_X;
     } else {
-        this.createAnimation(monsterSprites[getRandomIntValue(0,monsterSprites.length - 1)]);
+        // this.createAnimation(monsterSprites[getRandomIntValue(0,monsterSprites.length - 1)]);
 
         this.movieclip.x = Position.START_X - this.movieclip.width / 2;
         this.movieclip.y = getRandomIntValue(Position.START_Y + this.movieclip.height / 2, Position.END_Y + this.movieclip.height / 2);
