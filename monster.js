@@ -1,5 +1,6 @@
 // Class Monster =======================================================================================================
 function Monster (monsterImages, startX) {
+    this.hideEnemy = false;
     var frames = [];
 
     for (var i = 0; i < monsterImages.length; i++) {
@@ -26,9 +27,6 @@ Monster.prototype.updatePosition = function () {
     if (this.movieclip.x > Position.END_X - this.movieclip.width / 2) {
         this.movieclip.x -= Position.STEP_X;
     } else {
-        // this.createAnimation(monsterSprites[getRandomIntValue(0,monsterSprites.length - 1)]);
-
-        this.movieclip.x = Position.START_X - this.movieclip.width / 2;
-        this.movieclip.y = getRandomIntValue(Position.START_Y + this.movieclip.height / 2, Position.END_Y + this.movieclip.height / 2);
+        this.hideEnemy = true;
     }
 };

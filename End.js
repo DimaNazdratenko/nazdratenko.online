@@ -2,56 +2,56 @@ function end() {
     gameOverScene.visible = true;
 
 // Падение птиц и самолета при столкновении------------------------------------------------------------------------------
-    if (detectCollision(plane, chicken)) {
-        flag = 'chicken';
-    } else if (detectCollision(plane, stupidBird)) {
-        flag = 'stupidBird';
-    } else if (detectCollision(plane, fatBird)) {
-        flag = 'fatBird';
-    } else if (detectCollision(plane, monster)) {
-        flag = 'monster';
+    if (detectCollision(plane, enemy[3])) {
+        flag = '3';
+    } else if (detectCollision(plane, enemy[2])) {
+        flag = '2';
+    } else if (detectCollision(plane, enemy[1])) {
+        flag = '1';
+    } else if (detectCollision(plane, enemy[0])) {
+        flag = '0';
     }
 
-    if (flag == 'chicken') {
+    if (flag == '3') {
         plane.rotation -= 0.03;
         plane.y += Position.STEP_Y;
 
-        chicken.movieclip.rotation += 0.03;
-        chicken.movieclip.y += Position.STEP_Y;
+        enemy[3].movieclip.rotation += 0.03;
+        enemy[3].movieclip.y += Position.STEP_Y;
 
-        stupidBird.movieclip.y += Position.STEP_Y / 2;
-        fatBird.movieclip.y += Position.STEP_Y / 2;
-        monster.movieclip.y += Position.STEP_Y / 2;
-    } else if (flag == 'stupidBird') {
+        enemy[2].movieclip.y += Position.STEP_Y / 2;
+        enemy[1].movieclip.y += Position.STEP_Y / 2;
+        enemy[0].movieclip.y += Position.STEP_Y / 2;
+    } else if (flag == '2') {
         plane.rotation -= 0.03;
         plane.y += Position.STEP_Y;
 
-        stupidBird.movieclip.rotation += 0.03;
-        stupidBird.movieclip.y += Position.STEP_Y;
+        enemy[2].movieclip.rotation += 0.03;
+        enemy[2].movieclip.y += Position.STEP_Y;
 
-        chicken.movieclip.y += Position.STEP_Y / 2;
-        fatBird.movieclip.y += Position.STEP_Y / 2;
-        monster.movieclip.y += Position.STEP_Y / 2;
-    } else if (flag == 'fatBird') {
+        enemy[3].movieclip.y += Position.STEP_Y / 2;
+        enemy[1].movieclip.y += Position.STEP_Y / 2;
+        enemy[0].movieclip.y += Position.STEP_Y / 2;
+    } else if (flag == '1') {
         plane.rotation -= 0.03;
         plane.y += Position.STEP_Y;
 
-        fatBird.movieclip.rotation += 0.03;
-        fatBird.movieclip.y += Position.STEP_Y;
+        enemy[1].movieclip.rotation += 0.03;
+        enemy[1].movieclip.y += Position.STEP_Y;
 
-        chicken.movieclip.y += Position.STEP_Y / 2;
-        stupidBird.movieclip.y += Position.STEP_Y / 2;
-        monster.movieclip.y += Position.STEP_Y / 2;
-    } else if (flag == 'monster') {
+        enemy[3].movieclip.y += Position.STEP_Y / 2;
+        enemy[2].movieclip.y += Position.STEP_Y / 2;
+        enemy[0].movieclip.y += Position.STEP_Y / 2;
+    } else if (flag == '0') {
         plane.rotation -= 0.03;
         plane.y += Position.STEP_Y;
 
-        monster.movieclip.rotation += 0.03;
-        monster.movieclip.y += Position.STEP_Y;
+        enemy[0].movieclip.rotation += 0.03;
+        enemy[0].movieclip.y += Position.STEP_Y;
 
-        chicken.movieclip.y += Position.STEP_Y / 2;
-        stupidBird.movieclip.y += Position.STEP_Y / 2;
-        fatBird.movieclip.y += Position.STEP_Y / 2;
+        enemy[3].movieclip.y += Position.STEP_Y / 2;
+        enemy[2].movieclip.y += Position.STEP_Y / 2;
+        enemy[1].movieclip.y += Position.STEP_Y / 2;
     }
 // Изменения сцены для текста Score, что бы он был сверху над темным фоном
     gameOverScene.addChild(score);

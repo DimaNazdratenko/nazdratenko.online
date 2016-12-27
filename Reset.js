@@ -5,21 +5,21 @@ function reset() {
     plane.y = 400;
     plane.rotation = Math.PI/2;
 
-    monster.movieclip.x = 1920 + 170;
-    monster.movieclip.y = getRandomIntValue(Position.START_Y + monster.movieclip.height / 2, Position.END_Y + monster.movieclip.height / 2);
-    monster.movieclip.rotation = 0;
+    enemy[0].movieclip.x = 1920 + 170;
+    enemy[0].movieclip.y = getRandomIntValue(Position.START_Y + enemy[0].movieclip.height / 2, Position.END_Y + enemy[0].movieclip.height / 2);
+    enemy[0].movieclip.rotation = 0;
 
-    fatBird.movieclip.x = 1920 + 170 + 500;
-    fatBird.movieclip.y = getRandomIntValue(Position.START_Y + fatBird.movieclip.height / 2, Position.END_Y + fatBird.movieclip.height / 2);
-    fatBird.movieclip.rotation = 0;
+    enemy[1].movieclip.x = 1920 + 170 + 500;
+    enemy[1].movieclip.y = getRandomIntValue(Position.START_Y + enemy[1].movieclip.height / 2, Position.END_Y + enemy[1].movieclip.height / 2);
+    enemy[1].movieclip.rotation = 0;
 
-    stupidBird.movieclip.x = 1920 + 170 + 1000;
-    stupidBird.movieclip.y = getRandomIntValue(Position.START_Y + stupidBird.movieclip.height / 2, Position.END_Y + stupidBird.movieclip.height / 2);
-    stupidBird.movieclip.rotation = 0;
+    enemy[2].movieclip.x = 1920 + 170 + 1000;
+    enemy[2].movieclip.y = getRandomIntValue(Position.START_Y + enemy[2].movieclip.height / 2, Position.END_Y + enemy[2].movieclip.height / 2);
+    enemy[2].movieclip.rotation = 0;
 
-    chicken.movieclip.x = 1920 + 170 + 1500;
-    chicken.movieclip.y = getRandomIntValue(Position.START_Y + chicken.movieclip.height / 2, Position.END_Y + chicken.movieclip.height / 2);
-    chicken.movieclip.rotation = 0;
+    enemy[3].movieclip.x = 1920 + 170 + 1500;
+    enemy[3].movieclip.y = getRandomIntValue(Position.START_Y + enemy[3].movieclip.height / 2, Position.END_Y + enemy[3].movieclip.height / 2);
+    enemy[3].movieclip.rotation = 0;
 
     gameScene.addChild(score);
     gameOverScene.removeChild(score);

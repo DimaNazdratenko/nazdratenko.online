@@ -18,6 +18,9 @@ function play() {
 
         for (var i = 0; i < enemy.length; i++) {
             enemy[i].updatePosition();
+            if (enemy[i].hideEnemy) {
+                enemy.splice(i, 1, new Monster(monsterSprites[getRandomIntValue(0,monsterSprites.length - 1)], 1920 + 170));
+            }
         }
 
         scoreChange(gameTime);

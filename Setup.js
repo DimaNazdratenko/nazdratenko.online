@@ -12,10 +12,6 @@ function setup() {
         gapBetweenBirds+=500;
     }
 
-    // monster = new Monster(monsterImages, 1920 + 170);
-    // fatBird = new Monster(fatBirdImages, 1920 + 170 + 500);
-    // stupidBird = new Monster(stupidBirdImages, 1920 + 170 + 1000);
-    // chicken = new Monster(chickenImages, 1920 + 170 + 1500);
     planeAnimation();
     scoreAdd();
 
