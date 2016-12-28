@@ -12,8 +12,8 @@ var renderer = autoDetectRenderer(1920, 1080),
     stage = new Container();
 document.body.appendChild(renderer.view);
 
-var state, preLoaderScene, gameScene, gameOverScene, layer, score, message, plane, distance, monster, fatBird, stupidBird, chicken, gameTime, startTime,
-    darkEffectEndGame, darkEffectPreLoader, textureButton, textureButtonDown, textureButtonOver, buttonReplay, textureButtonStart, textureButtonDownStart,
+var state, preLoaderScene, gameScene, gameOverScene, layer, score, message, plane, distance, gameTime, startTime, darkEffectEndGame,
+    darkEffectPreLoader, textureButton, textureButtonDown, textureButtonOver, buttonReplay, textureButtonStart, textureButtonDownStart,
     textureButtonOverStart, buttonStart, flag, texturePreLoader, preLoader, musicBackground, musicGameOver;
 var velocityVertical = 0,
     velocityHorizontal = 0,
