@@ -27,9 +27,8 @@ Monster.prototype.updatePosition = function () {
     if (this.movieclip.x > Position.END_X - this.movieclip.width / 2) {
         this.movieclip.x -= Position.STEP_X;
     } else {
-        // this.hideEnemy = true;
-
-        this.movieclip.x = Position.START_X;
-        this.movieclip.y = getRandomIntValue(Position.START_Y + this.movieclip.height / 2, Position.END_Y + this.movieclip.height / 2);
+        this.hideEnemy = true;
+        this.movieclip.destroy();
+        this.movieclip = null;
     }
 };
