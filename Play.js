@@ -1,6 +1,10 @@
 function play() {
 
-    if (detectCollision(plane, enemy[0]) || detectCollision(plane, enemy[1]) || detectCollision(plane, enemy[2]) || detectCollision(plane, enemy[3])) {
+    // ----------------------------------------------------
+    if (detectCollision(plane, enemy)) {
+    // if (detectCollision(plane, enemy[0]) || detectCollision(plane, enemy[1]) || detectCollision(plane, enemy[2]) || detectCollision(plane, enemy[3])) {
+    //  ---------------------------------------------------
+
 // There's a collision
         state = end;
         musicBackground.stop();

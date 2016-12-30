@@ -2,7 +2,7 @@ function end() {
     gameOverScene.visible = true;
 
 // Падение птиц и самолета при столкновении------------------------------------------------------------------------------
-    if (detectCollision(plane, enemy[3])) {
+    if (detectCollision(plane, enemy)) {
         plane.rotation -= 0.03;
         plane.y += Position.STEP_Y;
 
@@ -12,7 +12,7 @@ function end() {
         enemy[2].movieclip.y += Position.STEP_Y / 2;
         enemy[1].movieclip.y += Position.STEP_Y / 2;
         enemy[0].movieclip.y += Position.STEP_Y / 2;
-    } else if (detectCollision(plane, enemy[2])) {
+    } else if (detectCollision(plane, enemy)) {
         plane.rotation -= 0.03;
         plane.y += Position.STEP_Y;
 
@@ -22,7 +22,7 @@ function end() {
         enemy[3].movieclip.y += Position.STEP_Y / 2;
         enemy[1].movieclip.y += Position.STEP_Y / 2;
         enemy[0].movieclip.y += Position.STEP_Y / 2;
-    } else if (detectCollision(plane, enemy[1])) {
+    } else if (detectCollision(plane, enemy)) {
         plane.rotation -= 0.03;
         plane.y += Position.STEP_Y;
 
@@ -32,7 +32,7 @@ function end() {
         enemy[3].movieclip.y += Position.STEP_Y / 2;
         enemy[2].movieclip.y += Position.STEP_Y / 2;
         enemy[0].movieclip.y += Position.STEP_Y / 2;
-    } else if (detectCollision(plane, enemy[0])) {
+    } else if (detectCollision(plane, enemy)) {
         plane.rotation -= 0.03;
         plane.y += Position.STEP_Y;
 
