@@ -14,7 +14,7 @@ document.body.appendChild(renderer.view);
 
 var state, preLoaderScene, gameScene, gameOverScene, layer, score, message, plane, distance, gameTime, startTime, darkEffectEndGame,
     darkEffectPreLoader, textureButton, textureButtonDown, textureButtonOver, buttonReplay, textureButtonStart, textureButtonDownStart,
-    textureButtonOverStart, buttonStart, flag, texturePreLoader, preLoader, musicBackground, musicGameOver;
+    textureButtonOverStart, buttonStart, texturePreLoader, preLoader, musicBackground, musicGameOver;
 var velocityVertical = 0,
     velocityHorizontal = 0,
     gapBetweenBirds = 0,
