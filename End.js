@@ -2,46 +2,19 @@ function end() {
     gameOverScene.visible = true;
 
 // Падение птиц и самолета при столкновении------------------------------------------------------------------------------
-    if (detectCollision(plane, enemy)) {
+
+    if (flagCollision != undefined) {
         plane.rotation -= 0.03;
         plane.y += Position.STEP_Y;
 
-        enemy[3].movieclip.rotation += 0.03;
-        enemy[3].movieclip.y += Position.STEP_Y;
-
-        enemy[2].movieclip.y += Position.STEP_Y / 2;
-        enemy[1].movieclip.y += Position.STEP_Y / 2;
-        enemy[0].movieclip.y += Position.STEP_Y / 2;
-    } else if (detectCollision(plane, enemy)) {
-        plane.rotation -= 0.03;
-        plane.y += Position.STEP_Y;
-
-        enemy[2].movieclip.rotation += 0.03;
-        enemy[2].movieclip.y += Position.STEP_Y;
-
-        enemy[3].movieclip.y += Position.STEP_Y / 2;
-        enemy[1].movieclip.y += Position.STEP_Y / 2;
-        enemy[0].movieclip.y += Position.STEP_Y / 2;
-    } else if (detectCollision(plane, enemy)) {
-        plane.rotation -= 0.03;
-        plane.y += Position.STEP_Y;
-
-        enemy[1].movieclip.rotation += 0.03;
-        enemy[1].movieclip.y += Position.STEP_Y;
-
-        enemy[3].movieclip.y += Position.STEP_Y / 2;
-        enemy[2].movieclip.y += Position.STEP_Y / 2;
-        enemy[0].movieclip.y += Position.STEP_Y / 2;
-    } else if (detectCollision(plane, enemy)) {
-        plane.rotation -= 0.03;
-        plane.y += Position.STEP_Y;
-
-        enemy[0].movieclip.rotation += 0.03;
-        enemy[0].movieclip.y += Position.STEP_Y;
-
-        enemy[3].movieclip.y += Position.STEP_Y / 2;
-        enemy[2].movieclip.y += Position.STEP_Y / 2;
-        enemy[1].movieclip.y += Position.STEP_Y / 2;
+        for (var i = 0; i < enemy.length; i++) {
+            if (i != flagCollision) {
+                enemy[i].movieclip.y += Position.STEP_Y / 2;
+            } else {
+                enemy[i].movieclip.rotation += 0.03;
+                enemy[i].movieclip.y += Position.STEP_Y;
+            }
+        }
     }
 
 // Изменения сцены для текста Score, что бы он был сверху над темным фоном
