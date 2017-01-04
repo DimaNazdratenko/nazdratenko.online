@@ -7,6 +7,10 @@ var Container = PIXI.Container,
     Graphics = PIXI.Graphics,
     filters = PIXI.filters;
 
+// =====================================================================================================================
+// var blurFilter = new filters.BlurFilter();
+// var asd = 0;
+// =====================================================================================================================
 
 var renderer = autoDetectRenderer(1920, 1080),
     stage = new Container();
