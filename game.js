@@ -10,10 +10,11 @@ var Container = PIXI.Container,
 
 // =====================================================================================================================
 // var blurFilter = new filters.BlurFilter();
-// var asd = 0;
+// var count = 0;
 // =====================================================================================================================
 
 var renderer = autoDetectRenderer(1920, 1080),
+// var renderer = autoDetectRenderer(960, 540),
     stage = new Container();
 document.body.appendChild(renderer.view);
 
