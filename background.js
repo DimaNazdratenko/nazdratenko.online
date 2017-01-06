@@ -8,16 +8,11 @@ function backgroundAddOnScene() {
     };
 
     layer = {
-        layer5: new Sprite(textureLayer.textureLayer5),
-        layer50: new Sprite(textureLayer.textureLayer5),
-        layer4: new Sprite(textureLayer.textureLayer4),
-        layer40: new Sprite(textureLayer.textureLayer4),
-        layer3: new Sprite(textureLayer.textureLayer3),
-        layer30: new Sprite(textureLayer.textureLayer3),
-        layer2: new Sprite(textureLayer.textureLayer2),
-        layer20: new Sprite(textureLayer.textureLayer2),
-        layer1: new Sprite(textureLayer.textureLayer1),
-        layer10: new Sprite(textureLayer.textureLayer1)
+        layer5: new tilingSprite(textureLayer.textureLayer5, renderer.width, renderer.height),
+        layer4: new tilingSprite(textureLayer.textureLayer4, renderer.width, renderer.height),
+        layer3: new tilingSprite(textureLayer.textureLayer3, renderer.width, renderer.height),
+        layer2: new tilingSprite(textureLayer.textureLayer2, renderer.width, renderer.height),
+        layer1: new tilingSprite(textureLayer.textureLayer1, renderer.width, renderer.height)
     };
 
     for (var key in layer) {
@@ -25,16 +20,6 @@ function backgroundAddOnScene() {
     }
 }
 
-function backgroundLogic(layer1, layer10, speed, gameTime) {
-    layer1.x = -(gameTime / 1000 * speed);
-    layer1.x %= 1920 * 2;
-    if (layer1.x < -1920) {
-        layer1.x += 1920 * 2;
-    }
-
-    layer10.x = 1920 - (gameTime / 1000 * speed);
-    layer10.x %= 1920 * 2;
-    if (layer10.x < -1920) {
-        layer10.x += 1920 * 2;
-    }
+function backgroundLogic(layer1, speed, gameTime) {
+    layer1.tilePosition.x = -(gameTime / 1000 * speed);
 }

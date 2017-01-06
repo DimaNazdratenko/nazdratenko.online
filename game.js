@@ -3,6 +3,7 @@ var Container = PIXI.Container,
     loader = PIXI.loader,
     Texture = PIXI.Texture,
     Sprite = PIXI.Sprite,
+    tilingSprite = PIXI.extras.TilingSprite,
     Text = PIXI.Text,
     Graphics = PIXI.Graphics,
     filters = PIXI.filters;
