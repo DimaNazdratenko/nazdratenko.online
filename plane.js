@@ -6,7 +6,7 @@ function planeAnimation() {
         frames.push(Texture.fromFrame('rollSequence00' + val + '.png'));
     }
 
-    plane = new PIXI.extras.AnimatedSprite(frames);
+    plane = new AnimatedSprite(frames);
 
     plane.x = 200;
     plane.y = 400;

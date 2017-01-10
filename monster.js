@@ -8,7 +8,7 @@ function Monster (monsterImages, startX) {
         frames.push(texture);
     }
 
-    this.movieclip = new PIXI.extras.AnimatedSprite(frames);
+    this.movieclip = new AnimatedSprite(frames);
 
     this.movieclip.scale.x = -1;
     this.movieclip.anchor.set(0.5);

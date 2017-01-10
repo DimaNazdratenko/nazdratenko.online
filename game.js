@@ -1,3 +1,4 @@
+// Aliases
 var Container = PIXI.Container,
     autoDetectRenderer = PIXI.autoDetectRenderer,
     loader = PIXI.loader,
@@ -6,7 +7,8 @@ var Container = PIXI.Container,
     tilingSprite = PIXI.extras.TilingSprite,
     Text = PIXI.Text,
     Graphics = PIXI.Graphics,
-    filters = PIXI.filters;
+    filters = PIXI.filters,
+    AnimatedSprite = PIXI.extras.AnimatedSprite;
 
 // =====================================================================================================================
 // var blurFilter = new filters.BlurFilter();
