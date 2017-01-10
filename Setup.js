@@ -8,7 +8,7 @@ function setup() {
     backgroundAddOnScene();
 
     for (var i = 0; i < 4; i++) {
-        enemy[i] = new Monster(monsterSprites[i], 1920 + 170 + gapBetweenBirds);
+        enemy[i] = new Monster(monsterSprites[i], Position.START_X + gapBetweenBirds);
         gapBetweenBirds+=500;
     }
 
