@@ -13,7 +13,7 @@ function Monster (monsterImages, startX) {
     this.movieclip.scale.x = -1;
     this.movieclip.anchor.set(0.5);
     this.movieclip.x = startX;
-    this.movieclip.y = getRandomIntValue(Position.START_Y + this.movieclip.height / 2, Position.END_Y + this.movieclip.height / 2);
+    this.movieclip.y = getRandomIntValue(Position.START_Y + this.movieclip.height / 2, Position.END_Y - this.movieclip.height / 2);
     this.movieclip.animationSpeed = 0.4;
 
     this.movieclip.play();

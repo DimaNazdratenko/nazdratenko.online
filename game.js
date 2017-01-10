@@ -30,7 +30,7 @@ const Position = {
     START_X: renderer.width + 85, // 85 it is monsters width
     START_Y: 0,
     END_X: 0,
-    END_Y: 385,
+    END_Y: 450,
     STEP_X: 10,
     STEP_Y: 8
 };
