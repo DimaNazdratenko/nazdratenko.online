@@ -22,9 +22,9 @@ function end() {
     gameScene.removeChild(score);
 
 // Движение текста Score в центр экрана и увеличение--------------------------------------------------------------------
-    if (score.x <= renderer.width / 2 - score.width / 2 && score.y >= renderer.height / 3 - score.height / 2 - message.height) {
-        score.x += 6;
-        score.y -= 6;
+    if (score.x <= renderer.width / 2 - score.width / 2 || score.y >= renderer.height / 3 - message.height) {
+        score.x += 2.7;
+        score.y -= 3;
     }
 
     if (score.scale.x <= 1.2 && score.scale.y <= 1.2) {

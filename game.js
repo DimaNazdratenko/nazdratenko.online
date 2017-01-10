@@ -36,7 +36,7 @@ const Position = {
 };
 var style = {
     fontFamily: 'Arial',
-    fontSize: '60px',
+    fontSize: '30px',
     fontStyle: 'italic',
     fontWeight: 'bold',
     fill: 'white',

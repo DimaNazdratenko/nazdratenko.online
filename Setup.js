@@ -36,11 +36,11 @@ function setup() {
 // Create the black effect in gameOverScene
     darkEffectEndGame = new Graphics();
     darkEffectEndGame.beginFill(0x000000, 0.6);
-    darkEffectEndGame.drawRect(0, 0, 1920, 1080);
+    darkEffectEndGame.drawRect(0, 0, renderer.width, renderer.height);
     gameOverScene.addChild(darkEffectEndGame);
 
 // Create the text sprite and add it to the gameOverScene
-    style.fontSize = '100px';
+    style.fontSize = '50px';
     message = new Text('Game over!', style);
     message.x = renderer.width / 2 - message.width / 2;
     message.y = renderer.height / 3 - message.height / 2;
@@ -56,7 +56,7 @@ function setup() {
     buttonReplay.scale.x = 0.5;
     buttonReplay.scale.y = 0.5;
     buttonReplay.x = renderer.width / 2 - buttonReplay.width / 2;
-    buttonReplay.y = renderer.height / 3 + message.height - message.height / 2;
+    buttonReplay.y = renderer.height / 2 - buttonReplay.height / 2;
 
 // Make the button interactive
     buttonReplay.interactive = true;
