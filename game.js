@@ -27,7 +27,7 @@ var velocityVertical = 0,
     gapBetweenBirds = 0,
     enemy = [];
 const Position = {
-    START_X: renderer.width + 85, // 85 it is monsters width
+    START_X: renderer.width + 85/2, // 85/2 it is monsters width/2, because point anchor = 0.5
     START_Y: 0,
     END_X: 0,
     END_Y: 450,

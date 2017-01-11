@@ -9,7 +9,11 @@ function setup() {
 
     for (var i = 0; i < 4; i++) {
         enemy[i] = new Monster(monsterSprites[i], Position.START_X + gapBetweenBirds);
-        gapBetweenBirds+=500;
+
+        // Equally gap Between Birds and canvas border => only when we have 3 birds on the canvas
+        // In this situation we have 4 gap Between Birds
+        // + birds.width because point anchor = 0.5
+        gapBetweenBirds += (renderer.width - enemy[i].movieclip.width * 3) / 4 + enemy[i].movieclip.width;
     }
 
     planeAnimation();
