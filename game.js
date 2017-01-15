@@ -10,22 +10,20 @@ var Container = PIXI.Container,
     filters = PIXI.filters,
     AnimatedSprite = PIXI.extras.AnimatedSprite;
 
-// =====================================================================================================================
-// var blurFilter = new filters.BlurFilter();
-// var count = 0;
-// =====================================================================================================================
-
 var renderer = autoDetectRenderer(960, 540),
     stage = new Container();
 document.body.appendChild(renderer.view);
 
 var state, preLoaderScene, gameScene, gameOverScene, layer, score, message, plane, distance, gameTime, startTime, darkEffectEndGame,
     darkEffectPreLoader, textureButton, textureButtonDown, textureButtonOver, buttonReplay, textureButtonStart, textureButtonDownStart,
-    textureButtonOverStart, buttonStart, texturePreLoader, preLoader, musicBackground, musicGameOver, flagCollision;
-var velocityVertical = 0,
+    textureButtonOverStart, buttonStart, texturePreLoader, preLoader, musicBackground, musicGameOver, flagCollision,
+    velocityVertical = 0,
     velocityHorizontal = 0,
     gapBetweenBirds = 0,
-    enemy = [];
+    enemy = [],
+    filtersValue = 0,
+    blurFilter = new filters.BlurFilter();
+
 const Position = {
     START_X: renderer.width + 85/2, // 85/2 it is monsters width/2, because point anchor = 0.5
     START_Y: 0,

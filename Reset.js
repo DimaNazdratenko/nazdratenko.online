@@ -29,4 +29,8 @@ function reset() {
     startTime = Date.now();
     state = play;
     musicBackground.play();
+
+// Disable filter Blur
+    gameScene.filters = [];
+    filtersValue = 0;
 }

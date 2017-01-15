@@ -1,7 +1,7 @@
 function end() {
     gameOverScene.visible = true;
 
-// Падение птиц и самолета при столкновении------------------------------------------------------------------------------
+// Падение птиц и самолета при столкновении
 
     if (flagCollision != undefined) {
         plane.rotation -= 0.03;
@@ -21,7 +21,7 @@ function end() {
     gameOverScene.addChild(score);
     gameScene.removeChild(score);
 
-// Движение текста Score в центр экрана и увеличение--------------------------------------------------------------------
+// Движение текста Score в центр экрана и увеличение
     if (score.x <= renderer.width / 2 - score.width / 2 || score.y >= renderer.height / 3 - message.height) {
         score.x += 2.7;
         score.y -= 3;
@@ -32,13 +32,10 @@ function end() {
         score.scale.y += 0.002;
     }
 
-// =====================================================================================================================
-//     gameScene.filters = [blurFilter];
-//     count += 0.006;
-//     blurFilter.blur = 20 * (count);
-// =====================================================================================================================
-
-
+// Enable filter Blur
+    gameScene.filters = [blurFilter];
+    filtersValue += 0.005;
+    blurFilter.blur = Math.sin(filtersValue) * 10;
 }
 
 
