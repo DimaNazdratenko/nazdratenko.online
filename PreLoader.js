@@ -19,7 +19,7 @@ function preLoaderFunc() {
     preLoader.y = renderer.height / 2 - preLoader.height / 2;
     preLoaderScene.addChild(preLoader);
 
-// Downloading assets---------------------------------------------------------------------------------------------------
+// Downloading assets
     for (var key in imageLinks) {
         loader = loader.add(imageLinks[key]);
     }
@@ -49,7 +49,7 @@ function rotatePreLoader() {
 }
 
 function createStartButton() {
-// Добавляем кнопку Start----------------------------------------------------------------------------------------------
+// Add the "Start" button
     textureButtonStart = Texture.fromImage(imageLinks.start_button);
     textureButtonDownStart = Texture.fromImage(imageLinks.start_button_down);
     textureButtonOverStart = Texture.fromImage(imageLinks.start_button_over);

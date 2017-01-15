@@ -158,7 +158,7 @@ function getRandomIntValue(min, max) {
     return Math.round(Math.random() * (max - min) + min);
 }
 
-// Start animating =====================================================================================================
+// Start animating
 startTime = Date.now();
 function gameLoop() {
     var now = Date.now();

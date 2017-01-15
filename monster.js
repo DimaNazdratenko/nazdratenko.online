@@ -1,4 +1,4 @@
-// Class Monster =======================================================================================================
+// Class Monster
 function Monster (monsterImages, startX) {
     this.hideEnemy = false;
     var frames = [];
@@ -20,7 +20,7 @@ function Monster (monsterImages, startX) {
     gameScene.addChild(this.movieclip);
 }
 
-// Prototype updatePosition ============================================================================================
+// Prototype updatePosition
 Monster.prototype.updatePosition = function () {
     if (this.movieclip.x > Position.END_X - this.movieclip.width / 2) {
         this.movieclip.x -= Position.STEP_X;

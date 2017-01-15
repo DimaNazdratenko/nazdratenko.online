@@ -23,7 +23,7 @@ function planeAnimation() {
 function planeVerticalMove (velocityVertical) {
     if (!plane) return;
     plane.y -= velocityVertical;
-    if (plane.y <= 5 + plane.width / 2) {     // 5 это просто что бы самолет не касался краями конца канваса
+    if (plane.y <= 5 + plane.width / 2) {     // 5 it's just that the plane would not touch the edges of the canvas
         plane.y = 5 + plane.width / 2;
     } else if (plane.y >= Position.END_Y - plane.width / 2) {
         plane.y = Position.END_Y - plane.width / 2;
@@ -32,7 +32,7 @@ function planeVerticalMove (velocityVertical) {
 function planeHorizontalMove (velocityHorizontal) {
     if (!plane) return;
     plane.x += velocityHorizontal;
-    if (plane.x <= 5 + plane.height / 2) {    // 5 это просто что бы самолет не касался краями конца канваса
+    if (plane.x <= 5 + plane.height / 2) {    // 5 it's just that the plane would not touch the edges of the canvas
         plane.x = 5 + plane.height / 2;
     } else if (plane.x >= renderer.width - plane.height / 2 - 5) {
         plane.x = renderer.width - plane.height / 2 - 5;

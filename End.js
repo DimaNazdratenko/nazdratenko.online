@@ -1,7 +1,7 @@
 function end() {
     gameOverScene.visible = true;
 
-// Падение птиц и самолета при столкновении
+// Falling birds and the plane in a collision
 
     if (flagCollision != undefined) {
         plane.rotation -= 0.03;
@@ -17,11 +17,11 @@ function end() {
         }
     }
 
-// Изменения сцены для текста Score, что бы он был сверху над темным фоном
+// Change scene for Score, that it was on top of the dark background
     gameOverScene.addChild(score);
     gameScene.removeChild(score);
 
-// Движение текста Score в центр экрана и увеличение
+// Movement the "Score" to the center of the screen and scaling it
     if (score.x <= renderer.width / 2 - score.width / 2 || score.y >= renderer.height / 3 - message.height) {
         score.x += 2.7;
         score.y -= 3;
