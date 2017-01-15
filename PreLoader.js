@@ -92,6 +92,7 @@ function createStartButton() {
         if (this.isOver) {
             this.texture = textureButtonOverStart;
             state = setup;
+            buttonStart.interactive = false;
         } else {
             this.texture = textureButtonStart;
         }
