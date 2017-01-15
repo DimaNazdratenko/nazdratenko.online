@@ -32,7 +32,9 @@ const Position = {
     END_X: 0,
     END_Y: 450,
     STEP_X: 10,
-    STEP_Y: 8
+    STEP_Y: 8,
+    SCORE_X: 50,
+    SCORE_Y: 480
 };
 var style = {
     fontFamily: 'Arial',

@@ -5,27 +5,24 @@ function reset() {
     plane.y = 400;
     plane.rotation = Math.PI/2;
 
-    enemy[0].movieclip.x = 1920 + 170;
-    enemy[0].movieclip.y = getRandomIntValue(Position.START_Y + enemy[0].movieclip.height / 2, Position.END_Y + enemy[0].movieclip.height / 2);
-    enemy[0].movieclip.rotation = 0;
+    gapBetweenBirds = 0;
+    for (var i = 0; i < enemy.length; i++) {
+        enemy[i].movieclip.x = Position.START_X + gapBetweenBirds;
 
-    enemy[1].movieclip.x = 1920 + 170 + 500;
-    enemy[1].movieclip.y = getRandomIntValue(Position.START_Y + enemy[1].movieclip.height / 2, Position.END_Y + enemy[1].movieclip.height / 2);
-    enemy[1].movieclip.rotation = 0;
+        // Equally gap Between Birds and canvas border => only when we have 3 birds on the canvas
+        // In this situation we have 4 gap Between Birds
+        // + birds.width because point anchor = 0.5
+        gapBetweenBirds += (renderer.width - enemy[i].movieclip.width * 3) / 4 + enemy[i].movieclip.width;
 
-    enemy[2].movieclip.x = 1920 + 170 + 1000;
-    enemy[2].movieclip.y = getRandomIntValue(Position.START_Y + enemy[2].movieclip.height / 2, Position.END_Y + enemy[2].movieclip.height / 2);
-    enemy[2].movieclip.rotation = 0;
-
-    enemy[3].movieclip.x = 1920 + 170 + 1500;
-    enemy[3].movieclip.y = getRandomIntValue(Position.START_Y + enemy[3].movieclip.height / 2, Position.END_Y + enemy[3].movieclip.height / 2);
-    enemy[3].movieclip.rotation = 0;
+        enemy[i].movieclip.y = getRandomIntValue(Position.START_Y + enemy[i].movieclip.height / 2, Position.END_Y - enemy[i].movieclip.height / 2);
+        enemy[i].movieclip.rotation = 0;
+    }
 
     gameScene.addChild(score);
     gameOverScene.removeChild(score);
 
-    score.x = 50;
-    score.y = 960;
+    score.x = Position.SCORE_X;
+    score.y = Position.SCORE_Y;
     score.scale.x = 1;
     score.scale.y = 1;
 

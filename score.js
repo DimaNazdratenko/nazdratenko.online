@@ -1,7 +1,7 @@
 function scoreAdd() {
     score = new Text('Score: ' + distance, style);
-    score.x = 50;
-    score.y = 480;
+    score.x = Position.SCORE_X;
+    score.y = Position.SCORE_Y;
     gameScene.addChild(score);
 }
 
