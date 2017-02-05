@@ -16,7 +16,7 @@ function setup() {
         gapBetweenBirds += (renderer.width - enemy[i].movieclip.width * 3) / 4 + enemy[i].movieclip.width;
     }
 
-    planeAnimation();
+    plane = new PlaneAnimation();
     scoreAdd();
 
 // Create musics

@@ -1,4 +1,4 @@
-function planeAnimation() {
+function PlaneAnimation() {
     var frames = [];
 
     for (var i = 0; i < 30; i++) {
@@ -6,35 +6,36 @@ function planeAnimation() {
         frames.push(Texture.fromFrame('rollSequence00' + val + '.png'));
     }
 
-    plane = new AnimatedSprite(frames);
+    this.AnimatedSprite = new AnimatedSprite(frames);
 
-    plane.x = 200;
-    plane.y = 400;
-    plane.anchor.set(0.5);
-    plane.animationSpeed = 0.5;
-    plane.rotation = Math.PI/2;
-    plane.width = 85;
-    plane.height = 120;
+    this.AnimatedSprite.x = 200;
+    this.AnimatedSprite.y = 400;
+    this.AnimatedSprite.anchor.set(0.5);
+    this.AnimatedSprite.animationSpeed = 0.5;
+    this.AnimatedSprite.rotation = Math.PI/2;
+    this.AnimatedSprite.width = 85;
+    this.AnimatedSprite.height = 120;
 
-    plane.play();
-    gameScene.addChild(plane);
+    this.AnimatedSprite.play();
+    gameScene.addChild(this.AnimatedSprite);
 }
 
-function planeVerticalMove (velocityVertical) {
-    if (!plane) return;
-    plane.y -= velocityVertical;
-    if (plane.y <= 5 + plane.width / 2) {     // 5 it's just that the plane would not touch the edges of the canvas
-        plane.y = 5 + plane.width / 2;
-    } else if (plane.y >= Position.END_Y - plane.width / 2) {
-        plane.y = Position.END_Y - plane.width / 2;
+PlaneAnimation.prototype.planeVerticalMove = function (velocityVertical) {
+    if (!this.AnimatedSprite) return;
+    this.AnimatedSprite.y -= velocityVertical;
+    if (this.AnimatedSprite.y <= 5 + this.AnimatedSprite.width / 2) {     // 5 it's just that the plane would not touch the edges of the canvas
+        this.AnimatedSprite.y = 5 + this.AnimatedSprite.width / 2;
+    } else if (this.AnimatedSprite.y >= Position.END_Y - this.AnimatedSprite.width / 2) {
+        this.AnimatedSprite.y = Position.END_Y - this.AnimatedSprite.width / 2;
     }
-}
-function planeHorizontalMove (velocityHorizontal) {
-    if (!plane) return;
-    plane.x += velocityHorizontal;
-    if (plane.x <= 5 + plane.height / 2) {    // 5 it's just that the plane would not touch the edges of the canvas
-        plane.x = 5 + plane.height / 2;
-    } else if (plane.x >= renderer.width - plane.height / 2 - 5) {
-        plane.x = renderer.width - plane.height / 2 - 5;
+};
+
+PlaneAnimation.prototype.planeHorizontalMove = function (velocityHorizontal) {
+    if (!this.AnimatedSprite) return;
+    this.AnimatedSprite.x += velocityHorizontal;
+    if (this.AnimatedSprite.x <= 5 + this.AnimatedSprite.height / 2) {    // 5 it's just that the plane would not touch the edges of the canvas
+        this.AnimatedSprite.x = 5 + this.AnimatedSprite.height / 2;
+    } else if (this.AnimatedSprite.x >= renderer.width - this.AnimatedSprite.height / 2 - 5) {
+        this.AnimatedSprite.x = renderer.width - this.AnimatedSprite.height / 2 - 5;
     }
-}
+};

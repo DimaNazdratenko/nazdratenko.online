@@ -1,9 +1,9 @@
 function reset() {
     gameOverScene.visible = false;
 
-    plane.x = 200;
-    plane.y = 400;
-    plane.rotation = Math.PI/2;
+    plane.AnimatedSprite.x = 200;
+    plane.AnimatedSprite.y = 400;
+    plane.AnimatedSprite.rotation = Math.PI/2;
 
     gapBetweenBirds = 0;
     for (var i = 0; i < enemy.length; i++) {

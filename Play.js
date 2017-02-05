@@ -12,8 +12,8 @@ function play() {
         backgroundLogic(layer.layer3, 120, gameTime);
         backgroundLogic(layer.layer4, 80, gameTime);
         backgroundLogic(layer.layer5, 60, gameTime);
-        planeVerticalMove(velocityVertical);
-        planeHorizontalMove(velocityHorizontal);
+        plane.planeVerticalMove(velocityVertical);
+        plane.planeHorizontalMove(velocityHorizontal);
 
         for (var i = 0; i < enemy.length; i++) {
             enemy[i].updatePosition();

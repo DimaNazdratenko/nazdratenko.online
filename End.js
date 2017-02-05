@@ -2,10 +2,9 @@ function end() {
     gameOverScene.visible = true;
 
 // Falling birds and the plane in a collision
-
     if (flagCollision != undefined) {
-        plane.rotation -= 0.03;
-        plane.y += Position.STEP_Y;
+        plane.AnimatedSprite.rotation -= 0.03;
+        plane.AnimatedSprite.y += Position.STEP_Y;
 
         for (var i = 0; i < enemy.length; i++) {
             if (i != flagCollision) {
