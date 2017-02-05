@@ -17,8 +17,6 @@ document.body.appendChild(renderer.view);
 var state, preLoaderScene, gameScene, gameOverScene, layer, score, message, plane, distance, gameTime, startTime, darkEffectEndGame,
     darkEffectPreLoader, textureButton, textureButtonDown, textureButtonOver, buttonReplay, textureButtonStart, textureButtonDownStart,
     textureButtonOverStart, buttonStart, texturePreLoader, preLoader, musicBackground, musicGameOver, flagCollision,
-    velocityVertical = 0,
-    velocityHorizontal = 0,
     gapBetweenBirds = 0,
     enemy = [],
     filtersValue = 0,
@@ -131,16 +129,16 @@ preLoaderFunc();
 document.body.addEventListener('keydown', function (e) {
     switch (e.keyCode) {
         case 37:    //  left
-            velocityHorizontal = -20;
+            plane.velocityHorizontal = -20;
             break;
         case 38:    //  top
-            velocityVertical = 20;
+            plane.velocityVertical = 20;
             break;
         case 39:    //  right
-            velocityHorizontal = 20;
+            plane.velocityHorizontal = 20;
             break;
         case 40:    //  down
-            velocityVertical = -20;
+            plane.velocityVertical = -20;
             break;
     }
     e.preventDefault();
@@ -148,9 +146,9 @@ document.body.addEventListener('keydown', function (e) {
 
 document.body.addEventListener('keyup', function (e) {
     if (e.keyCode == 38 || e.keyCode == 40) {
-        velocityVertical = 0;
+        plane.velocityVertical = 0;
     } else if (e.keyCode == 37 || e.keyCode == 39) {
-        velocityHorizontal = 0;
+        plane.velocityHorizontal = 0;
     }
 });
 

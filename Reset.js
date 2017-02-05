@@ -1,8 +1,8 @@
 function reset() {
     gameOverScene.visible = false;
 
-    plane.AnimatedSprite.x = 200;
-    plane.AnimatedSprite.y = 400;
+    plane.AnimatedSprite.x = 100;
+    plane.AnimatedSprite.y = 200;
     plane.AnimatedSprite.rotation = Math.PI/2;
 
     gapBetweenBirds = 0;
