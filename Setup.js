@@ -16,7 +16,18 @@ function setup() {
         gapBetweenBirds += (renderer.width - enemy[i].movieclip.width * 3) / 4 + enemy[i].movieclip.width;
     }
 
-    plane = new PlaneAnimation();
+// Add Plane
+    var frames = [];
+    for (var j = 0; j < 30; j++) {
+        var val = j < 10 ? '0' + j : j;
+        frames.push(Texture.fromFrame('rollSequence00' + val + '.png'));
+    }
+
+    plane = new PlaneAnimation(frames);
+    plane.play();
+    gameScene.addChild(plane);
+
+// Add Score
     scoreAdd();
 
 // Create musics

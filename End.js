@@ -3,8 +3,8 @@ function end() {
 
 // Falling birds and the plane in a collision
     if (flagCollision != undefined) {
-        plane.AnimatedSprite.rotation -= 0.03;
-        plane.AnimatedSprite.y += Position.STEP_Y;
+        plane.rotation -= 0.03;
+        plane.y += Position.STEP_Y;
 
         for (var i = 0; i < enemy.length; i++) {
             if (i != flagCollision) {
