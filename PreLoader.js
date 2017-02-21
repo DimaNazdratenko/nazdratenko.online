@@ -9,6 +9,12 @@ function preLoaderFunc() {
     darkEffectPreLoader.drawRect(0, 0, 1920, 1080);
     preLoaderScene.addChild(darkEffectPreLoader);
 
+// Create musics
+    musicBackground = new Howl({
+        src: ['assets/music/background_music.mp3'],
+        volume: 0.5
+    });
+
 // Create loader and add it into preLoaderScene
     var preLoaderImg = 'assets/images/preLoader.png';
     loader.add(preLoaderImg);
@@ -67,10 +73,14 @@ function createStartButton() {
     buttonStart
         // set the mousedown callback...
         .on('mousedown', onButtonDown)
+        .on('touchstart', onButtonDown)
 
         // set the mouseup callback...
         .on('mouseup', onButtonUp)
-        .on('mouseupoutside', onButtonUp)
+        .on('touchend', onButtonUp)
+
+        .on('mouseupoutside', onButtonUpOutside)
+        .on('touchendoutside', onButtonUpOutside)
 
         // set the mouseover callback...
         .on('mouseover', onButtonOver)
@@ -88,19 +98,18 @@ function createStartButton() {
 
     function onButtonUp() {
         this.isdown = false;
+        this.texture = textureButtonOverStart;
+        state = setup;
+        musicBackground.play();
+        buttonStart.interactive = false;
+    }
 
-        if (this.isOver) {
-            this.texture = textureButtonOverStart;
-            state = setup;
-            buttonStart.interactive = false;
-        } else {
-            this.texture = textureButtonStart;
-        }
+    function onButtonUpOutside() {
+        this.isdown = false;
+        this.texture = textureButtonStart;
     }
 
     function onButtonOver() {
-        this.isOver = true;
-
         if (this.isdown) {
             return;
         }
@@ -108,8 +117,6 @@ function createStartButton() {
     }
 
     function onButtonOut() {
-        this.isOver = false;
-
         if (this.isdown) {
             return;
         }

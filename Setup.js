@@ -30,11 +30,11 @@ function setup() {
 // Add Score
     scoreAdd();
 
-// Create musics
-    musicBackground = new Howl({
-        src: ['assets/music/background_music.mp3'],
-        volume: 0.5
-    });
+// // Create musics
+//     musicBackground = new Howl({
+//         src: ['assets/music/background_music.mp3'],
+//         volume: 0.5
+//     });
 
     musicGameOver = new Howl({
         src: ['assets/music/game_over_music.mp3'],
@@ -77,12 +77,16 @@ function setup() {
     buttonReplay.interactive = true;
 
     buttonReplay
-        // set the mousedown callback...
+    // set the mousedown callback...
         .on('mousedown', onButtonDown)
+        .on('touchstart', onButtonDown)
 
         // set the mouseup callback...
         .on('mouseup', onButtonUp)
-        .on('mouseupoutside', onButtonUp)
+        .on('touchend', onButtonUp)
+
+        .on('mouseupoutside', onButtonUpOutside)
+        .on('touchendoutside', onButtonUpOutside)
 
         // set the mouseover callback...
         .on('mouseover', onButtonOver)
@@ -101,19 +105,17 @@ function setup() {
 
     function onButtonUp() {
         this.isdown = false;
+        this.texture = textureButtonOver;
+        state = reset;
+        musicGameOver.stop();
+    }
 
-        if (this.isOver) {
-            this.texture = textureButtonOver;
-            state = reset;
-            musicGameOver.stop();
-        } else {
-            this.texture = textureButton;
-        }
+    function onButtonUpOutside() {
+        this.isdown = false;
+        this.texture = textureButton;
     }
 
     function onButtonOver() {
-        this.isOver = true;
-
         if (this.isdown) {
             return;
         }
@@ -121,15 +123,13 @@ function setup() {
     }
 
     function onButtonOut() {
-        this.isOver = false;
-
         if (this.isdown) {
             return;
         }
         this.texture = textureButton;
     }
+
 // Set the game state and refresh time
     startTime = Date.now();
     state = play;
-    musicBackground.play();
 }
