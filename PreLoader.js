@@ -101,7 +101,7 @@ function createStartButton() {
         this.texture = textureButtonOverStart;
         state = setup;
         musicBackground.play();
-        buttonStart.interactive = false;
+        this.interactive = false;
     }
 
     function onButtonUpOutside() {
