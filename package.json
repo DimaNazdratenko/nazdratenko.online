@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/DimaNazdratenko/Diploma-HTML5#readme",
   "dependencies": {
-    "howler": "^2.0.2"
+    "howler": "^2.0.2",
+    "node-static": "^0.7.9"
   }
 }
