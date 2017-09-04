@@ -1,11 +1,17 @@
 $background-color: #8aa7ff;
 $header-color: Black;
 
-body{
+body {
   background-color: $background-color;
 }
 
-h1{
+.canvas {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
   color: $header-color;
   text-align: center;
 }
