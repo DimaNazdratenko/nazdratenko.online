@@ -16,7 +16,9 @@
     "url": "https://github.com/DimaNazdratenko/Diploma-HTML5/issues"
   },
   "homepage": "https://github.com/DimaNazdratenko/Diploma-HTML5#readme",
-  "dependencies": {
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-sass": "^3.1.0",
     "howler": "^2.0.2",
     "node-static": "^0.7.9"
   }

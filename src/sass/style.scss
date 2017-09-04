@@ -1,0 +1,11 @@
+$background-color: #8aa7ff;
+$header-color: Black;
+
+body{
+  background-color: $background-color;
+}
+
+h1{
+  color: $header-color;
+  text-align: center;
+}
