@@ -1,5 +1,5 @@
 body {
-  background-color: #8aa7ff;
+  background-color: #FAFAFA;
 }
 
 a {
@@ -11,7 +11,7 @@ a {
   display: flex;
   justify-content: space-between;
   padding: 10px;
-  background: #122533;
+  background: #323232;
   color: #fff;
   font-family: sans-serif;
   border-radius: 20px;
