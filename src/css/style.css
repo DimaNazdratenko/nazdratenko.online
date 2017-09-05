@@ -2,13 +2,48 @@ body {
   background-color: #8aa7ff;
 }
 
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  background: #122533;
+  color: #fff;
+  font-family: sans-serif;
+  border-radius: 20px;
+}
+
+.header .header__section {
+  display: flex;
+  align-items: center;
+}
+
+.header .header__section .header__logo {
+  padding: 0 15px;
+}
+
+.header .header__section .header__item {
+  padding: 10px 15px;
+  font-size: 20px;
+  margin-left: 5px;
+}
+
+.header .header__section .header__item:hover {
+  background-color: #223b63;
+  border-radius: 4px;
+}
+
+.header .header__section .header__button {
+  cursor: pointer;
+}
+
 .canvas {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-h1 {
-  color: Black;
-  text-align: center;
+  margin: 50px auto;
 }
