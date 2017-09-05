@@ -2,9 +2,10 @@ body {
   background-color: #8aa7ff;
 }
 
-canvas {
-  margin: 0 auto;
-  display: block;
+.canvas {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 h1 {

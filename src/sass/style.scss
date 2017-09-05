@@ -5,9 +5,10 @@ body {
   background-color: $background-color;
 }
 
-canvas {
-    margin: 0 auto;
-    display: block;
+.canvas {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 h1 {

@@ -12,7 +12,8 @@ var Container = PIXI.Container,
 
 var renderer = autoDetectRenderer(960, 540),
     stage = new Container();
-document.body.appendChild(renderer.view);
+// document.body.appendChild(renderer.view);
+document.querySelector("div.canvas").appendChild(renderer.view);
 
 var state, preLoaderScene, gameScene, gameOverScene, layer, score, message, plane, distance, gameTime, startTime, darkEffectEndGame,
     darkEffectPreLoader, textureButton, textureButtonDown, textureButtonOver, buttonReplay, textureButtonStart, textureButtonDownStart,
