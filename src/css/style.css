@@ -10,7 +10,6 @@ a {
 .header {
   display: flex;
   justify-content: space-between;
-  padding: 10px;
   background: #323232;
   color: #fff;
   font-family: sans-serif;
@@ -23,18 +22,22 @@ a {
 }
 
 .header .header__section .header__logo {
-  padding: 0 15px;
+  padding: 4px 20px;
+}
+
+.header .header__section .header__logo:hover {
+  opacity: .65;
 }
 
 .header .header__section .header__item {
-  padding: 10px 15px;
+  padding: 0 20px;
   font-size: 20px;
   margin-left: 5px;
 }
 
 .header .header__section .header__item:hover {
-  background-color: #223b63;
   border-radius: 4px;
+  opacity: .65;
 }
 
 .header .header__section .header__button {
