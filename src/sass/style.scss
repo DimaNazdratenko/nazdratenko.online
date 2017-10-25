@@ -1,3 +1,6 @@
+@import "../../node_modules/bootstrap/scss/bootstrap-reboot";
+@import "../../node_modules/bootstrap/scss/grid";
+
 $background-color: #FAFAFA;
 $header-color: #323232;
 
@@ -8,12 +11,14 @@ body {
 a {
   color: #fff;
   text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
 }
 
 .header {
   display: flex;
   justify-content: space-between;
-  //padding: 10px;
   background: $header-color;
   color: #fff;
   font-family: sans-serif;
