@@ -17,11 +17,14 @@
   },
   "homepage": "https://github.com/DimaNazdratenko/Diploma-HTML5#readme",
   "devDependencies": {
+    "bootstrap": "^4.0.0-beta.2",
     "gulp": "^3.9.1",
     "gulp-cssnano": "^2.1.2",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^3.1.0",
     "howler": "^2.0.2",
-    "node-static": "^0.7.9"
+    "jquery": "^3.2.1",
+    "node-static": "^0.7.9",
+    "popper.js": "^1.12.6"
   }
 }
