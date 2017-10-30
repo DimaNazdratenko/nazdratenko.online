@@ -20,39 +20,41 @@
 
 </head>
 <body>
-<div class="header">
-    <div class="header__section">
-        <div class="header__logo header__button">
-            <a href="index.html">
-                <img src="assets/site/apple-logo30x38.png" alt="">
-            </a>
-        </div>
-        <div class="header__item header__button">
-            <a href="#">Новости</a>
-        </div>
-        <div class="header__item header__button">
-            <a href="#">События</a>
-        </div>
-        <div class="header__item header__button">
-            <a href="#">Лайфхаки</a>
-        </div>
-        <div class="header__item header__button">
-            <a href="#">Технологии</a>
-        </div>
-        <div class="header__item header__button">
-            <a href="#">Бизнес</a>
-        </div>
-    </div>
 
-    <div class="header__section">
-        <div class="header__item header__button">
-            <a href="src/html/cv.html">Резюме</a>
-        </div>
-        <div class="header__item header__button">
-            <a href="#">Контакты</a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">
+            <img src="assets/site/apple-logo30x38.png" alt="">
+        </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav w-75 d-flex justify-content-start">
+                <li class="nav-item mx-3">
+                    <a class="nav-link" href="#">Game</a>
+                </li>
+                <li class="nav-item mx-3">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item mx-3">
+                    <a class="nav-link" href="#">Contacts</a>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav w-25 d-flex justify-content-center">
+                <li class="nav-item mx-3">
+                    <a class="nav-link" href="src/html/cv.html">CV</a>
+                </li>
+                <li class="nav-item mx-3">
+                    <a class="nav-link" href="#">Contacts</a>
+                </li>
+            </ul>
         </div>
     </div>
-</div>
+</nav>
 
 <div class="canvas">
     <script src="src/js/game.js"></script>
