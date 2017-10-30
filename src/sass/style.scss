@@ -1,56 +1,12 @@
 @import "../../node_modules/bootstrap/scss/bootstrap";
 
-$background-color: #FAFAFA;
-$header-color: #323232;
-
-body {
-  background-color: $background-color;
-}
-
-a {
-  color: #fff;
-  text-decoration: none;
-  &:hover {
-    text-decoration: none;
-  }
-}
-
-.header {
-  display: flex;
-  justify-content: space-between;
-  background: $header-color;
-  color: #fff;
-  font-family: sans-serif;
-  border-radius: 20px;
-
-  .header__section {
-    display: flex;
-    align-items: center;
-
-    .header__logo {
-      padding: 4px 20px;
-      &:hover{
-        opacity: .65;
-      }
-    }
-    .header__item {
-      padding: 0 20px;
-      font-size: 20px;
-      margin-left: 5px;
-    }
-    .header__item:hover {
-      border-radius: 4px;
-      opacity: .65;
-    }
-    .header__button {
-      cursor: pointer;
-    }
-  }
-}
-
 .canvas {
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 50px auto;
+}
+
+nav ul li a {
+  font-size: 20px;
 }
