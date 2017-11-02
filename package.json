@@ -28,6 +28,7 @@
     "gulp-imagemin": "^3.4.0",
     "gulp-notify": "^3.0.0",
     "gulp-plumber": "^1.1.0",
+    "gulp-pug": "^3.3.0",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^3.1.0",
     "gulp-uglify": "^3.0.0",
@@ -37,7 +38,6 @@
     "jquery": "^3.2.1",
     "node-static": "^0.7.10",
     "popper.js": "^1.12.6",
-    "pug": "^2.0.0-rc.4",
     "rimraf": "^2.6.2",
     "vinyl-ftp": "^0.6.0"
   }

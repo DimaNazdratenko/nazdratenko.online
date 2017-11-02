@@ -141,8 +141,8 @@ gulp.task('prod', ['build', 'imgBuild', 'fontsBuild']);
 
 
 
-var cssnano = require("gulp-cssnano"),
-    rename = require("gulp-rename");
+// var cssnano = require("gulp-cssnano"),
+//     rename = require("gulp-rename");
 
 
 // gulp.task('css', function () {
