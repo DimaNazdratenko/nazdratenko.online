@@ -1,7 +1,8 @@
 var gulp = require('gulp'),
     sass = require('gulp-sass'),
     cssnano = require("gulp-cssnano"),
-    rename = require("gulp-rename");
+    rename = require("gulp-rename"),
+    imagemin = require('gulp-imagemin');
 
 
 gulp.task('css', function () {
@@ -15,6 +16,12 @@ gulp.task('css', function () {
         }))
         .pipe(rename("style.min.css"))
         .pipe(gulp.dest('src/css'))
+});
+
+gulp.task('img', function () {
+   gulp.src(['assets/img_big/*', 'assets/img_big/*/*', 'assets/img_big/*/*/*'])
+       .pipe(imagemin())
+       .pipe(gulp.dest('assets/images'))
 });
 
 gulp.task('watch', function () {
