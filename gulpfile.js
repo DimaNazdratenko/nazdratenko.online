@@ -36,7 +36,7 @@ gulp.task('pug', function () {
 
 //sass compile
 gulp.task('sass', function () {
-    return gulp.src(paths.blocks + '*.sass')
+    return gulp.src([paths.blocks + '*.sass', paths.blocks + '*.scss'])
         .pipe(plumber())
         .pipe(sass().on('error', sass.logError))
         .pipe(prefix({
@@ -65,7 +65,7 @@ gulp.task('watch', function () {
 //server
 gulp.task('browser-sync', function () {
     browserSync.init({
-        browser: "google chrome",
+        // browser: "google chrome",
         port: 3000,
         server: {
             baseDir: paths.devDir

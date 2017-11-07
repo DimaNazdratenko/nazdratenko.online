@@ -1,0 +1,31 @@
+include head/head
+include header/header
+
+doctype html
+html(lang="ru")
+
+    block head
+        head
+            +head({
+                "title": "Home project",
+                "author": "Dima Nazdratenko",
+                "description": "Site CV"
+            })
+
+        body
+            block header
+                +header()
+
+            block content
+                div content
+
+            block footer
+                footer footer
+
+            block vendors
+                // build:js js/vendor.js
+                script( src="../node_modules/jquery/dist/jquery.slim.min.js")
+                script( src="../node_modules/popper.js/dist/umd/popper.min.js")
+                script( src="../node_modules/bootstrap/dist/js/bootstrap.min.js")
+
+

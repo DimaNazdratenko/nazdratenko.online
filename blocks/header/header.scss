@@ -1,0 +1,22 @@
+.navbar-nav li {
+  a {
+    font-size: 20px;
+  }
+  .dropdown-menu {
+    border-top-style: none;
+    &:hover {
+      background-color: #343A40 !important;
+
+    }
+
+    a {
+      padding-left: 8px;
+      padding-right: 8px;
+
+      &:hover {
+        background-color: #343A40 !important;
+        color: #A4A7A9 !important;
+      }
+    }
+  }
+}

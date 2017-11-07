@@ -1,0 +1,15 @@
+mixin head(data)
+    title= data.title
+    meta(charset="utf-8")
+
+    meta(content=data.author name="author")
+    meta(content=data.description name="description")
+
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    meta(name="HandheldFriendly" content="true")
+    meta(name="format-detection" content="telephone=no")
+    meta(content="IE=edge" http-equiv="X-UA-Compatible")
+
+    // build:css css/main.css
+    link(rel="stylesheet", href="css/main.css")
+    // endbuild
