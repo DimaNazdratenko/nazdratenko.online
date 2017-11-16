@@ -6778,3 +6778,15 @@ a.text-dark:focus, a.text-dark:hover {
     .navbar-nav li .dropdown-menu a:hover {
       background-color: #343A40 !important;
       color: #A4A7A9 !important; }
+
+.canvas {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 50px auto; }

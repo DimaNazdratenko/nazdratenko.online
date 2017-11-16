@@ -12,10 +12,22 @@
     <!-- build:css css/main.css-->
     <link rel="stylesheet" href="css/main.css"/>
     <!-- endbuild-->
+    <script src="../src/js/pixi.js"></script>
+    <script src="../node_modules/howler/dist/howler.js"></script>
+    <script src="../src/js/background.js"></script>
+    <script src="../src/js/plane.js"></script>
+    <script src="../src/js/monster.js"></script>
+    <script src="../src/js/score.js"></script>
+    <script src="../src/js/collision.js"></script>
+    <script src="../src/js/PreLoader.js"></script>
+    <script src="../src/js/Setup.js"></script>
+    <script src="../src/js/Play.js"></script>
+    <script src="../src/js/End.js"></script>
+    <script src="../src/js/Reset.js"></script>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-      <div class="container"><a class="navbar-brand" href="index.html"><img src="../../assets/site/apple-logo30x38.png" alt=""/></a>
+      <div class="container"><a class="navbar-brand" href="index.html"><img src="../assets/site/apple-logo30x38.png" alt=""/></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav w-75 d-flex justify-content-start">
@@ -30,8 +42,9 @@
         </div>
       </div>
     </nav>
-    <h1>INDEX CONTENT</h1>
-    <footer>footer</footer>
+    <div class="canvas">
+      <script src="js/main.js"></script>
+    </div>
     <!-- build:js js/vendor.js-->
     <script src="../node_modules/jquery/dist/jquery.slim.min.js"></script>
     <script src="../node_modules/popper.js/dist/umd/popper.min.js"></script>

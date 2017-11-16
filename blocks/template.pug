@@ -6,11 +6,12 @@ html(lang="ru")
 
     block head
         head
-            +head({
-                "title": "Home project",
-                "author": "Dima Nazdratenko",
-                "description": "Site CV"
-            })
+            block info
+                +head({
+                    "title": "Home project",
+                    "author": "Dima Nazdratenko",
+                    "description": "Site CV"
+                })
 
         body
             block header
@@ -18,9 +19,6 @@ html(lang="ru")
 
             block content
                 div content
-
-            block footer
-                footer footer
 
             block vendors
                 // build:js js/vendor.js

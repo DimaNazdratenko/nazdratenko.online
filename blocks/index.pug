@@ -1,4 +1,27 @@
 extends  template
 
+block info
+    +head({
+        "title": "Home project",
+        "author": "Dima Nazdratenko",
+        "description": "Site CV"
+    })
+
+    script( src="../src/js/pixi.js")
+    script( src="../node_modules/howler/dist/howler.js")
+    script( src="../src/js/background.js")
+    script( src="../src/js/plane.js")
+    script( src="../src/js/monster.js")
+    script( src="../src/js/score.js")
+    script( src="../src/js/collision.js")
+    script( src="../src/js/PreLoader.js")
+    script( src="../src/js/Setup.js")
+    script( src="../src/js/Play.js")
+    script( src="../src/js/End.js")
+    script( src="../src/js/Reset.js")
+
 block content
-    h1 INDEX CONTENT
+    block canvas
+        div.canvas
+            script( src="js/main.js")
+
