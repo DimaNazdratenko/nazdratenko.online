@@ -11,12 +11,12 @@ function preLoaderFunc() {
 
 // Create musics
     musicBackground = new Howl({
-        src: ['../../assets/music/background_music.mp3'],
+        src: ['../assets/music/background_music.mp3'],
         volume: 0.5
     });
 
 // Create loader and add it into preLoaderScene
-    var preLoaderImg = '../../assets/images/preLoader.png';
+    var preLoaderImg = '../assets/images/preLoader.png';
     loader.add(preLoaderImg);
     texturePreLoader = Texture.fromImage(preLoaderImg);
     preLoader = new Sprite(texturePreLoader);

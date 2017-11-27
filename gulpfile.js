@@ -48,9 +48,16 @@ gulp.task('sass', function () {
 });
 
 //js compile
-gulp.task('scripts', function () {
-    return gulp.src([paths.blocks + '**/*.js', '!' + paths.blocks + '_assets/**/*.js'])
+gulp.task('js', function () {
+    return gulp.src([paths.blocks + '**/*.js', '!' + paths.blocks + 'game/**/*.js'])
         .pipe(concat('main.js'))
+        .pipe(gulp.dest(paths.devDir + 'js/'))
+        .pipe(browserSync.stream());
+});
+
+gulp.task('game', function () {
+    return gulp.src([paths.blocks + 'game/**/*.js'])
+        .pipe(concat('game.js'))
         .pipe(gulp.dest(paths.devDir + 'js/'))
         .pipe(browserSync.stream());
 });
@@ -59,7 +66,8 @@ gulp.task('scripts', function () {
 gulp.task('watch', function () {
     gulp.watch(paths.blocks + '**/*.pug', ['pug']);
     gulp.watch(paths.blocks + '**/*.sass', ['sass']);
-    gulp.watch(paths.blocks + '**/*.js', ['scripts']);
+    gulp.watch(paths.blocks + '**/*.js', ['js']);
+    gulp.watch(paths.blocks + '**/*.js', ['game']);
 });
 
 //server
@@ -133,7 +141,7 @@ gulp.task('send', function () {
 });
 
 //default
-gulp.task('default', ['browser-sync', 'watch', 'pug', 'sass', 'scripts']);
+gulp.task('default', ['browser-sync', 'watch', 'pug', 'sass', 'js', 'game']);
 
 //production
 gulp.task('prod', ['build', 'imgBuild', 'fontsBuild']);
