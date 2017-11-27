@@ -18,7 +18,8 @@ var useref = require('gulp-useref'),
 var paths = {
     blocks: 'blocks/',
     devDir: 'app/',
-    outputDir: 'build/'
+    outputDir: 'build/',
+    root: './'
 };
 
 /**********************************
@@ -65,9 +66,9 @@ gulp.task('game', function () {
 //watch
 gulp.task('watch', function () {
     gulp.watch(paths.blocks + '**/*.pug', ['pug']);
-    gulp.watch(paths.blocks + '**/*.sass', ['sass']);
-    gulp.watch(paths.blocks + '**/*.js', ['js']);
-    gulp.watch(paths.blocks + '**/*.js', ['game']);
+    gulp.watch([paths.blocks + '**/*.sass', paths.blocks + '**/*.scss'], ['sass']);
+    gulp.watch([paths.blocks + '**/*.js', '!' + paths.blocks + 'game/**/*.js'], ['js']);
+    gulp.watch(paths.blocks + 'game/**/*.js', ['game']);
 });
 
 //server
@@ -76,7 +77,8 @@ gulp.task('browser-sync', function () {
         // browser: "google chrome",
         port: 3000,
         server: {
-            baseDir: paths.devDir
+            // baseDir: paths.devDir
+            baseDir: paths.root
         }
     });
 });
