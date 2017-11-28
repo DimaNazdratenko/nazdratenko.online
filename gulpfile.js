@@ -5,20 +5,13 @@ var gulp = require('gulp'),
     plumber = require('gulp-plumber'),
     prefix = require('gulp-autoprefixer'),
     imagemin = require('gulp-imagemin'),
-    browserSync = require('browser-sync').create();
-
-var useref = require('gulp-useref'),
-    gulpif = require('gulp-if'),
-    cssmin = require('gulp-clean-css'),
-    uglify = require('gulp-uglify'),
-    rimraf = require('rimraf'),
-    notify = require('gulp-notify'),
-    ftp = require('vinyl-ftp');
+    browserSync = require('browser-sync').create(),
+    ftp = require('vinyl-ftp'),
+    notify = require('gulp-notify');
 
 var paths = {
     blocks: 'blocks/',
     devDir: 'app/',
-    outputDir: 'build/',
     root: './'
 };
 
@@ -77,48 +70,16 @@ gulp.task('browser-sync', function () {
         // browser: "google chrome",
         port: 3000,
         server: {
-            // baseDir: paths.devDir
             baseDir: paths.root
         }
     });
 });
 
-
-/**********************************
- Production tasks
- **********************************/
-
-//clean
-gulp.task('clean', function (cb) {
-    rimraf(paths.outputDir, cb);
-});
-
-//css + js
-gulp.task('build', ['clean'], function () {
-    return gulp.src(paths.devDir + '*.html')
-        .pipe(useref())
-        .pipe(gulpif('*.js', uglify()))
-        .pipe(gulpif('*.css', cssmin()))
-        .pipe(gulp.dest(paths.outputDir));
-});
-
-//copy images to outputDir
-gulp.task('imgBuild', ['clean'], function () {
-    return gulp.src(paths.devDir + 'img/**/*.*')
+//img min
+gulp.task('img', function () {
+    return gulp.src('assets/img_big/**/*.*')
         .pipe(imagemin())
-        .pipe(gulp.dest(paths.outputDir + 'img/'));
-});
-
-// gulp.task('img', function () {
-//     gulp.src(['assets/img_big/*', 'assets/img_big/*/*', 'assets/img_big/*/*/*'])
-//         .pipe(imagemin())
-//         .pipe(gulp.dest('assets/images'))
-// });
-
-//copy fonts to outputDir
-gulp.task('fontsBuild', ['clean'], function () {
-    return gulp.src(paths.devDir + '/fonts/*')
-        .pipe(gulp.dest(paths.outputDir + 'fonts/'));
+        .pipe(gulp.dest('assets/images'))
 });
 
 //ftp
@@ -144,27 +105,3 @@ gulp.task('send', function () {
 
 //default
 gulp.task('default', ['browser-sync', 'watch', 'pug', 'sass', 'js', 'game']);
-
-//production
-gulp.task('prod', ['build', 'imgBuild', 'fontsBuild']);
-
-
-
-
-
-// var cssnano = require("gulp-cssnano"),
-//     rename = require("gulp-rename");
-
-
-// gulp.task('css', function () {
-//     return gulp.src(['src/sass/*.sass', 'src/sass/*.scss'])
-//         .pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
-//         .pipe(cssnano({
-//             zindex: false,
-//             discardComments: {
-//                 removeAll: true
-//             }
-//         }))
-//         .pipe(rename("style.min.css"))
-//         .pipe(gulp.dest('src/css'))
-// });
