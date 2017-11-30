@@ -2,12 +2,13 @@
 //      Assets
 //**************************************************
 @import "../node_modules/bootstrap/scss/bootstrap";
-
-
-
+@import "_base/variables";
 
 // **************************************************
 //      Blocks
 //***************************************************
+@import "wrapper/wrapper";
 @import "header/header";
+@import "content/content";
 @import "game/game";
+@import "footer/footer";

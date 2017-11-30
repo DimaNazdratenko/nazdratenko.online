@@ -6765,19 +6765,44 @@ a.text-dark:focus, a.text-dark:hover {
 .invisible {
   visibility: hidden !important; }
 
-.navbar-nav li a {
-  font-size: 20px; }
+/***********************MEDIA QUERIES***********************/
+/***********************COLORS & FONTS***********************/
+html, body {
+  height: 100vh; }
+  html .wrapper, body .wrapper {
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between; }
 
-.navbar-nav li .dropdown-menu {
-  border-top-style: none; }
-  .navbar-nav li .dropdown-menu:hover {
-    background-color: #343A40 !important; }
-  .navbar-nav li .dropdown-menu a {
-    padding-left: 8px;
-    padding-right: 8px; }
-    .navbar-nav li .dropdown-menu a:hover {
-      background-color: #343A40 !important;
-      color: #A4A7A9 !important; }
+nav {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto; }
+  nav .navbar-nav li a {
+    font-size: 20px; }
+  nav .navbar-nav li .dropdown-menu {
+    border-top-style: none; }
+    nav .navbar-nav li .dropdown-menu:hover {
+      background-color: #343A40 !important; }
+    nav .navbar-nav li .dropdown-menu a {
+      padding-left: 8px;
+      padding-right: 8px; }
+      nav .navbar-nav li .dropdown-menu a:hover {
+        background-color: #343A40 !important;
+        color: #A4A7A9 !important; }
+
+.content {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 auto;
+          flex: 1 0 auto; }
 
 .canvas {
   display: -webkit-box;
@@ -6790,3 +6815,15 @@ a.text-dark:focus, a.text-dark:hover {
       -ms-flex-align: center;
           align-items: center;
   margin: 50px auto; }
+
+.footer {
+  width: 100%;
+  height: auto;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+  margin: 0 auto;
+  padding-top: 25px;
+  text-align: center;
+  background-color: #343A40;
+  color: #ffa297; }

@@ -1,5 +1,7 @@
 include head/head
 include header/header
+include content/content
+include footer/footer
 
 doctype html
 html(lang="ru")
@@ -14,15 +16,20 @@ html(lang="ru")
                 })
 
         body
-            block header
-                +header()
+            div(class="wrapper")
+                block header
+                    +header()
 
-            block content
-                div content
+                block content
+                    +content()
+
+                block footer
+                    +footer()
 
             block vendors
                 script( src="../node_modules/jquery/dist/jquery.slim.min.js")
                 script( src="../node_modules/popper.js/dist/umd/popper.min.js")
                 script( src="../node_modules/bootstrap/dist/js/bootstrap.min.js")
+
 
 
