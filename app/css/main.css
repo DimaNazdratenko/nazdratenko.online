@@ -6790,18 +6790,18 @@ nav {
   -webkit-box-flex: 0;
       -ms-flex: 0 0 auto;
           flex: 0 0 auto; }
+  nav a:hover {
+    opacity: .65; }
   nav .navbar-nav li a {
-    font-size: 20px; }
+    font-size: 20px;
+    color: #FBFBFB !important; }
   nav .navbar-nav li .dropdown-menu {
     border-top-style: none; }
-    nav .navbar-nav li .dropdown-menu:hover {
-      background-color: #343A40 !important; }
     nav .navbar-nav li .dropdown-menu a {
       padding-left: 8px;
       padding-right: 8px; }
       nav .navbar-nav li .dropdown-menu a:hover {
-        background-color: #343A40 !important;
-        color: #A4A7A9 !important; }
+        background-color: #343A40 !important; }
 
 .content {
   -webkit-box-flex: 1;
