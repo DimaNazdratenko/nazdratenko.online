@@ -1,4 +1,3 @@
-
 $("#test").addEventListener("click", console);
 
 function console() {
