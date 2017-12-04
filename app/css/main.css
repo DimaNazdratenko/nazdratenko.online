@@ -6817,3 +6817,9 @@ nav {
   text-align: center;
   background-color: #343A40;
   color: #FBFBFB; }
+  .footer_social {
+    padding: 10px 0; }
+    .footer_social a {
+      padding: 0 5px; }
+  .footer_copyright {
+    padding-bottom: 10px; }
