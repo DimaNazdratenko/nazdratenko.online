@@ -1,6 +1,4 @@
+// $("#test").on("click", function() {
+//     alert("ASDF")
+// });
 
-$("#test").addEventListener("click", console);
-
-function console() {
-    alert("ASDF");
-}

@@ -1,5 +1,3 @@
-$("#test").addEventListener("click", console);
-
-function console() {
-    alert("ASDF");
-}
+// $("#test").on("click", function() {
+//     alert("ASDF")
+// });
