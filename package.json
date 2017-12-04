@@ -22,7 +22,6 @@
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^4.0.0",
     "gulp-concat": "^2.6.1",
-    "gulp-if": "^2.0.2",
     "gulp-imagemin": "^3.4.0",
     "gulp-notify": "^3.0.0",
     "gulp-plumber": "^1.1.0",
@@ -33,7 +32,7 @@
     "jquery": "^3.2.1",
     "node-static": "^0.7.10",
     "pixi.js": "^4.3.0",
-    "popper.js": "^1.12.6",
+    "popper.js": "^1.13.0",
     "vinyl-ftp": "^0.6.0"
   }
 }
