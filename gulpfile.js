@@ -50,7 +50,7 @@ gulp.task('js', function () {
 });
 
 gulp.task('game', function () {
-    return gulp.src([paths.blocks + 'game/**/*.js'])
+    return gulp.src([paths.blocks + 'game/*.js'])
         .pipe(concat('game.js'))
         .pipe(gulp.dest(paths.devDir + 'js/'))
         .pipe(browserSync.stream());
