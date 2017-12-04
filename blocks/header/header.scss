@@ -9,7 +9,7 @@ nav {
   .navbar-nav li {
     a {
       font-size: 20px;
-      color: #FBFBFB !important;
+      color: $header_color !important;
     }
     .dropdown-menu {
       border-top-style: none;
@@ -18,7 +18,7 @@ nav {
         padding-right: 8px;
 
         &:hover {
-          background-color: #343A40 !important;
+          background-color: $header_background_color !important;
         }
       }
     }

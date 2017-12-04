@@ -2,10 +2,11 @@
   width: 100%;
   height: auto;
   flex: 0 0 auto;
-  margin: 0 auto;
-  padding: 15px;
   text-align: center;
+  background-color: $header_background_color;
+  color: $header_color;
 
-  background-color: #343A40;
-  color: #ffa297;
+  &_social{
+    //padding: 0;
+  }
 }
