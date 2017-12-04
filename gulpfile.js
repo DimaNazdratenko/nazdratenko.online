@@ -2,6 +2,7 @@ var gulp = require('gulp'),
     pug = require('gulp-pug'),
     sass = require('gulp-sass'),
     concat = require('gulp-concat'),
+    sort = require('gulp-sort'),
     plumber = require('gulp-plumber'),
     prefix = require('gulp-autoprefixer'),
     imagemin = require('gulp-imagemin'),
@@ -44,6 +45,7 @@ gulp.task('sass', function () {
 //js compile
 gulp.task('js', function () {
     return gulp.src([paths.blocks + '**/*.js', '!' + paths.blocks + 'game/**/*.js'])
+        .pipe(sort())
         .pipe(concat('main.js'))
         .pipe(gulp.dest(paths.devDir + 'js/'))
         .pipe(browserSync.stream());
@@ -51,6 +53,7 @@ gulp.task('js', function () {
 
 gulp.task('game', function () {
     return gulp.src([paths.blocks + 'game/*.js'])
+        .pipe(sort())
         .pipe(concat('game.js'))
         .pipe(gulp.dest(paths.devDir + 'js/'))
         .pipe(browserSync.stream());
