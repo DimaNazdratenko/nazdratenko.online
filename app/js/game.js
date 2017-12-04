@@ -1,370 +1,3 @@
-function end() {
-    gameOverScene.visible = true;
-
-// Falling birds and the plane in a collision
-    if (flagCollision != undefined) {
-        plane.rotation -= 0.03;
-        plane.y += Position.STEP_Y;
-
-        for (var i = 0; i < enemy.length; i++) {
-            if (i != flagCollision) {
-                enemy[i].movieclip.y += Position.STEP_Y / 2;
-            } else {
-                enemy[i].movieclip.rotation += 0.03;
-                enemy[i].movieclip.y += Position.STEP_Y;
-            }
-        }
-    }
-
-// Change scene for Score, that it was on top of the dark background
-    gameOverScene.addChild(score);
-    gameScene.removeChild(score);
-
-// Movement the "Score" to the center of the screen and scaling it
-    if (score.x <= renderer.width / 2 - score.width / 2 || score.y >= renderer.height / 3 - message.height) {
-        score.x += 2.7;
-        score.y -= 3;
-    }
-
-    if (score.scale.x <= 1.2 && score.scale.y <= 1.2) {
-        score.scale.x += 0.002;
-        score.scale.y += 0.002;
-    }
-
-// Enable filter Blur
-    gameScene.filters = [blurFilter];
-    filtersValue += 0.005;
-    blurFilter.blur = Math.sin(filtersValue) * 10;
-}
-
-
-
-function play() {
-    if (detectCollision(plane, enemy)) {
-// There's a collision
-        state = end;
-        musicBackground.stop();
-        musicGameOver.play();
-    } else {
-// There's no collision
-// Update
-        backgroundLogic(layer.layer1, 200, gameTime);
-        backgroundLogic(layer.layer2, 160, gameTime);
-        backgroundLogic(layer.layer3, 120, gameTime);
-        backgroundLogic(layer.layer4, 80, gameTime);
-        backgroundLogic(layer.layer5, 60, gameTime);
-        plane.planeVerticalMove();
-        plane.planeHorizontalMove();
-
-        for (var i = 0; i < enemy.length; i++) {
-            enemy[i].updatePosition();
-            if (enemy[i].hideEnemy) {
-                enemy.splice(i, 1, new Monster(monsterSprites[getRandomIntValue(0,monsterSprites.length - 1)], Position.START_X));
-            }
-        }
-
-        scoreChange(gameTime);
-    }
-}
-function preLoaderFunc() {
-
-    preLoaderScene = new Container();
-    stage.addChild(preLoaderScene);
-
-// Create dark effect and add it into preLoaderScene
-    darkEffectPreLoader = new Graphics();
-    darkEffectPreLoader.beginFill(0x000000, 1);
-    darkEffectPreLoader.drawRect(0, 0, 1920, 1080);
-    preLoaderScene.addChild(darkEffectPreLoader);
-
-// Create musics
-    musicBackground = new Howl({
-        src: ['../assets/music/background_music.mp3'],
-        volume: 0.5
-    });
-
-// Create loader and add it into preLoaderScene
-    var preLoaderImg = '../assets/images/preLoader.png';
-    loader.add(preLoaderImg);
-    texturePreLoader = Texture.fromImage(preLoaderImg);
-    preLoader = new Sprite(texturePreLoader);
-    preLoader.anchor.set(0.5);
-    preLoader.x = renderer.width / 2 - preLoader.width / 2;
-    preLoader.y = renderer.height / 2 - preLoader.height / 2;
-    preLoaderScene.addChild(preLoader);
-
-// Downloading assets
-    for (var key in imageLinks) {
-        loader = loader.add(imageLinks[key]);
-    }
-
-    loader
-        .on('progress', onProgressCallback)
-        .load(function () {
-            console.log("All files loaded");
-            preLoaderScene.removeChild(preLoader);
-
-            // add start button
-            createStartButton();
-        });
-
-    function onProgressCallback(event) {
-        console.log("progress: " + Math.round(event.progress) + '%');
-    }
-
-    state = rotatePreLoader;
-
-// Start the game loop
-    gameLoop();
-}
-
-function rotatePreLoader() {
-    preLoader.rotation += 0.1;
-}
-
-function createStartButton() {
-// Add the "Start" button
-    textureButtonStart = Texture.fromImage(imageLinks.start_button);
-    textureButtonDownStart = Texture.fromImage(imageLinks.start_button_down);
-    textureButtonOverStart = Texture.fromImage(imageLinks.start_button_over);
-
-    buttonStart = new Sprite(textureButtonStart);
-    buttonStart.buttonMode = true;
-    buttonStart.scale.x = 0.5;
-    buttonStart.scale.y = 0.5;
-    buttonStart.x = renderer.width / 2 - buttonStart.width / 2;
-    buttonStart.y = renderer.height / 2 - buttonStart.height / 2;
-
-// make the button interactive...
-    buttonStart.interactive = true;
-
-    buttonStart
-        // set the mousedown callback...
-        .on('mousedown', onButtonDown)
-        .on('touchstart', onButtonDown)
-
-        // set the mouseup callback...
-        .on('mouseup', onButtonUp)
-        .on('touchend', onButtonUp)
-
-        .on('mouseupoutside', onButtonUpOutside)
-        .on('touchendoutside', onButtonUpOutside)
-
-        // set the mouseover callback...
-        .on('mouseover', onButtonOver)
-
-        // set the mouseout callback...
-        .on('mouseout', onButtonOut);
-
-    preLoaderScene.addChild(buttonStart);
-
-    function onButtonDown() {
-        this.isdown = true;
-        this.texture = textureButtonDownStart;
-        this.alpha = 1;
-    }
-
-    function onButtonUp() {
-        this.isdown = false;
-        this.texture = textureButtonOverStart;
-        state = setup;
-        musicBackground.play();
-        this.interactive = false;
-    }
-
-    function onButtonUpOutside() {
-        this.isdown = false;
-        this.texture = textureButtonStart;
-    }
-
-    function onButtonOver() {
-        if (this.isdown) {
-            return;
-        }
-        this.texture = textureButtonOverStart;
-    }
-
-    function onButtonOut() {
-        if (this.isdown) {
-            return;
-        }
-        this.texture = textureButtonStart;
-    }
-}
-
-
-function reset() {
-    gameOverScene.visible = false;
-
-    plane.x = 100;
-    plane.y = 200;
-    plane.rotation = Math.PI/2;
-
-    gapBetweenBirds = 0;
-    for (var i = 0; i < enemy.length; i++) {
-        enemy[i].movieclip.x = Position.START_X + gapBetweenBirds;
-
-        // Equally gap Between Birds and canvas border => only when we have 3 birds on the canvas
-        // In this situation we have 4 gap Between Birds
-        // + birds.width because point anchor = 0.5
-        gapBetweenBirds += (renderer.width - enemy[i].movieclip.width * 3) / 4 + enemy[i].movieclip.width;
-
-        enemy[i].movieclip.y = getRandomIntValue(Position.START_Y + enemy[i].movieclip.height / 2, Position.END_Y - enemy[i].movieclip.height / 2);
-        enemy[i].movieclip.rotation = 0;
-    }
-
-    gameScene.addChild(score);
-    gameOverScene.removeChild(score);
-
-    score.x = Position.SCORE_X;
-    score.y = Position.SCORE_Y;
-    score.scale.x = 1;
-    score.scale.y = 1;
-
-    startTime = Date.now();
-    state = play;
-    musicBackground.play();
-
-// Disable filter Blur
-    gameScene.filters = [];
-    filtersValue = 0;
-}
-function setup() {
-
-// Create gameScene
-    gameScene = new Container();
-    stage.addChild(gameScene);
-
-// Add monsters and background on the scene
-    backgroundAddOnScene();
-
-    for (var i = 0; i < 4; i++) {
-        enemy[i] = new Monster(monsterSprites[i], Position.START_X + gapBetweenBirds);
-
-        // Equally gap Between Birds and canvas border => only when we have 3 birds on the canvas
-        // In this situation we have 4 gap Between Birds
-        // + birds.width because point anchor = 0.5
-        gapBetweenBirds += (renderer.width - enemy[i].movieclip.width * 3) / 4 + enemy[i].movieclip.width;
-    }
-
-// Add Plane
-    var frames = [];
-    for (var j = 0; j < 30; j++) {
-        var val = j < 10 ? '0' + j : j;
-        frames.push(Texture.fromFrame('rollSequence00' + val + '.png'));
-    }
-
-    plane = new PlaneAnimation(frames);
-    plane.play();
-    gameScene.addChild(plane);
-
-// Add Score
-    scoreAdd();
-
-// // Create musics
-//     musicBackground = new Howl({
-//         src: ['assets/music/background_music.mp3'],
-//         volume: 0.5
-//     });
-
-    musicGameOver = new Howl({
-        src: ['../assets/music/game_over_music.mp3'],
-        volume: 0.5
-    });
-
-// Create the gameOverScene
-    gameOverScene = new Container();
-    stage.addChild(gameOverScene);
-
-// Make the gameOverScene invisible when the game first starts
-    gameOverScene.visible = false;
-
-// Create the black effect in gameOverScene
-    darkEffectEndGame = new Graphics();
-    darkEffectEndGame.beginFill(0x000000, 0.6);
-    darkEffectEndGame.drawRect(0, 0, renderer.width, renderer.height);
-    gameOverScene.addChild(darkEffectEndGame);
-
-// Create the text sprite and add it to the gameOverScene
-    style.fontSize = '50px';
-    message = new Text('Game over!', style);
-    message.x = renderer.width / 2 - message.width / 2;
-    message.y = renderer.height / 3 - message.height / 2;
-    gameOverScene.addChild(message);
-
-// Add Replay button
-    textureButton = Texture.fromImage(imageLinks.replay_button);
-    textureButtonDown = Texture.fromImage(imageLinks.replay_button_down);
-    textureButtonOver = Texture.fromImage(imageLinks.replay_button_over);
-
-    buttonReplay = new Sprite(textureButton);
-    buttonReplay.buttonMode = true;
-    buttonReplay.scale.x = 0.5;
-    buttonReplay.scale.y = 0.5;
-    buttonReplay.x = renderer.width / 2 - buttonReplay.width / 2;
-    buttonReplay.y = renderer.height / 2 - buttonReplay.height / 2;
-
-// Make the button interactive
-    buttonReplay.interactive = true;
-
-    buttonReplay
-    // set the mousedown callback...
-        .on('mousedown', onButtonDown)
-        .on('touchstart', onButtonDown)
-
-        // set the mouseup callback...
-        .on('mouseup', onButtonUp)
-        .on('touchend', onButtonUp)
-
-        .on('mouseupoutside', onButtonUpOutside)
-        .on('touchendoutside', onButtonUpOutside)
-
-        // set the mouseover callback...
-        .on('mouseover', onButtonOver)
-
-        // set the mouseout callback...
-        .on('mouseout', onButtonOut);
-
-// Add it to the gameOverScene
-    gameOverScene.addChild(buttonReplay);
-
-    function onButtonDown() {
-        this.isdown = true;
-        this.texture = textureButtonDown;
-        this.alpha = 1;
-    }
-
-    function onButtonUp() {
-        this.isdown = false;
-        this.texture = textureButtonOver;
-        state = reset;
-        musicGameOver.stop();
-    }
-
-    function onButtonUpOutside() {
-        this.isdown = false;
-        this.texture = textureButton;
-    }
-
-    function onButtonOver() {
-        if (this.isdown) {
-            return;
-        }
-        this.texture = textureButtonOver;
-    }
-
-    function onButtonOut() {
-        if (this.isdown) {
-            return;
-        }
-        this.texture = textureButton;
-    }
-
-// Set the game state and refresh time
-    startTime = Date.now();
-    state = play;
-}
-
 function backgroundAddOnScene() {
     var textureLayer = {
         textureLayer5: Texture.fromImage(imageLinks.background5),
@@ -451,6 +84,47 @@ function detectCollision(plane, enemy) {
         return hit;
     }
 }
+function end() {
+    gameOverScene.visible = true;
+
+// Falling birds and the plane in a collision
+    if (flagCollision != undefined) {
+        plane.rotation -= 0.03;
+        plane.y += Position.STEP_Y;
+
+        for (var i = 0; i < enemy.length; i++) {
+            if (i != flagCollision) {
+                enemy[i].movieclip.y += Position.STEP_Y / 2;
+            } else {
+                enemy[i].movieclip.rotation += 0.03;
+                enemy[i].movieclip.y += Position.STEP_Y;
+            }
+        }
+    }
+
+// Change scene for Score, that it was on top of the dark background
+    gameOverScene.addChild(score);
+    gameScene.removeChild(score);
+
+// Movement the "Score" to the center of the screen and scaling it
+    if (score.x <= renderer.width / 2 - score.width / 2 || score.y >= renderer.height / 3 - message.height) {
+        score.x += 2.7;
+        score.y -= 3;
+    }
+
+    if (score.scale.x <= 1.2 && score.scale.y <= 1.2) {
+        score.scale.x += 0.002;
+        score.scale.y += 0.002;
+    }
+
+// Enable filter Blur
+    gameScene.filters = [blurFilter];
+    filtersValue += 0.005;
+    blurFilter.blur = Math.sin(filtersValue) * 10;
+}
+
+
+
 // Aliases
 var Container = PIXI.Container,
     autoDetectRenderer = PIXI.autoDetectRenderer,
@@ -697,6 +371,196 @@ PlaneAnimation.prototype.planeHorizontalMove = function () {
     }
 };
 
+function play() {
+    if (detectCollision(plane, enemy)) {
+// There's a collision
+        state = end;
+        musicBackground.stop();
+        musicGameOver.play();
+    } else {
+// There's no collision
+// Update
+        backgroundLogic(layer.layer1, 200, gameTime);
+        backgroundLogic(layer.layer2, 160, gameTime);
+        backgroundLogic(layer.layer3, 120, gameTime);
+        backgroundLogic(layer.layer4, 80, gameTime);
+        backgroundLogic(layer.layer5, 60, gameTime);
+        plane.planeVerticalMove();
+        plane.planeHorizontalMove();
+
+        for (var i = 0; i < enemy.length; i++) {
+            enemy[i].updatePosition();
+            if (enemy[i].hideEnemy) {
+                enemy.splice(i, 1, new Monster(monsterSprites[getRandomIntValue(0,monsterSprites.length - 1)], Position.START_X));
+            }
+        }
+
+        scoreChange(gameTime);
+    }
+}
+function preLoaderFunc() {
+
+    preLoaderScene = new Container();
+    stage.addChild(preLoaderScene);
+
+// Create dark effect and add it into preLoaderScene
+    darkEffectPreLoader = new Graphics();
+    darkEffectPreLoader.beginFill(0x000000, 1);
+    darkEffectPreLoader.drawRect(0, 0, 1920, 1080);
+    preLoaderScene.addChild(darkEffectPreLoader);
+
+// Create musics
+    musicBackground = new Howl({
+        src: ['../assets/music/background_music.mp3'],
+        volume: 0.5
+    });
+
+// Create loader and add it into preLoaderScene
+    var preLoaderImg = '../assets/images/preLoader.png';
+    loader.add(preLoaderImg);
+    texturePreLoader = Texture.fromImage(preLoaderImg);
+    preLoader = new Sprite(texturePreLoader);
+    preLoader.anchor.set(0.5);
+    preLoader.x = renderer.width / 2 - preLoader.width / 2;
+    preLoader.y = renderer.height / 2 - preLoader.height / 2;
+    preLoaderScene.addChild(preLoader);
+
+// Downloading assets
+    for (var key in imageLinks) {
+        loader = loader.add(imageLinks[key]);
+    }
+
+    loader
+        .on('progress', onProgressCallback)
+        .load(function () {
+            console.log("All files loaded");
+            preLoaderScene.removeChild(preLoader);
+
+            // add start button
+            createStartButton();
+        });
+
+    function onProgressCallback(event) {
+        console.log("progress: " + Math.round(event.progress) + '%');
+    }
+
+    state = rotatePreLoader;
+
+// Start the game loop
+    gameLoop();
+}
+
+function rotatePreLoader() {
+    preLoader.rotation += 0.1;
+}
+
+function createStartButton() {
+// Add the "Start" button
+    textureButtonStart = Texture.fromImage(imageLinks.start_button);
+    textureButtonDownStart = Texture.fromImage(imageLinks.start_button_down);
+    textureButtonOverStart = Texture.fromImage(imageLinks.start_button_over);
+
+    buttonStart = new Sprite(textureButtonStart);
+    buttonStart.buttonMode = true;
+    buttonStart.scale.x = 0.5;
+    buttonStart.scale.y = 0.5;
+    buttonStart.x = renderer.width / 2 - buttonStart.width / 2;
+    buttonStart.y = renderer.height / 2 - buttonStart.height / 2;
+
+// make the button interactive...
+    buttonStart.interactive = true;
+
+    buttonStart
+        // set the mousedown callback...
+        .on('mousedown', onButtonDown)
+        .on('touchstart', onButtonDown)
+
+        // set the mouseup callback...
+        .on('mouseup', onButtonUp)
+        .on('touchend', onButtonUp)
+
+        .on('mouseupoutside', onButtonUpOutside)
+        .on('touchendoutside', onButtonUpOutside)
+
+        // set the mouseover callback...
+        .on('mouseover', onButtonOver)
+
+        // set the mouseout callback...
+        .on('mouseout', onButtonOut);
+
+    preLoaderScene.addChild(buttonStart);
+
+    function onButtonDown() {
+        this.isdown = true;
+        this.texture = textureButtonDownStart;
+        this.alpha = 1;
+    }
+
+    function onButtonUp() {
+        this.isdown = false;
+        this.texture = textureButtonOverStart;
+        state = setup;
+        musicBackground.play();
+        this.interactive = false;
+    }
+
+    function onButtonUpOutside() {
+        this.isdown = false;
+        this.texture = textureButtonStart;
+    }
+
+    function onButtonOver() {
+        if (this.isdown) {
+            return;
+        }
+        this.texture = textureButtonOverStart;
+    }
+
+    function onButtonOut() {
+        if (this.isdown) {
+            return;
+        }
+        this.texture = textureButtonStart;
+    }
+}
+
+
+function reset() {
+    gameOverScene.visible = false;
+
+    plane.x = 100;
+    plane.y = 200;
+    plane.rotation = Math.PI/2;
+
+    gapBetweenBirds = 0;
+    for (var i = 0; i < enemy.length; i++) {
+        enemy[i].movieclip.x = Position.START_X + gapBetweenBirds;
+
+        // Equally gap Between Birds and canvas border => only when we have 3 birds on the canvas
+        // In this situation we have 4 gap Between Birds
+        // + birds.width because point anchor = 0.5
+        gapBetweenBirds += (renderer.width - enemy[i].movieclip.width * 3) / 4 + enemy[i].movieclip.width;
+
+        enemy[i].movieclip.y = getRandomIntValue(Position.START_Y + enemy[i].movieclip.height / 2, Position.END_Y - enemy[i].movieclip.height / 2);
+        enemy[i].movieclip.rotation = 0;
+    }
+
+    gameScene.addChild(score);
+    gameOverScene.removeChild(score);
+
+    score.x = Position.SCORE_X;
+    score.y = Position.SCORE_Y;
+    score.scale.x = 1;
+    score.scale.y = 1;
+
+    startTime = Date.now();
+    state = play;
+    musicBackground.play();
+
+// Disable filter Blur
+    gameScene.filters = [];
+    filtersValue = 0;
+}
 function scoreAdd() {
     score = new Text('Score: ' + distance, style);
     score.x = Position.SCORE_X;
@@ -707,4 +571,140 @@ function scoreAdd() {
 function scoreChange(gameTime) {
     distance = Math.round(gameTime / 1000 * 10);
     score.text = 'Score: ' + distance
+}
+
+function setup() {
+
+// Create gameScene
+    gameScene = new Container();
+    stage.addChild(gameScene);
+
+// Add monsters and background on the scene
+    backgroundAddOnScene();
+
+    for (var i = 0; i < 4; i++) {
+        enemy[i] = new Monster(monsterSprites[i], Position.START_X + gapBetweenBirds);
+
+        // Equally gap Between Birds and canvas border => only when we have 3 birds on the canvas
+        // In this situation we have 4 gap Between Birds
+        // + birds.width because point anchor = 0.5
+        gapBetweenBirds += (renderer.width - enemy[i].movieclip.width * 3) / 4 + enemy[i].movieclip.width;
+    }
+
+// Add Plane
+    var frames = [];
+    for (var j = 0; j < 30; j++) {
+        var val = j < 10 ? '0' + j : j;
+        frames.push(Texture.fromFrame('rollSequence00' + val + '.png'));
+    }
+
+    plane = new PlaneAnimation(frames);
+    plane.play();
+    gameScene.addChild(plane);
+
+// Add Score
+    scoreAdd();
+
+// // Create musics
+//     musicBackground = new Howl({
+//         src: ['assets/music/background_music.mp3'],
+//         volume: 0.5
+//     });
+
+    musicGameOver = new Howl({
+        src: ['../assets/music/game_over_music.mp3'],
+        volume: 0.5
+    });
+
+// Create the gameOverScene
+    gameOverScene = new Container();
+    stage.addChild(gameOverScene);
+
+// Make the gameOverScene invisible when the game first starts
+    gameOverScene.visible = false;
+
+// Create the black effect in gameOverScene
+    darkEffectEndGame = new Graphics();
+    darkEffectEndGame.beginFill(0x000000, 0.6);
+    darkEffectEndGame.drawRect(0, 0, renderer.width, renderer.height);
+    gameOverScene.addChild(darkEffectEndGame);
+
+// Create the text sprite and add it to the gameOverScene
+    style.fontSize = '50px';
+    message = new Text('Game over!', style);
+    message.x = renderer.width / 2 - message.width / 2;
+    message.y = renderer.height / 3 - message.height / 2;
+    gameOverScene.addChild(message);
+
+// Add Replay button
+    textureButton = Texture.fromImage(imageLinks.replay_button);
+    textureButtonDown = Texture.fromImage(imageLinks.replay_button_down);
+    textureButtonOver = Texture.fromImage(imageLinks.replay_button_over);
+
+    buttonReplay = new Sprite(textureButton);
+    buttonReplay.buttonMode = true;
+    buttonReplay.scale.x = 0.5;
+    buttonReplay.scale.y = 0.5;
+    buttonReplay.x = renderer.width / 2 - buttonReplay.width / 2;
+    buttonReplay.y = renderer.height / 2 - buttonReplay.height / 2;
+
+// Make the button interactive
+    buttonReplay.interactive = true;
+
+    buttonReplay
+    // set the mousedown callback...
+        .on('mousedown', onButtonDown)
+        .on('touchstart', onButtonDown)
+
+        // set the mouseup callback...
+        .on('mouseup', onButtonUp)
+        .on('touchend', onButtonUp)
+
+        .on('mouseupoutside', onButtonUpOutside)
+        .on('touchendoutside', onButtonUpOutside)
+
+        // set the mouseover callback...
+        .on('mouseover', onButtonOver)
+
+        // set the mouseout callback...
+        .on('mouseout', onButtonOut);
+
+// Add it to the gameOverScene
+    gameOverScene.addChild(buttonReplay);
+
+    function onButtonDown() {
+        this.isdown = true;
+        this.texture = textureButtonDown;
+        this.alpha = 1;
+    }
+
+    function onButtonUp() {
+        this.isdown = false;
+        this.texture = textureButtonOver;
+        state = reset;
+        musicGameOver.stop();
+    }
+
+    function onButtonUpOutside() {
+        this.isdown = false;
+        this.texture = textureButton;
+    }
+
+    function onButtonOver() {
+        if (this.isdown) {
+            return;
+        }
+        this.texture = textureButtonOver;
+    }
+
+    function onButtonOut() {
+        if (this.isdown) {
+            return;
+        }
+        this.texture = textureButton;
+    }
+
+// Set the game state and refresh time
+    startTime = Date.now();
+    state = play;
 }
