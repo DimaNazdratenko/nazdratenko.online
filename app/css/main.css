@@ -6803,11 +6803,6 @@ nav {
       nav .navbar-nav li .dropdown-menu a:hover {
         background-color: #343A40 !important; }
 
-.content {
-  -webkit-box-flex: 1;
-      -ms-flex: 1 0 auto;
-          flex: 1 0 auto; }
-
 .footer {
   width: 100%;
   height: auto;
