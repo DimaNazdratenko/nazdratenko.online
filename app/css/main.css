@@ -6803,10 +6803,15 @@ nav {
       nav .navbar-nav li .dropdown-menu a:hover {
         background-color: #343A40 !important; }
 
-.content {
-  -webkit-box-flex: 1;
-      -ms-flex: 1 0 auto;
-          flex: 1 0 auto; }
+.cv {
+  height: 100%;
+  width: 60%;
+  border: 1px solid #1b1e21;
+  margin: 50px; }
+  .cv h2 {
+    text-align: center;
+    font-weight: 700;
+    font-size: 150%; }
 
 .footer {
   width: 100%;
