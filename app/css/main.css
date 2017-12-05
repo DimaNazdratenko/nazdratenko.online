@@ -6863,5 +6863,8 @@ nav {
     padding: 10px 0; }
     .footer_social a {
       padding: 0 5px; }
+      .footer_social a img {
+        width: 40px;
+        height: 40px; }
   .footer_copyright {
     padding-bottom: 10px; }
