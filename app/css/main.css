@@ -6805,7 +6805,7 @@ a {
 /***********************MEDIA QUERIES***********************/
 /***********************COLORS & FONTS***********************/
 html, body {
-  height: 100vh; }
+  height: 100%; }
   html .wrapper, body .wrapper {
     height: 100%;
     display: -webkit-box;
@@ -6841,9 +6841,11 @@ nav {
         background-color: #343A40 !important; }
 
 .cv {
-  height: 100%;
   width: 60%;
-  margin: 50px; }
+  margin: 50px;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 auto;
+          flex: 1 0 auto; }
   .cv h1 {
     text-align: center;
     font-weight: 700;
