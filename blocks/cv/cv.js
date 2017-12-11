@@ -6,8 +6,3 @@
 //
 //         }, 1000, "linear")
 // });
-
-// $("#test").on("click", function() {
-//     alert("ASDF")
-// });
-
