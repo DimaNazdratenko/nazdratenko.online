@@ -1,15 +1,15 @@
-.cv{
+.cv {
   width: 60%;
   margin: 50px;
   flex: 1 0 auto;
 
-  h1{
+  h1 {
     text-align: center;
     font-weight: 700;
     font-size: 180%;
   }
 
-  &_separator{
+  &_separator {
     width: 100%;
     height: 40px;
     margin: 10px 0;
@@ -28,7 +28,7 @@
     //}
   }
 
-  &_text{
+  &_text {
     font-size: 140%;
     padding: 10px;
     line-height: 1.2;
@@ -36,6 +36,14 @@
     li {
       list-style: disc outside;
       margin-left: 40px;
+
+      li {
+        list-style: circle outside;
+
+        li{
+          list-style: square outside;
+        }
+      }
     }
   }
 

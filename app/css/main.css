@@ -6875,6 +6875,10 @@ nav {
     .cv_text li {
       list-style: disc outside;
       margin-left: 40px; }
+      .cv_text li li {
+        list-style: circle outside; }
+        .cv_text li li li {
+          list-style: square outside; }
 
 .footer {
   width: 100%;
