@@ -3,10 +3,11 @@
   margin: 50px;
   flex: 1 0 auto;
 
-  h1 {
+  &_name {
     text-align: center;
     font-weight: 700;
-    font-size: 180%;
+    font-size: 200%;
+    visibility: hidden;
   }
 
   &_separator {
@@ -21,17 +22,14 @@
     font-size: 150%;
     font-weight: 700;
     position: relative;
-
-    //&_animate{
-    //  transform: rotate(360deg) translateX(700px);
-    //  transition: transform 1s linear;
-    //}
+    visibility: hidden;
   }
 
   &_text {
     font-size: 140%;
     padding: 10px;
     line-height: 1.2;
+    visibility: hidden;
 
     li {
       list-style: disc outside;
