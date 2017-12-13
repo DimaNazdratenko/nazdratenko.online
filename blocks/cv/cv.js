@@ -15,7 +15,8 @@ $(function () {
     let name = $(".cv_name"),
         separatorOdd = $(".cv_separator:odd"),
         separatorEven = $(".cv_separator:even"),
-        text = $(".cv_text");
+        textOdd = $(".cv_text:odd"),
+        textEven = $(".cv_text:even");
 
     name.css("visibility", "visible")
         .animateCss("tada");
@@ -25,8 +26,10 @@ $(function () {
             .animateCss("rollIn", removeDisableState);
         separatorEven.css("visibility", "visible")
             .animateCss("rotateInUpRight");
-        text.css("visibility", "visible")
-            .animateCss("flip");
+        textOdd.css("visibility", "visible")
+            .animateCss("fadeInLeftBig");
+        textEven.css("visibility", "visible")
+            .animateCss("fadeInRightBig");
     }, 1000);
 });
 
