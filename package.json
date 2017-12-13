@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/DimaNazdratenko/Diploma-HTML5#readme",
   "devDependencies": {
+    "animate.css": "^3.5.2",
     "bootstrap": "^4.0.0-beta.2",
     "browser-sync": "^2.18.13",
     "gulp": "^3.9.1",
