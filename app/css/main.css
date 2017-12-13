@@ -6841,11 +6841,23 @@ nav {
         background-color: #343A40 !important; }
 
 .cv {
-  width: 60%;
+  width: 70%;
   margin: 50px;
   -webkit-box-flex: 1;
       -ms-flex: 1 0 auto;
-          flex: 1 0 auto; }
+          flex: 1 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column; }
+  .cv .btn {
+    width: 140px;
+    -ms-flex-item-align: end;
+        align-self: flex-end;
+    font-size: 120%; }
   .cv_name {
     text-align: center;
     font-weight: 700;
@@ -6855,8 +6867,8 @@ nav {
     width: 100%;
     height: 40px;
     margin: 10px 0;
-    background-color: #d2ffd2;
     border: 1px solid #1b1e21;
+    border-radius: 5px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -6866,9 +6878,9 @@ nav {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
+    background-color: #d2ffd2;
     font-size: 150%;
     font-weight: 700;
-    position: relative;
     visibility: hidden; }
   .cv_text {
     font-size: 140%;

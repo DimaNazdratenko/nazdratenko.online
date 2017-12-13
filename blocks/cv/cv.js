@@ -22,10 +22,14 @@ $(function () {
 
     setTimeout(function () {
         separatorOdd.css("visibility", "visible")
-            .animateCss("rollIn");
+            .animateCss("rollIn", removeDisableState);
         separatorEven.css("visibility", "visible")
             .animateCss("rotateInUpRight");
         text.css("visibility", "visible")
             .animateCss("flip");
     }, 1000);
 });
+
+function removeDisableState() {
+    $(".btn").removeClass("disabled")
+}
