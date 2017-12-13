@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="44px" height="44px" viewBox="0 0 44 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.1 (47250) - http://www.bohemiancoding.com/sketch -->
+    <title>phone</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <circle id="path-1" cx="22" cy="22" r="22"></circle>
+    </defs>
+    <g id="social-icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-100.000000, -160.000000)">
+        <g id="phone" transform="translate(100.000000, 160.000000)">
+            <rect id="Rectangle" x="0" y="0" width="44" height="44"></rect>
+            <g id="Oval">
+                <use fill="#2E3338" fill-rule="evenodd" xlink:href="#path-1"></use>
+                <circle stroke="#FBFBFB" stroke-width="2" cx="22" cy="22" r="21"></circle>
+            </g>
+            <path d="M27.1333333,24.2 C25.6666667,25.6666667 25.6666667,27.1333333 24.2,27.1333333 C22.7333333,27.1333333 21.2666667,25.6666667 19.8,24.2 C18.3333333,22.7333333 16.8666667,21.2666667 16.8666667,19.8 C16.8666667,18.3333333 18.3333333,18.3333333 19.8,16.8666667 C21.2666667,15.4 16.8666667,11 15.4,11 C13.9333333,11 11,15.4 11,15.4 C11,18.3333333 14.014,24.2806667 16.8666667,27.1333333 C19.7178667,29.986 25.6666667,33 28.6,33 C28.6,33 33,30.0666667 33,28.6 C33,27.1333333 28.6,22.7333333 27.1333333,24.2" id="Shape" fill="#FBFBFB"></path>
+        </g>
+    </g>
+</svg>
