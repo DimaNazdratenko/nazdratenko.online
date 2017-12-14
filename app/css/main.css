@@ -6857,7 +6857,8 @@ nav {
     width: 140px;
     -ms-flex-item-align: end;
         align-self: flex-end;
-    font-size: 120%; }
+    font-size: 120%;
+    color: #FBFBFB !important; }
   .cv_name {
     text-align: center;
     font-weight: 700;
