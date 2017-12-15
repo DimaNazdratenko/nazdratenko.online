@@ -87,16 +87,16 @@ gulp.task('img', function () {
 
 //ftp
 gulp.task('send', function () {
-    var conn = ftp.create({
-        host: '77.120.110.166',
-        user: 'alexlabs',
-        password: 'Arj4h00F9x',
+    let conn = ftp.create({
+        host: 'zzz.com.ua',
+        user: 'nazdratenko',
+        password: 'T9rquxhb',
         parallel: 5
     });
 
     /* list all files you wish to ftp in the glob bariable */
-    var globs = [
-        'build/**/*',
+    let globs = [
+        'app/**/*',
         '!node_modules/**' // if you wish to exclude directories, start the item with an !
     ];
 
