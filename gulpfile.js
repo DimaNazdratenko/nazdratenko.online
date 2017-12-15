@@ -1,4 +1,4 @@
-var gulp = require('gulp'),
+let gulp = require('gulp'),
     pug = require('gulp-pug'),
     sass = require('gulp-sass'),
     concat = require('gulp-concat'),
@@ -10,7 +10,7 @@ var gulp = require('gulp'),
     ftp = require('vinyl-ftp'),
     notify = require('gulp-notify');
 
-var paths = {
+let paths = {
     blocks: 'blocks/',
     devDir: 'app/',
     root: './'
@@ -88,13 +88,13 @@ gulp.task('img', function () {
 //ftp
 gulp.task('send', function () {
     let conn = ftp.create({
-        host: 'zzz.com.ua',
+        host: 'files.000webhost.com',
         user: 'nazdratenko',
         password: 'T9rquxhb',
         parallel: 5
     });
 
-    /* list all files you wish to ftp in the glob bariable */
+    /* list all files you wish to ftp in the glob variable */
     let globs = [
         'app/**/*',
         '!node_modules/**' // if you wish to exclude directories, start the item with an !
@@ -102,7 +102,7 @@ gulp.task('send', function () {
 
     return gulp.src(globs, {base: '.', buffer: false})
         .pipe(conn.newer('/')) // only upload newer files
-        .pipe(conn.dest('/'))
+        .pipe(conn.dest('/public_html'))
         .pipe(notify("Dev site updated!"));
 });
 
