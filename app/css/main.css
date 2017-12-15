@@ -6814,13 +6814,11 @@ html, body {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center; }
+            flex-direction: column; }
+    html .wrapper_content, body .wrapper_content {
+      -webkit-box-flex: 1;
+          -ms-flex: 1 1 auto;
+              flex: 1 1 auto; }
 
 nav {
   width: 100%;
@@ -6840,19 +6838,26 @@ nav {
       nav .navbar-nav li .dropdown-menu a:hover {
         background-color: #343A40 !important; }
 
+.content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center; }
+
 .cv {
-  width: 70%;
-  margin: 50px;
-  -webkit-box-flex: 1;
-      -ms-flex: 1 0 auto;
-          flex: 1 0 auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
-          flex-direction: column; }
+          flex-direction: column;
+  margin: 50px 0; }
   .cv .btn {
     width: 140px;
     -ms-flex-item-align: end;
@@ -6897,8 +6902,6 @@ nav {
           list-style: square outside; }
 
 .footer {
-  width: 100%;
-  height: auto;
   -webkit-box-flex: 0;
       -ms-flex: 0 0 auto;
           flex: 0 0 auto;

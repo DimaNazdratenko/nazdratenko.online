@@ -37,7 +37,3 @@ function removeDisableState() {
     $(".btn").removeClass("disabled")
 }
 
-// $("#test").on("click", function() {
-//     alert("ASDF")
-// });
-

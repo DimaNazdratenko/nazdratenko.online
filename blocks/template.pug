@@ -16,10 +16,12 @@ html(lang="ru")
 
         body
             div(class="wrapper")
-                block header
-                    +header()
+                div(class="wrapper_content")
+                    block header
+                        +header()
 
-                block content
+                    div(class="content container")
+                        block content
 
                 block footer
                     +footer()
