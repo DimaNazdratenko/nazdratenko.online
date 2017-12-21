@@ -6849,6 +6849,9 @@ nav {
       -ms-flex-align: center;
           align-items: center; }
 
+.canvas {
+  margin-top: 10vh; }
+
 .cv {
   display: -webkit-box;
   display: -ms-flexbox;
