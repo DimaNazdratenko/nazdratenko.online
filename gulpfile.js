@@ -8,6 +8,7 @@ let gulp = require('gulp'),
     imagemin = require('gulp-imagemin'),
     browserSync = require('browser-sync').create(),
     ftp = require('vinyl-ftp'),
+    gutil = require('gulp-util'),
     notify = require('gulp-notify');
 
 let paths = {
@@ -91,19 +92,26 @@ gulp.task('send', function () {
         host: 'files.000webhost.com',
         user: 'nazdratenko',
         password: 'T9rquxhb',
-        parallel: 5
+        parallel: 1,
+        maxConnections:1,
+        log: gutil.log
     });
 
     /* list all files you wish to ftp in the glob variable */
     let globs = [
-        'app/**/*',
-        '!node_modules/**' // if you wish to exclude directories, start the item with an !
+        'app/**',
+        '!assets/**',
+        '!blocks/**',
+        '!node_modules/**',
+        'gulpfile.js',
+        'package.json',
+        'package-lock.json',
+        'README.md'
     ];
 
     return gulp.src(globs, {base: '.', buffer: false})
-        .pipe(conn.newer('/')) // only upload newer files
-        .pipe(conn.dest('/public_html'))
-        .pipe(notify("Dev site updated!"));
+        .pipe(conn.newer('/public_html/'))
+        .pipe(conn.dest('/public_html/'))
 });
 
 //default

@@ -29,6 +29,7 @@
     "gulp-pug": "^3.3.0",
     "gulp-sass": "^3.1.0",
     "gulp-sort": "^2.0.0",
+    "gulp-util": "^3.0.8",
     "howler": "^2.0.5",
     "http": "0.0.0",
     "jquery": "^3.2.1",
