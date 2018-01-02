@@ -2,8 +2,15 @@ nav {
   width: 100%;
   flex: 0 0 auto;
 
-  a:hover{
-    opacity: .65;
+  a{
+    &:hover{
+      opacity: .65;
+    }
+
+    img {
+      width: 40px;
+      height: 40px;
+    }
   }
 
   .navbar-nav li {

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="44px" height="44px" viewBox="0 0 44 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>nazdratenko</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <circle id="path-1" cx="22" cy="22" r="22"></circle>
+    </defs>
+    <g id="social-icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-40.000000, -510.000000)">
+        <g id="nazdratenko" transform="translate(40.000000, 510.000000)">
+            <rect id="Rectangle" x="0" y="0" width="44" height="44"></rect>
+            <g id="Oval">
+                <use fill="#2E3338" fill-rule="evenodd" xlink:href="#path-1"></use>
+                <circle stroke="#FBFBFB" stroke-width="2" cx="22" cy="22" r="21"></circle>
+            </g>
+            <text id="N" fill="#FBFBFB" font-family="ChalkboardSE-Regular, Chalkboard SE" font-size="24" font-weight="normal">
+                <tspan x="14.6237569" y="31">N</tspan>
+            </text>
+        </g>
+    </g>
+</svg>

@@ -9196,6 +9196,9 @@ nav {
           flex: 0 0 auto; }
   nav a:hover {
     opacity: .65; }
+  nav a img {
+    width: 40px;
+    height: 40px; }
   nav .navbar-nav li a {
     font-size: 20px;
     color: #FBFBFB !important; }
