@@ -19,8 +19,16 @@
   "dependencies": {
     "animate.css": "^3.5.2",
     "bootstrap": "^4.0.0-beta.2",
-    "browser-sync": "^2.18.13",
     "express": "^4.16.2",
+    "howler": "^2.0.5",
+    "http": "0.0.0",
+    "jquery": "^3.2.1",
+    "node-static": "^0.7.10",
+    "path": "^0.12.7",
+    "pixi.js": "^4.6.2",
+    "popper.js": "^1.13.0",
+  },
+  "devDependencies": {
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^4.0.0",
     "gulp-concat": "^2.6.1",
@@ -31,13 +39,7 @@
     "gulp-sass": "^3.1.0",
     "gulp-sort": "^2.0.0",
     "gulp-util": "^3.0.8",
-    "howler": "^2.0.5",
-    "http": "0.0.0",
-    "jquery": "^3.2.1",
-    "node-static": "^0.7.10",
-    "path": "^0.12.7",
-    "pixi.js": "^4.6.2",
-    "popper.js": "^1.13.0",
+    "browser-sync": "^2.18.13",
     "vinyl-ftp": "^0.6.0"
   }
 }
