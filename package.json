@@ -4,6 +4,7 @@
   "description": "Some game which will be diploma work after graduated HTML 5 and JS course",
   "main": "End.js",
   "scripts": {
+    "start": "node web.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
