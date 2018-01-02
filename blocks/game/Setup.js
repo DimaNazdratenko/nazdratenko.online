@@ -37,7 +37,7 @@ function setup() {
 //     });
 
     musicGameOver = new Howl({
-        src: ['../assets/music/game_over_music.mp3'],
+        src: ['assets/music/game_over_music.mp3'],
         volume: 0.5
     });
 
