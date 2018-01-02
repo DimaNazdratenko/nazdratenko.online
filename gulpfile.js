@@ -52,6 +52,24 @@ gulp.task('js', function () {
         .pipe(browserSync.stream());
 });
 
+gulp.task('dependencies', function () {
+    return gulp.src(['node_modules/jquery/dist/jquery.min.js', 'node_modules/popper.js/dist/umd/popper.min.js', 'node_modules/bootstrap/dist/js/bootstrap.min.js'])
+        .pipe(concat('dependencies.min.js'))
+        .pipe(gulp.dest(paths.devDir + 'js/'))
+});
+
+gulp.task('pixi', function () {
+    return gulp.src(['node_modules/pixi.js/dist/pixi.min.js'])
+        .pipe(concat('pixi.min.js'))
+        .pipe(gulp.dest(paths.devDir + 'js/'))
+});
+
+gulp.task('howler', function () {
+    return gulp.src(['node_modules/howler/dist/howler.min.js'])
+        .pipe(concat('howler.min.js'))
+        .pipe(gulp.dest(paths.devDir + 'js/'))
+});
+
 gulp.task('game', function () {
     return gulp.src([paths.blocks + 'game/*.js'])
         .pipe(sort())
@@ -115,4 +133,4 @@ gulp.task('send', function () {
 });
 
 //default
-gulp.task('default', ['browser-sync', 'watch', 'pug', 'sass', 'js', 'game']);
+gulp.task('default', ['browser-sync', 'watch', 'pug', 'sass', 'js', 'dependencies', 'pixi', 'howler', 'game']);
