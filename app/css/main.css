@@ -9290,5 +9290,7 @@ nav {
       .footer_social a img {
         width: 40px;
         height: 40px; }
+      .footer_social a:hover {
+        opacity: .65; }
   .footer_copyright {
     padding-bottom: 10px; }
