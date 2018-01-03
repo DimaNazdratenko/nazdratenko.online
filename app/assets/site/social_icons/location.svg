@@ -1,19 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="44px" height="44px" viewBox="0 0 44 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 48.1 (47250) - http://www.bohemiancoding.com/sketch -->
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
     <title>map</title>
     <desc>Created with Sketch.</desc>
-    <defs>
-        <circle id="path-1" cx="22" cy="22" r="22"></circle>
-    </defs>
+    <defs></defs>
     <g id="social-icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-340.000000, -160.000000)">
         <g id="map" transform="translate(340.000000, 160.000000)">
             <rect id="Rectangle" x="0" y="0" width="44" height="44"></rect>
-            <g id="Oval">
-                <use fill="#2E3338" fill-rule="evenodd" xlink:href="#path-1"></use>
-                <circle stroke="#FBFBFB" stroke-width="2" cx="22" cy="22" r="21"></circle>
-            </g>
-            <path d="M14,17.8 C14,22.12 22,34 22,34 C22,34 30,22.12 30,17.8 C30,13.495 26.4218182,10 22,10 C17.5781818,10 14,13.495 14,17.8 L14,17.8 Z M16.9090909,17.995 C16.9090909,15.34 19.3527273,13 22,13 C24.6472727,13 27.0618182,15.37 27.0618182,18.01 C27.0618182,20.665 24.6327273,23.47 21.9709091,23.47 C19.3236364,23.47 16.9090909,20.65 16.9090909,17.995 L16.9090909,17.995 Z" id="Shape" fill="#FBFBFB"></path>
+            <circle id="Oval" stroke="#343A40" stroke-width="2" cx="22" cy="22" r="21"></circle>
+            <path d="M14,17.8 C14,22.12 22,34 22,34 C22,34 30,22.12 30,17.8 C30,13.495 26.4218182,10 22,10 C17.5781818,10 14,13.495 14,17.8 L14,17.8 Z M16.9090909,17.995 C16.9090909,15.34 19.3527273,13 22,13 C24.6472727,13 27.0618182,15.37 27.0618182,18.01 C27.0618182,20.665 24.6327273,23.47 21.9709091,23.47 C19.3236364,23.47 16.9090909,20.65 16.9090909,17.995 L16.9090909,17.995 Z" id="Shape" fill="#343A40"></path>
         </g>
     </g>
 </svg>

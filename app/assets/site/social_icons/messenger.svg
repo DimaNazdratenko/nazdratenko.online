@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="44px" height="44px" viewBox="0 0 44 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>messenger</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="social-icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-400.000000, -340.000000)">
+        <g id="messenger" transform="translate(400.000000, 340.000000)">
+            <rect id="Rectangle" x="0" y="0" width="44" height="44"></rect>
+            <circle id="Oval" stroke="#343A40" stroke-width="2" cx="22" cy="22" r="21"></circle>
+            <path d="M22,11 C15.9248571,11 11,15.5600432 11,21.1851852 C11,24.390463 12.5995776,27.2495123 15.0993789,29.1165247 L15.0993789,33 L18.8447764,30.9444259 C19.8443416,31.2210556 20.9032795,31.3703704 22,31.3703704 C28.0751429,31.3703704 33,26.8103272 33,21.1851852 C33,15.5600432 28.0751429,11 22,11 L22,11 Z M23.0931677,24.7160494 L20.2919255,21.7283951 L14.826087,24.7160494 L20.8385093,18.3333333 L23.7080745,21.3209877 L29.1055901,18.3333333 L23.0931677,24.7160494 L23.0931677,24.7160494 Z" id="Shape" fill="#343A40"></path>
+        </g>
+    </g>
+</svg>
