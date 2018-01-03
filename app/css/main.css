@@ -9276,6 +9276,44 @@ nav {
         .cv_text li li li {
           list-style: square outside; }
 
+.contacts {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 50px 0;
+  width: 100%; }
+  .contacts_title {
+    text-align: center;
+    font-weight: 700;
+    font-size: 200%;
+    visibility: hidden; }
+  .contacts_item {
+    margin: 15px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center; }
+    .contacts_item_link {
+      margin: 0 10px;
+      visibility: hidden; }
+      .contacts_item_link:hover {
+        opacity: .65; }
+    .contacts_item_text1 {
+      margin: 0 10px;
+      font-size: 140%;
+      font-weight: 600;
+      visibility: hidden; }
+    .contacts_item_text2 {
+      font-weight: 300;
+      font-size: 120%;
+      visibility: hidden; }
+
 .footer {
   -webkit-box-flex: 0;
       -ms-flex: 0 0 auto;
