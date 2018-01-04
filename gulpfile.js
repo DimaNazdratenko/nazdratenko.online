@@ -8,8 +8,7 @@ let gulp = require('gulp'),
     imagemin = require('gulp-imagemin'),
     browserSync = require('browser-sync').create(),
     ftp = require('vinyl-ftp'),
-    gutil = require('gulp-util'),
-    notify = require('gulp-notify');
+    gutil = require('gulp-util');
 
 let paths = {
     blocks: 'blocks/',
