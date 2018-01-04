@@ -9222,7 +9222,7 @@ nav {
           align-items: center; }
 
 .canvas {
-  margin-top: 10vh; }
+  margin: 10vh auto; }
 
 .cv {
   display: -webkit-box;

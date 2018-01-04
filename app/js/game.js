@@ -126,7 +126,7 @@ function end() {
 
 
 // Aliases
-var Container = PIXI.Container,
+let Container = PIXI.Container,
     autoDetectRenderer = PIXI.autoDetectRenderer,
     loader = PIXI.loader,
     Texture = PIXI.Texture,
@@ -137,13 +137,20 @@ var Container = PIXI.Container,
     filters = PIXI.filters,
     AnimatedSprite = PIXI.extras.AnimatedSprite;
 
-var renderer = autoDetectRenderer(960, 540),
-    stage = new Container();
-// document.body.appendChild(renderer.view);
+
+const size = [960, 540],
+    ratio = size[0] / size[1],
+    renderer = autoDetectRenderer(size[0], size[1]);
+
+resizeCanvas();
+
+let stage = new Container();
 document.querySelector("div.canvas").appendChild(renderer.view);
 
-var state, preLoaderScene, gameScene, gameOverScene, layer, score, message, plane, distance, gameTime, startTime, darkEffectEndGame,
-    darkEffectPreLoader, textureButton, textureButtonDown, textureButtonOver, buttonReplay, textureButtonStart, textureButtonDownStart,
+let state, preLoaderScene, gameScene, gameOverScene, layer, score, message, plane, distance, gameTime, startTime,
+    darkEffectEndGame,
+    darkEffectPreLoader, textureButton, textureButtonDown, textureButtonOver, buttonReplay, textureButtonStart,
+    textureButtonDownStart,
     textureButtonOverStart, buttonStart, texturePreLoader, preLoader, musicBackground, musicGameOver, flagCollision,
     gapBetweenBirds = 0,
     enemy = [],
@@ -151,7 +158,7 @@ var state, preLoaderScene, gameScene, gameOverScene, layer, score, message, plan
     blurFilter = new filters.BlurFilter();
 
 const Position = {
-    START_X: renderer.width + 85/2, // 85/2 it is monsters width/2, because point anchor = 0.5
+    START_X: renderer.width + 85 / 2, // 85/2 it is monsters width/2, because point anchor = 0.5
     START_Y: 0,
     END_X: 0,
     END_Y: 450,
@@ -160,7 +167,7 @@ const Position = {
     SCORE_X: 50,
     SCORE_Y: 480
 };
-var style = {
+let style = {
     fontFamily: 'Arial',
     fontSize: '30px',
     fontStyle: 'italic',
@@ -174,7 +181,7 @@ var style = {
     dropShadowDistance: 6
 };
 
-var imageLinks = {
+let imageLinks = {
     background1: 'assets/images/background/1.png',
     background2: 'assets/images/background/2.png',
     background3: 'assets/images/background/3.png',
@@ -214,14 +221,14 @@ var imageLinks = {
     start_button_over: 'assets/images/start_button/start_button_3.png'
 };
 
-var monsterImages = [
+let monsterImages = [
     imageLinks.monsterFly1,
     imageLinks.monsterFly2,
     imageLinks.monsterFly3,
     imageLinks.monsterFly4
 ];
 
-var fatBirdImages = [
+let fatBirdImages = [
     imageLinks.fatBird1,
     imageLinks.fatBird2,
     imageLinks.fatBird3,
@@ -232,7 +239,7 @@ var fatBirdImages = [
     imageLinks.fatBird8
 ];
 
-var stupidBirdImages = [
+let stupidBirdImages = [
     imageLinks.stupidBirdFly1,
     imageLinks.stupidBirdFly2,
     imageLinks.stupidBirdFly3,
@@ -243,14 +250,14 @@ var stupidBirdImages = [
     imageLinks.stupidBirdFly8
 ];
 
-var chickenImages = [
+let chickenImages = [
     imageLinks.chickenFly1,
     imageLinks.chickenFly2,
     imageLinks.chickenFly3,
     imageLinks.chickenFly4
 ];
 
-var monsterSprites = [monsterImages, fatBirdImages, stupidBirdImages, chickenImages];
+let monsterSprites = [monsterImages, fatBirdImages, stupidBirdImages, chickenImages];
 
 preLoaderFunc();
 
@@ -286,8 +293,9 @@ function getRandomIntValue(min, max) {
 
 // Start animating
 startTime = Date.now();
+
 function gameLoop() {
-    var now = Date.now();
+    let now = Date.now();
     gameTime = now - startTime;
     requestAnimationFrame(gameLoop);
 
@@ -297,8 +305,20 @@ function gameLoop() {
     renderer.render(stage);
 }
 
+function resizeCanvas() {
+    let w,
+        h;
 
-
+    if (window.innerWidth / window.innerHeight >= ratio) {
+        w = window.innerHeight * ratio;
+        h = window.innerHeight;
+    } else {
+        w = window.innerWidth;
+        h = window.innerWidth / ratio;
+    }
+    renderer.view.style.width = w / 1.3 + 'px';
+    renderer.view.style.height = h / 1.3 + 'px';
+}
 
 // Class Monster
 function Monster (monsterImages, startX) {
