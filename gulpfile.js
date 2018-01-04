@@ -92,7 +92,7 @@ gulp.task('browser-sync', function () {
         browser: "google chrome",
         port: 3000,
         server: {
-            baseDir: paths.root
+            baseDir: paths.devDir
         }
     });
 });
