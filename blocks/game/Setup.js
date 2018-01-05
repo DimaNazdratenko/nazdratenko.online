@@ -104,10 +104,12 @@ function setup() {
     }
 
     function onButtonUp() {
-        this.isdown = false;
-        this.texture = textureButtonOver;
-        state = reset;
-        musicGameOver.stop();
+        if (this.isdown) {
+            this.isdown = false;
+            this.texture = textureButton;
+            state = reset;
+            musicGameOver.stop();
+        }
     }
 
     function onButtonUpOutside() {

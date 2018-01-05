@@ -71,7 +71,7 @@ function createStartButton() {
     buttonStart.interactive = true;
 
     buttonStart
-        // set the mousedown callback...
+    // set the mousedown callback...
         .on('mousedown', onButtonDown)
         .on('touchstart', onButtonDown)
 
@@ -97,11 +97,13 @@ function createStartButton() {
     }
 
     function onButtonUp() {
-        this.isdown = false;
-        this.texture = textureButtonOverStart;
-        state = setup;
-        musicBackground.play();
-        this.interactive = false;
+        if (this.isdown) {
+            this.isdown = false;
+            this.texture = textureButtonOverStart;
+            state = setup;
+            musicBackground.play();
+            this.interactive = false;
+        }
     }
 
     function onButtonUpOutside() {
