@@ -4,6 +4,7 @@ function play() {
         state = end;
         musicBackground.stop();
         musicGameOver.play();
+        plane.onDragEnd();
     } else {
 // There's no collision
 // Update
@@ -12,10 +13,10 @@ function play() {
         backgroundLogic(layer.layer3, 120, gameTime);
         backgroundLogic(layer.layer4, 80, gameTime);
         backgroundLogic(layer.layer5, 60, gameTime);
-        plane.planeVerticalMove();
-        plane.planeHorizontalMove();
+        plane.keyboardVerticalMove();
+        plane.keyboardHorizontalMove();
 
-        for (var i = 0; i < enemy.length; i++) {
+        for (let i = 0; i < enemy.length; i++) {
             enemy[i].updatePosition();
             if (enemy[i].hideEnemy) {
                 enemy.splice(i, 1, new Monster(monsterSprites[getRandomIntValue(0,monsterSprites.length - 1)], Position.START_X));

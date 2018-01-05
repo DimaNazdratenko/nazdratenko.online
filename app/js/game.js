@@ -371,9 +371,36 @@ class PlaneAnimation extends PIXI.extras.AnimatedSprite {
         this.rotation = Math.PI / 2;
         this.width = 85;
         this.height = 120;
+        this.interactive = true;
+        this.buttonMode = true;
+
+        this.on('pointerdown', this.onDragStart)
+            .on('pointerup', this.onDragEnd)
+            .on('pointerupoutside', this.onDragEnd)
+            .on('pointermove', this.onDragMove)
     }
 
-    planeVerticalMove() {
+    onDragStart() {
+        this.data = event.data;
+        this.alpha = 0.5;
+        this.dragging = true;
+    }
+
+    onDragEnd() {
+        this.alpha = 1;
+        this.dragging = false;
+        this.data = null;
+    }
+
+    onDragMove(e){
+        if (this.dragging) {
+            let newPosition = e.data.getLocalPosition(stage);
+            this.x = newPosition.x;
+            this.y = newPosition.y;
+        }
+    }
+
+    keyboardVerticalMove() {
         if (!this) return;
         this.y -= this.velocityVertical;
         if (this.y <= this.planeIndent + this.width / 2) {
@@ -383,7 +410,7 @@ class PlaneAnimation extends PIXI.extras.AnimatedSprite {
         }
     }
 
-    planeHorizontalMove() {
+    keyboardHorizontalMove() {
         if (!this) return;
         this.x += this.velocityHorizontal;
         if (this.x <= this.planeIndent + this.height / 2) {
@@ -399,6 +426,7 @@ function play() {
         state = end;
         musicBackground.stop();
         musicGameOver.play();
+        plane.onDragEnd();
     } else {
 // There's no collision
 // Update
@@ -407,10 +435,10 @@ function play() {
         backgroundLogic(layer.layer3, 120, gameTime);
         backgroundLogic(layer.layer4, 80, gameTime);
         backgroundLogic(layer.layer5, 60, gameTime);
-        plane.planeVerticalMove();
-        plane.planeHorizontalMove();
+        plane.keyboardVerticalMove();
+        plane.keyboardHorizontalMove();
 
-        for (var i = 0; i < enemy.length; i++) {
+        for (let i = 0; i < enemy.length; i++) {
             enemy[i].updatePosition();
             if (enemy[i].hideEnemy) {
                 enemy.splice(i, 1, new Monster(monsterSprites[getRandomIntValue(0,monsterSprites.length - 1)], Position.START_X));
