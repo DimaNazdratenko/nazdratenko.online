@@ -134,6 +134,42 @@ let monsterSprites = [monsterImages, fatBirdImages, stupidBirdImages, chickenIma
 
 preLoaderFunc();
 
+// Game loop
+startTime = Date.now();
+
+function gameLoop() {
+    let now = Date.now();
+    gameTime = now - startTime;
+    requestAnimationFrame(gameLoop);
+
+// Update the current game state
+    state();
+
+    renderer.render(stage);
+}
+
+// Return random value
+function getRandomIntValue(min, max) {
+    return Math.round(Math.random() * (max - min) + min);
+}
+
+// Resize canvas
+function resizeCanvas() {
+    let w,
+        h;
+
+    if (window.innerWidth / window.innerHeight >= ratio) {
+        w = window.innerHeight * ratio;
+        h = window.innerHeight;
+    } else {
+        w = window.innerWidth;
+        h = window.innerWidth / ratio;
+    }
+    renderer.view.style.width = w / 1.3 + 'px';
+    renderer.view.style.height = h / 1.3 + 'px';
+}
+
+// Events
 document.body.addEventListener('keydown', function (e) {
     switch (e.keyCode) {
         case 37:    //  left
@@ -160,35 +196,4 @@ document.body.addEventListener('keyup', function (e) {
     }
 });
 
-function getRandomIntValue(min, max) {
-    return Math.round(Math.random() * (max - min) + min);
-}
-
-// Start animating
-startTime = Date.now();
-
-function gameLoop() {
-    let now = Date.now();
-    gameTime = now - startTime;
-    requestAnimationFrame(gameLoop);
-
-// Update the current game state
-    state();
-
-    renderer.render(stage);
-}
-
-function resizeCanvas() {
-    let w,
-        h;
-
-    if (window.innerWidth / window.innerHeight >= ratio) {
-        w = window.innerHeight * ratio;
-        h = window.innerHeight;
-    } else {
-        w = window.innerWidth;
-        h = window.innerWidth / ratio;
-    }
-    renderer.view.style.width = w / 1.3 + 'px';
-    renderer.view.style.height = h / 1.3 + 'px';
-}
+window.addEventListener('resize', resizeCanvas);
