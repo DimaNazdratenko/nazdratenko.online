@@ -15,19 +15,17 @@ const size = [960, 540],
     ratio = size[0] / size[1],
     renderer = autoDetectRenderer(size[0], size[1]);
 
-resizeCanvas();
-
 let stage = new Container();
 document.querySelector("div.canvas").appendChild(renderer.view);
 
 let state, preLoaderScene, gameScene, gameOverScene, layer, score, message, plane, distance, gameTime, startTime,
-    darkEffectEndGame,
-    darkEffectPreLoader, textureButton, textureButtonDown, textureButtonOver, buttonReplay, textureButtonStart,
-    textureButtonDownStart,
-    textureButtonOverStart, buttonStart, texturePreLoader, preLoader, musicBackground, musicGameOver, flagCollision,
+    darkEffectEndGame, darkEffectPreLoader, textureButton, textureButtonDown, textureButtonOver, buttonReplay,
+    textureButtonStart, textureButtonDownStart, textureButtonOverStart, buttonStart, texturePreLoader, preLoader,
+    musicBackground, musicGameOver, flagCollision,
     gapBetweenBirds = 0,
     enemy = [],
     filtersValue = 0,
+    fullscreenIndex = 1.3,
     blurFilter = new filters.BlurFilter();
 
 const Position = {
@@ -132,6 +130,7 @@ let chickenImages = [
 
 let monsterSprites = [monsterImages, fatBirdImages, stupidBirdImages, chickenImages];
 
+resizeCanvas();
 preLoaderFunc();
 
 // Game loop
@@ -165,8 +164,8 @@ function resizeCanvas() {
         w = window.innerWidth;
         h = window.innerWidth / ratio;
     }
-    renderer.view.style.width = w / 1.3 + 'px';
-    renderer.view.style.height = h / 1.3 + 'px';
+    renderer.view.style.width = w / fullscreenIndex + 'px';
+    renderer.view.style.height = h / fullscreenIndex + 'px';
 }
 
 // Events
