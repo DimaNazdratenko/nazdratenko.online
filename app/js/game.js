@@ -240,7 +240,7 @@ let style = {
     fontSize: '30px',
     fontStyle: 'italic',
     fontWeight: 'bold',
-    fill: 'white',
+    fill: '#ffffff',
     stroke: '#4a1850',
     strokeThickness: 5,
     dropShadow: true,
