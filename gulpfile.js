@@ -100,7 +100,7 @@ gulp.task('browser-sync', function () {
 gulp.task('img', function () {
     return gulp.src('app/assets/img_big/**/*.*')
         .pipe(imagemin())
-        .pipe(gulp.dest('assets/images'))
+        .pipe(gulp.dest('app/assets/images'))
 });
 
 //ftp
