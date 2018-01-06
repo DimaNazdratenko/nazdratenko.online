@@ -56,73 +56,14 @@ function rotatePreLoader() {
 
 function createStartButton() {
 // Add the "Start" button
-    textureButtonStart = Texture.fromImage(imageLinks.start_button);
-    textureButtonDownStart = Texture.fromImage(imageLinks.start_button_down);
-    textureButtonOverStart = Texture.fromImage(imageLinks.start_button_over);
+    textureButtonStart = {
+        original: Texture.fromImage(imageLinks.start_button),
+        down: Texture.fromImage(imageLinks.start_button_down),
+        over: Texture.fromImage(imageLinks.start_button_over)
+    };
 
-    buttonStart = new Sprite(textureButtonStart);
-    buttonStart.buttonMode = true;
-    buttonStart.scale.x = 0.5;
-    buttonStart.scale.y = 0.5;
-    buttonStart.x = renderer.width / 2 - buttonStart.width / 2;
-    buttonStart.y = renderer.height / 2 - buttonStart.height / 2;
-
-// make the button interactive...
-    buttonStart.interactive = true;
-
-    buttonStart
-    // set the mousedown callback...
-        .on('mousedown', onButtonDown)
-        .on('touchstart', onButtonDown)
-
-        // set the mouseup callback...
-        .on('mouseup', onButtonUp)
-        .on('touchend', onButtonUp)
-
-        .on('mouseupoutside', onButtonUpOutside)
-        .on('touchendoutside', onButtonUpOutside)
-
-        // set the mouseover callback...
-        .on('mouseover', onButtonOver)
-
-        // set the mouseout callback...
-        .on('mouseout', onButtonOut);
+    buttonStart = new Button(textureButtonStart, "start");
 
     preLoaderScene.addChild(buttonStart);
-
-    function onButtonDown() {
-        this.isdown = true;
-        this.texture = textureButtonDownStart;
-        this.alpha = 1;
-    }
-
-    function onButtonUp() {
-        if (this.isdown) {
-            this.isdown = false;
-            this.texture = textureButtonOverStart;
-            state = setup;
-            musicBackground.play();
-            this.interactive = false;
-        }
-    }
-
-    function onButtonUpOutside() {
-        this.isdown = false;
-        this.texture = textureButtonStart;
-    }
-
-    function onButtonOver() {
-        if (this.isdown) {
-            return;
-        }
-        this.texture = textureButtonOverStart;
-    }
-
-    function onButtonOut() {
-        if (this.isdown) {
-            return;
-        }
-        this.texture = textureButtonStart;
-    }
 }
 

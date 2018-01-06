@@ -19,9 +19,8 @@ let stage = new Container();
 document.querySelector("div.canvas").appendChild(renderer.view);
 
 let state, preLoaderScene, gameScene, gameOverScene, layer, score, message, plane, distance, gameTime, startTime,
-    darkEffectEndGame, darkEffectPreLoader, textureButton, textureButtonDown, textureButtonOver, buttonReplay,
-    textureButtonStart, textureButtonDownStart, textureButtonOverStart, buttonStart, texturePreLoader, preLoader,
-    musicBackground, musicGameOver, flagCollision,
+    darkEffectEndGame, darkEffectPreLoader, textureButtonReplay, buttonReplay, textureButtonStart, buttonStart,
+    texturePreLoader, preLoader, musicBackground, musicGameOver, flagCollision,
     gapBetweenBirds = 0,
     enemy = [],
     filtersValue = 0,

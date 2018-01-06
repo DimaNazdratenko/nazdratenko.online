@@ -30,12 +30,7 @@ function setup() {
 // Add Score
     scoreAdd();
 
-// // Create musics
-//     musicBackground = new Howl({
-//         src: ['assets/music/background_music.mp3'],
-//         volume: 0.5
-//     });
-
+// Create musics
     musicGameOver = new Howl({
         src: ['assets/music/game_over_music.mp3'],
         volume: 0.5
@@ -62,74 +57,13 @@ function setup() {
     gameOverScene.addChild(message);
 
 // Add Replay button
-    textureButton = Texture.fromImage(imageLinks.replay_button);
-    textureButtonDown = Texture.fromImage(imageLinks.replay_button_down);
-    textureButtonOver = Texture.fromImage(imageLinks.replay_button_over);
-
-    buttonReplay = new Sprite(textureButton);
-    buttonReplay.buttonMode = true;
-    buttonReplay.scale.x = 0.5;
-    buttonReplay.scale.y = 0.5;
-    buttonReplay.x = renderer.width / 2 - buttonReplay.width / 2;
-    buttonReplay.y = renderer.height / 2 - buttonReplay.height / 2;
-
-// Make the button interactive
-    buttonReplay.interactive = true;
-
-    buttonReplay
-    // set the mousedown callback...
-        .on('mousedown', onButtonDown)
-        .on('touchstart', onButtonDown)
-
-        // set the mouseup callback...
-        .on('mouseup', onButtonUp)
-        .on('touchend', onButtonUp)
-
-        .on('mouseupoutside', onButtonUpOutside)
-        .on('touchendoutside', onButtonUpOutside)
-
-        // set the mouseover callback...
-        .on('mouseover', onButtonOver)
-
-        // set the mouseout callback...
-        .on('mouseout', onButtonOut);
-
-// Add it to the gameOverScene
+    textureButtonReplay = {
+        original: Texture.fromImage(imageLinks.replay_button),
+        down: Texture.fromImage(imageLinks.replay_button_down),
+        over: Texture.fromImage(imageLinks.replay_button_over)
+    };
+    buttonReplay = new Button(textureButtonReplay, "replay");
     gameOverScene.addChild(buttonReplay);
-
-    function onButtonDown() {
-        this.isdown = true;
-        this.texture = textureButtonDown;
-        this.alpha = 1;
-    }
-
-    function onButtonUp() {
-        if (this.isdown) {
-            this.isdown = false;
-            this.texture = textureButton;
-            state = reset;
-            musicGameOver.stop();
-        }
-    }
-
-    function onButtonUpOutside() {
-        this.isdown = false;
-        this.texture = textureButton;
-    }
-
-    function onButtonOver() {
-        if (this.isdown) {
-            return;
-        }
-        this.texture = textureButtonOver;
-    }
-
-    function onButtonOut() {
-        if (this.isdown) {
-            return;
-        }
-        this.texture = textureButton;
-    }
 
 // Set the game state and refresh time
     startTime = Date.now();
