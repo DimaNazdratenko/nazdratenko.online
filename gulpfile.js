@@ -98,7 +98,7 @@ gulp.task('browser-sync', function () {
 
 //img min
 gulp.task('img', function () {
-    return gulp.src('assets/img_big/**/*.*')
+    return gulp.src('app/assets/img_big/**/*.*')
         .pipe(imagemin())
         .pipe(gulp.dest('assets/images'))
 });
