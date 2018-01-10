@@ -472,16 +472,19 @@ class PlaneAnimation extends PIXI.extras.AnimatedSprite {
         this.interactive = true;
         this.buttonMode = true;
 
-        this.on('pointerdown', this.onDragStart)
+        this.on('mousedown', this.onDragStart)
+            .on('touchstart', this.onDragStart)
             .on('pointerup', this.onDragEnd)
             .on('pointerupoutside', this.onDragEnd)
-            .on('pointermove', this.onDragMove)
+            .on('mousemove', this.onDragMove)
+            .on('touchmove', this.onDragMove);
     }
 
-    onDragStart() {
+    onDragStart(e) {
         this.data = event.data;
-        this.alpha = 0.5;
         this.dragging = true;
+
+        e.type === "touchstart" ? this.x += this.width : this.x;
     }
 
     onDragEnd() {
@@ -493,7 +496,7 @@ class PlaneAnimation extends PIXI.extras.AnimatedSprite {
     onDragMove(e){
         if (this.dragging) {
             let newPosition = e.data.getLocalPosition(stage);
-            this.x = newPosition.x;
+            this.x = e.type === "touchmove" ? newPosition.x + this.width : newPosition.x;
             this.y = newPosition.y;
         }
     }
