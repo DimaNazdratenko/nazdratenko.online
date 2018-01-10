@@ -58,7 +58,7 @@ gulp.task('dependencies', function () {
 });
 
 gulp.task('pixi', function () {
-    return gulp.src(['node_modules/pixi.js/dist/pixi.min.js'])
+    return gulp.src(['node_modules/pixi.js/dist/pixi.min.js', "node_modules/pixi-display/bin/pixi-display.min.js"])
         .pipe(concat('pixi.min.js'))
         .pipe(gulp.dest(paths.devDir + 'js/'))
 });
