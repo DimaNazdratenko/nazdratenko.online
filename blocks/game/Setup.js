@@ -60,7 +60,10 @@ function setup() {
     textureButtonReplay = {
         original: Texture.fromImage(imageLinks.replay_button),
         down: Texture.fromImage(imageLinks.replay_button_down),
-        over: Texture.fromImage(imageLinks.replay_button_over)
+        over: Texture.fromImage(imageLinks.replay_button_over),
+        positionX: renderer.width / 2,
+        positionY: renderer.height / 2,
+        scale: 0.5
     };
     buttonReplay = new Button(textureButtonReplay, "replay");
     gameOverScene.addChild(buttonReplay);

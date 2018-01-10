@@ -32,10 +32,9 @@ class Button extends PIXI.Sprite {
 
         this.buttonMode = true;
         this.interactive = true;
-        this.scale.x = 0.5;
-        this.scale.y = 0.5;
-        this.x = renderer.width / 2 - this.width / 2;
-        this.y = renderer.height / 2 - this.height / 2;
+        this.scale.set(this.textureButton.scale, this.textureButton.scale);
+        this.x = this.textureButton.positionX - this.width / 2;
+        this.y = this.textureButton.positionY - this.height / 2;
         this.isdown = false;
         this.buttonType = type;
 
@@ -64,13 +63,16 @@ class Button extends PIXI.Sprite {
             this.isdown = false;
             this.texture = this.textureButton.original;
 
-            if(this.buttonType === "start"){
+            if (this.buttonType === "start") {
                 state = setup;
                 musicBackground.play();
                 this.interactive = false;
-            } else if(this.buttonType === "replay") {
+            } else if (this.buttonType === "replay") {
                 state = reset;
                 musicGameOver.stop();
+            } else if (this.buttonType === "fullscreen") {
+                Button.toggleFullScreen();
+
             }
         }
     }
@@ -92,6 +94,30 @@ class Button extends PIXI.Sprite {
             return;
         }
         this.texture = this.textureButton.original;
+    }
+
+    static toggleFullScreen() {
+        if (!document.fullscreenElement && !document.mozFullScreenElement && !document.webkitFullscreenElement) {
+            fullscreenIndex = 1;
+
+            if (renderer.view.requestFullscreen) {
+                renderer.view.requestFullscreen();
+            } else if (renderer.view.mozRequestFullScreen) {
+                renderer.view.mozRequestFullScreen();
+            } else if (renderer.view.webkitRequestFullscreen) {
+                renderer.view.webkitRequestFullscreen();
+            }
+        } else {
+            fullscreenIndex = 1.3;
+
+            if (document.cancelFullScreen) {
+                document.cancelFullScreen();
+            } else if (document.mozCancelFullScreen) {
+                document.mozCancelFullScreen();
+            } else if (document.webkitCancelFullScreen) {
+                document.webkitCancelFullScreen();
+            }
+        }
     }
 }
 function detectCollision(plane, enemy) {
@@ -218,7 +244,7 @@ document.querySelector("div.canvas").appendChild(renderer.view);
 
 let state, preLoaderScene, gameScene, gameOverScene, layer, score, message, plane, distance, gameTime, startTime,
     darkEffectEndGame, darkEffectPreLoader, textureButtonReplay, buttonReplay, textureButtonStart, buttonStart,
-    texturePreLoader, preLoader, musicBackground, musicGameOver, flagCollision,
+    textureButtonFullscreen, buttonFullscreen, texturePreLoader, preLoader, musicBackground, musicGameOver, flagCollision,
     gapBetweenBirds = 0,
     enemy = [],
     filtersValue = 0,
@@ -286,7 +312,10 @@ let imageLinks = {
     replay_button_over: 'assets/images/replay_button/replay_button_3.png',
     start_button: 'assets/images/start_button/start_button_1.png',
     start_button_down: 'assets/images/start_button/start_button_2.png',
-    start_button_over: 'assets/images/start_button/start_button_3.png'
+    start_button_over: 'assets/images/start_button/start_button_3.png',
+    fullscreen_button: 'assets/images/fullscreen_button/fullscreen_button_1.png',
+    fullscreen_button_over: 'assets/images/fullscreen_button/fullscreen_button_2.png',
+    fullscreen_button_down: 'assets/images/fullscreen_button/fullscreen_button_3.png',
 };
 
 let monsterImages = [
@@ -557,6 +586,7 @@ function preLoaderFunc() {
 
             // add start button
             createStartButton();
+            createFullscreenButton();
         });
 
     function onProgressCallback(event) {
@@ -578,12 +608,30 @@ function createStartButton() {
     textureButtonStart = {
         original: Texture.fromImage(imageLinks.start_button),
         down: Texture.fromImage(imageLinks.start_button_down),
-        over: Texture.fromImage(imageLinks.start_button_over)
+        over: Texture.fromImage(imageLinks.start_button_over),
+        positionX: renderer.width / 2,
+        positionY: renderer.height / 2,
+        scale: 0.5
     };
 
     buttonStart = new Button(textureButtonStart, "start");
 
     preLoaderScene.addChild(buttonStart);
+}
+
+function createFullscreenButton() {
+    textureButtonFullscreen = {
+        original: Texture.fromImage(imageLinks.fullscreen_button),
+        over: Texture.fromImage(imageLinks.fullscreen_button_over),
+        down: Texture.fromImage(imageLinks.fullscreen_button_down),
+        positionX: renderer.width - 50,
+        positionY: renderer.height - 40,
+        scale: 0.3
+    };
+
+    buttonFullscreen  = new Button(textureButtonFullscreen, "fullscreen");
+
+    preLoaderScene.addChild(buttonFullscreen);
 }
 
 
@@ -697,7 +745,10 @@ function setup() {
     textureButtonReplay = {
         original: Texture.fromImage(imageLinks.replay_button),
         down: Texture.fromImage(imageLinks.replay_button_down),
-        over: Texture.fromImage(imageLinks.replay_button_over)
+        over: Texture.fromImage(imageLinks.replay_button_over),
+        positionX: renderer.width / 2,
+        positionY: renderer.height / 2,
+        scale: 0.5
     };
     buttonReplay = new Button(textureButtonReplay, "replay");
     gameOverScene.addChild(buttonReplay);

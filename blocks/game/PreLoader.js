@@ -38,6 +38,7 @@ function preLoaderFunc() {
 
             // add start button
             createStartButton();
+            createFullscreenButton();
         });
 
     function onProgressCallback(event) {
@@ -59,11 +60,29 @@ function createStartButton() {
     textureButtonStart = {
         original: Texture.fromImage(imageLinks.start_button),
         down: Texture.fromImage(imageLinks.start_button_down),
-        over: Texture.fromImage(imageLinks.start_button_over)
+        over: Texture.fromImage(imageLinks.start_button_over),
+        positionX: renderer.width / 2,
+        positionY: renderer.height / 2,
+        scale: 0.5
     };
 
     buttonStart = new Button(textureButtonStart, "start");
 
     preLoaderScene.addChild(buttonStart);
+}
+
+function createFullscreenButton() {
+    textureButtonFullscreen = {
+        original: Texture.fromImage(imageLinks.fullscreen_button),
+        over: Texture.fromImage(imageLinks.fullscreen_button_over),
+        down: Texture.fromImage(imageLinks.fullscreen_button_down),
+        positionX: renderer.width - 50,
+        positionY: renderer.height - 40,
+        scale: 0.3
+    };
+
+    buttonFullscreen  = new Button(textureButtonFullscreen, "fullscreen");
+
+    preLoaderScene.addChild(buttonFullscreen);
 }
 

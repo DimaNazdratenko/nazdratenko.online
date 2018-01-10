@@ -7,10 +7,9 @@ class Button extends PIXI.Sprite {
 
         this.buttonMode = true;
         this.interactive = true;
-        this.scale.x = 0.5;
-        this.scale.y = 0.5;
-        this.x = renderer.width / 2 - this.width / 2;
-        this.y = renderer.height / 2 - this.height / 2;
+        this.scale.set(this.textureButton.scale, this.textureButton.scale);
+        this.x = this.textureButton.positionX - this.width / 2;
+        this.y = this.textureButton.positionY - this.height / 2;
         this.isdown = false;
         this.buttonType = type;
 
@@ -39,13 +38,16 @@ class Button extends PIXI.Sprite {
             this.isdown = false;
             this.texture = this.textureButton.original;
 
-            if(this.buttonType === "start"){
+            if (this.buttonType === "start") {
                 state = setup;
                 musicBackground.play();
                 this.interactive = false;
-            } else if(this.buttonType === "replay") {
+            } else if (this.buttonType === "replay") {
                 state = reset;
                 musicGameOver.stop();
+            } else if (this.buttonType === "fullscreen") {
+                Button.toggleFullScreen();
+
             }
         }
     }
@@ -67,5 +69,29 @@ class Button extends PIXI.Sprite {
             return;
         }
         this.texture = this.textureButton.original;
+    }
+
+    static toggleFullScreen() {
+        if (!document.fullscreenElement && !document.mozFullScreenElement && !document.webkitFullscreenElement) {
+            fullscreenIndex = 1;
+
+            if (renderer.view.requestFullscreen) {
+                renderer.view.requestFullscreen();
+            } else if (renderer.view.mozRequestFullScreen) {
+                renderer.view.mozRequestFullScreen();
+            } else if (renderer.view.webkitRequestFullscreen) {
+                renderer.view.webkitRequestFullscreen();
+            }
+        } else {
+            fullscreenIndex = 1.3;
+
+            if (document.cancelFullScreen) {
+                document.cancelFullScreen();
+            } else if (document.mozCancelFullScreen) {
+                document.mozCancelFullScreen();
+            } else if (document.webkitCancelFullScreen) {
+                document.webkitCancelFullScreen();
+            }
+        }
     }
 }

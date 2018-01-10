@@ -20,7 +20,7 @@ document.querySelector("div.canvas").appendChild(renderer.view);
 
 let state, preLoaderScene, gameScene, gameOverScene, layer, score, message, plane, distance, gameTime, startTime,
     darkEffectEndGame, darkEffectPreLoader, textureButtonReplay, buttonReplay, textureButtonStart, buttonStart,
-    texturePreLoader, preLoader, musicBackground, musicGameOver, flagCollision,
+    textureButtonFullscreen, buttonFullscreen, texturePreLoader, preLoader, musicBackground, musicGameOver, flagCollision,
     gapBetweenBirds = 0,
     enemy = [],
     filtersValue = 0,
@@ -88,7 +88,10 @@ let imageLinks = {
     replay_button_over: 'assets/images/replay_button/replay_button_3.png',
     start_button: 'assets/images/start_button/start_button_1.png',
     start_button_down: 'assets/images/start_button/start_button_2.png',
-    start_button_over: 'assets/images/start_button/start_button_3.png'
+    start_button_over: 'assets/images/start_button/start_button_3.png',
+    fullscreen_button: 'assets/images/fullscreen_button/fullscreen_button_1.png',
+    fullscreen_button_over: 'assets/images/fullscreen_button/fullscreen_button_2.png',
+    fullscreen_button_down: 'assets/images/fullscreen_button/fullscreen_button_3.png',
 };
 
 let monsterImages = [
