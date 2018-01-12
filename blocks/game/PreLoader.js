@@ -1,7 +1,7 @@
 function preLoaderFunc() {
 
     preLoaderScene = new Container();
-    stage.addChild(preLoaderScene);
+    gameElements.addChild(preLoaderScene);
 
 // Create dark effect and add it into preLoaderScene
     darkEffectPreLoader = new Graphics();
@@ -83,6 +83,6 @@ function createFullscreenButton() {
 
     buttonFullscreen  = new Button(textureButtonFullscreen, "fullscreen");
 
-    preLoaderScene.addChild(buttonFullscreen);
+    uiElements.addChild(buttonFullscreen);
 }
 

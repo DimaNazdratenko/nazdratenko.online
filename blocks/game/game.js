@@ -10,12 +10,17 @@ let Container = PIXI.Container,
     filters = PIXI.filters,
     AnimatedSprite = PIXI.extras.AnimatedSprite;
 
-
 const size = [960, 540],
     ratio = size[0] / size[1],
     renderer = autoDetectRenderer(size[0], size[1]);
 
 let stage = new Container();
+
+let gameElements = new Container(),
+    uiElements = new Container();
+stage.addChild(gameElements);
+stage.addChild(uiElements);
+
 document.querySelector("div.canvas").appendChild(renderer.view);
 
 let state, preLoaderScene, gameScene, gameOverScene, layer, score, message, plane, distance, gameTime, startTime,

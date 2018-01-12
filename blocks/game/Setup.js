@@ -2,7 +2,7 @@ function setup() {
 
 // Create gameScene
     gameScene = new Container();
-    stage.addChild(gameScene);
+    gameElements.addChild(gameScene);
 
 // Add monsters and background on the scene
     backgroundAddOnScene();
@@ -38,7 +38,7 @@ function setup() {
 
 // Create the gameOverScene
     gameOverScene = new Container();
-    stage.addChild(gameOverScene);
+    gameElements.addChild(gameOverScene);
 
 // Make the gameOverScene invisible when the game first starts
     gameOverScene.visible = false;

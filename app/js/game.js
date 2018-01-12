@@ -234,12 +234,17 @@ let Container = PIXI.Container,
     filters = PIXI.filters,
     AnimatedSprite = PIXI.extras.AnimatedSprite;
 
-
 const size = [960, 540],
     ratio = size[0] / size[1],
     renderer = autoDetectRenderer(size[0], size[1]);
 
 let stage = new Container();
+
+let gameElements = new Container(),
+    uiElements = new Container();
+stage.addChild(gameElements);
+stage.addChild(uiElements);
+
 document.querySelector("div.canvas").appendChild(renderer.view);
 
 let state, preLoaderScene, gameScene, gameOverScene, layer, score, message, plane, distance, gameTime, startTime,
@@ -552,7 +557,7 @@ function play() {
 function preLoaderFunc() {
 
     preLoaderScene = new Container();
-    stage.addChild(preLoaderScene);
+    gameElements.addChild(preLoaderScene);
 
 // Create dark effect and add it into preLoaderScene
     darkEffectPreLoader = new Graphics();
@@ -634,7 +639,7 @@ function createFullscreenButton() {
 
     buttonFullscreen  = new Button(textureButtonFullscreen, "fullscreen");
 
-    preLoaderScene.addChild(buttonFullscreen);
+    uiElements.addChild(buttonFullscreen);
 }
 
 
@@ -690,7 +695,7 @@ function setup() {
 
 // Create gameScene
     gameScene = new Container();
-    stage.addChild(gameScene);
+    gameElements.addChild(gameScene);
 
 // Add monsters and background on the scene
     backgroundAddOnScene();
@@ -726,7 +731,7 @@ function setup() {
 
 // Create the gameOverScene
     gameOverScene = new Container();
-    stage.addChild(gameOverScene);
+    gameElements.addChild(gameOverScene);
 
 // Make the gameOverScene invisible when the game first starts
     gameOverScene.visible = false;
