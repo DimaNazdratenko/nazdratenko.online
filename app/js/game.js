@@ -36,6 +36,7 @@ class Button extends PIXI.Sprite {
         this.x = this.textureButton.positionX - this.width / 2;
         this.y = this.textureButton.positionY - this.height / 2;
         this.isdown = false;
+        this.fullIphone = false;
         this.buttonType = type;
 
         this.on('mousedown', this.onButtonDown)
@@ -58,7 +59,7 @@ class Button extends PIXI.Sprite {
         this.alpha = 1;
     }
 
-    onButtonUp() {
+    onButtonUp(e) {
         if (this.isdown) {
             this.isdown = false;
             this.texture = this.textureButton.original;
@@ -70,9 +71,10 @@ class Button extends PIXI.Sprite {
             } else if (this.buttonType === "replay") {
                 state = reset;
                 musicGameOver.stop();
-            } else if (this.buttonType === "fullscreen") {
+            } else if (this.buttonType === "fullscreen" && e.type == "mouseup") {
                 Button.toggleFullScreen();
-
+            } else if (this.buttonType === "fullscreen" && e.type == "touchend") {
+                this.toggleFullScreenIphone();
             }
         }
     }
@@ -94,6 +96,34 @@ class Button extends PIXI.Sprite {
             return;
         }
         this.texture = this.textureButton.original;
+    }
+
+    toggleFullScreenIphone() {
+
+        if (!this.fullIphone && window.innerWidth / window.innerHeight > 1) {
+            this.fullIphone = true;
+
+            renderer.view.style.position = "absolute";
+            renderer.view.style.top = "0";
+            renderer.view.style.left = "0";
+            renderer.view.style.width = "100%";
+            renderer.view.style.height = "100%";
+            renderer.view.style.zIndex = "1030";
+
+            rotateScreen.visible = false;
+
+        } else if (!this.fullIphone && window.innerWidth / window.innerHeight < 1) {
+            this.fullIphone = false;
+
+            rotateScreen.visible = true;
+
+        } else {
+            this.fullIphone = false;
+
+            renderer.view.style.position = "";
+            renderer.view.style.zIndex = "10";
+            resizeCanvas();
+        }
     }
 
     static toggleFullScreen() {
@@ -247,7 +277,7 @@ stage.addChild(uiElements);
 
 document.querySelector("div.canvas").appendChild(renderer.view);
 
-let state, preLoaderScene, gameScene, gameOverScene, layer, score, message, plane, distance, gameTime, startTime,
+let state, preLoaderScene, gameScene, gameOverScene, layer, score, message, rotateScreen, plane, distance, gameTime, startTime,
     darkEffectEndGame, darkEffectPreLoader, textureButtonReplay, buttonReplay, textureButtonStart, buttonStart,
     textureButtonFullscreen, buttonFullscreen, texturePreLoader, preLoader, musicBackground, musicGameOver, flagCollision,
     gapBetweenBirds = 0,
@@ -395,6 +425,7 @@ function resizeCanvas() {
         w = window.innerWidth;
         h = window.innerWidth / ratio;
     }
+    renderer.view.style.position = "";
     renderer.view.style.width = w / fullscreenIndex + 'px';
     renderer.view.style.height = h / fullscreenIndex + 'px';
 }
@@ -571,8 +602,16 @@ function preLoaderFunc() {
         volume: 0.5
     });
 
+// Create Text "Rotate the screen"
+    style.fontSize = '50px';
+    rotateScreen = new Text("Переверните экран!", style);
+    rotateScreen.x = renderer.view.width / 2 - rotateScreen.width / 2;
+    rotateScreen.y = renderer.view.height / 1.5 - rotateScreen.height / 2;
+    rotateScreen.visible = false;
+    uiElements.addChild(rotateScreen);
+
 // Create loader and add it into preLoaderScene
-    var preLoaderImg = 'assets/images/preLoader.png';
+    let preLoaderImg = 'assets/images/preLoader.png';
     loader.add(preLoaderImg);
     texturePreLoader = Texture.fromImage(preLoaderImg);
     preLoader = new Sprite(texturePreLoader);
@@ -582,7 +621,7 @@ function preLoaderFunc() {
     preLoaderScene.addChild(preLoader);
 
 // Downloading assets
-    for (var key in imageLinks) {
+    for (let key in imageLinks) {
         loader = loader.add(imageLinks[key]);
     }
 
@@ -680,6 +719,8 @@ function reset() {
     filtersValue = 0;
 }
 function scoreAdd() {
+    style.fontSize = "30px";
+
     score = new Text('Score: ' + distance, style);
     score.x = Position.SCORE_X;
     score.y = Position.SCORE_Y;

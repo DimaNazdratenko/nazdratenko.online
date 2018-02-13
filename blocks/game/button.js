@@ -11,6 +11,7 @@ class Button extends PIXI.Sprite {
         this.x = this.textureButton.positionX - this.width / 2;
         this.y = this.textureButton.positionY - this.height / 2;
         this.isdown = false;
+        this.fullIphone = false;
         this.buttonType = type;
 
         this.on('mousedown', this.onButtonDown)
@@ -33,7 +34,7 @@ class Button extends PIXI.Sprite {
         this.alpha = 1;
     }
 
-    onButtonUp() {
+    onButtonUp(e) {
         if (this.isdown) {
             this.isdown = false;
             this.texture = this.textureButton.original;
@@ -45,9 +46,10 @@ class Button extends PIXI.Sprite {
             } else if (this.buttonType === "replay") {
                 state = reset;
                 musicGameOver.stop();
-            } else if (this.buttonType === "fullscreen") {
+            } else if (this.buttonType === "fullscreen" && e.type == "mouseup") {
                 Button.toggleFullScreen();
-
+            } else if (this.buttonType === "fullscreen" && e.type == "touchend") {
+                this.toggleFullScreenIphone();
             }
         }
     }
@@ -69,6 +71,34 @@ class Button extends PIXI.Sprite {
             return;
         }
         this.texture = this.textureButton.original;
+    }
+
+    toggleFullScreenIphone() {
+
+        if (!this.fullIphone && window.innerWidth / window.innerHeight > 1) {
+            this.fullIphone = true;
+
+            renderer.view.style.position = "absolute";
+            renderer.view.style.top = "0";
+            renderer.view.style.left = "0";
+            renderer.view.style.width = "100%";
+            renderer.view.style.height = "100%";
+            renderer.view.style.zIndex = "1030";
+
+            rotateScreen.visible = false;
+
+        } else if (!this.fullIphone && window.innerWidth / window.innerHeight < 1) {
+            this.fullIphone = false;
+
+            rotateScreen.visible = true;
+
+        } else {
+            this.fullIphone = false;
+
+            renderer.view.style.position = "";
+            renderer.view.style.zIndex = "10";
+            resizeCanvas();
+        }
     }
 
     static toggleFullScreen() {

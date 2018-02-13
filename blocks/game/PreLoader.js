@@ -15,8 +15,16 @@ function preLoaderFunc() {
         volume: 0.5
     });
 
+// Create Text "Rotate the screen"
+    style.fontSize = '50px';
+    rotateScreen = new Text("Переверните экран!", style);
+    rotateScreen.x = renderer.view.width / 2 - rotateScreen.width / 2;
+    rotateScreen.y = renderer.view.height / 1.5 - rotateScreen.height / 2;
+    rotateScreen.visible = false;
+    uiElements.addChild(rotateScreen);
+
 // Create loader and add it into preLoaderScene
-    var preLoaderImg = 'assets/images/preLoader.png';
+    let preLoaderImg = 'assets/images/preLoader.png';
     loader.add(preLoaderImg);
     texturePreLoader = Texture.fromImage(preLoaderImg);
     preLoader = new Sprite(texturePreLoader);
@@ -26,7 +34,7 @@ function preLoaderFunc() {
     preLoaderScene.addChild(preLoader);
 
 // Downloading assets
-    for (var key in imageLinks) {
+    for (let key in imageLinks) {
         loader = loader.add(imageLinks[key]);
     }
 

@@ -23,7 +23,7 @@ stage.addChild(uiElements);
 
 document.querySelector("div.canvas").appendChild(renderer.view);
 
-let state, preLoaderScene, gameScene, gameOverScene, layer, score, message, plane, distance, gameTime, startTime,
+let state, preLoaderScene, gameScene, gameOverScene, layer, score, message, rotateScreen, plane, distance, gameTime, startTime,
     darkEffectEndGame, darkEffectPreLoader, textureButtonReplay, buttonReplay, textureButtonStart, buttonStart,
     textureButtonFullscreen, buttonFullscreen, texturePreLoader, preLoader, musicBackground, musicGameOver, flagCollision,
     gapBetweenBirds = 0,
@@ -171,6 +171,7 @@ function resizeCanvas() {
         w = window.innerWidth;
         h = window.innerWidth / ratio;
     }
+    renderer.view.style.position = "";
     renderer.view.style.width = w / fullscreenIndex + 'px';
     renderer.view.style.height = h / fullscreenIndex + 'px';
 }
