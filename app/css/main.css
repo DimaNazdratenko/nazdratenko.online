@@ -9314,6 +9314,17 @@ nav {
       font-size: 120%;
       visibility: hidden; }
 
+@media (max-width: 575px) {
+  .contacts_item {
+    margin: 15px 0; }
+    .contacts_item_link {
+      margin: 0; }
+    .contacts_item_text1 {
+      margin: 0 5px;
+      font-size: 120%; }
+    .contacts_item_text2 {
+      font-size: 110%; } }
+
 .footer {
   -webkit-box-flex: 0;
       -ms-flex: 0 0 auto;

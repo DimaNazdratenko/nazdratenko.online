@@ -37,7 +37,27 @@
       font-size: 120%;
       visibility: hidden;
     }
-
   }
+}
 
+@include media-breakpoint-down(xs) {
+  .contacts{
+    &_item {
+      margin: 15px 0;
+
+      &_link {
+        margin: 0;
+      }
+
+      &_text1{
+        margin: 0 5px;
+
+        font-size: 120%;
+      }
+
+      &_text2{
+        font-size: 110%;
+      }
+    }
+  }
 }
