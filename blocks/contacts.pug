@@ -1,5 +1,9 @@
 extends  template
 
+append info
+    script(defer, src="js/three.min.js")
+    script(defer, src="js/threeAdditional.min.js")
+
 block content
     div(class="contacts")
         h1(class="contacts_title") Contact me
@@ -40,3 +44,6 @@ block content
             div(class="contacts_item_text1") Messenger:
             span(class="contacts_item_text2")  DimaNazdratenko
 
+    div(class="birds")
+        script(defer, src="js/movement.min.js")
+        script(defer, src="js/birds.min.js")

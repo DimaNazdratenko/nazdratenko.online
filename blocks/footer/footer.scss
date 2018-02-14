@@ -3,6 +3,7 @@
   text-align: center;
   background-color: $header_background_color;
   color: $header_color;
+  z-index: 20;
 
   &_social {
     padding: 10px 0;

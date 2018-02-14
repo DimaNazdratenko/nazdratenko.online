@@ -9477,7 +9477,8 @@ nav {
       -ms-flex-direction: column;
           flex-direction: column;
   margin: 50px 0;
-  width: 100%; }
+  width: 100%;
+  z-index: 20; }
   .contacts_title {
     text-align: center;
     font-weight: 700;
@@ -9506,6 +9507,12 @@ nav {
       font-size: 120%;
       visibility: hidden; }
 
+.birds {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10; }
+
 @media (max-width: 575.98px) {
   .contacts_item {
     margin: 15px 0; }
@@ -9523,7 +9530,8 @@ nav {
           flex: 0 0 auto;
   text-align: center;
   background-color: #343A40;
-  color: #FBFBFB; }
+  color: #FBFBFB;
+  z-index: 20; }
   .footer_social {
     padding: 10px 0; }
     .footer_social a {

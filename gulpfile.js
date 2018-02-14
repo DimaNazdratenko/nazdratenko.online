@@ -6,9 +6,8 @@ let gulp = require('gulp'),
     plumber = require('gulp-plumber'),
     prefix = require('gulp-autoprefixer'),
     imagemin = require('gulp-imagemin'),
-    browserSync = require('browser-sync').create(),
-    ftp = require('vinyl-ftp'),
-    gutil = require('gulp-util');
+    uglify = require('gulp-uglify'),
+    browserSync = require('browser-sync').create();
 
 let paths = {
     blocks: 'blocks/',
@@ -44,7 +43,7 @@ gulp.task('sass', function () {
 
 //js compile
 gulp.task('js', function () {
-    return gulp.src([paths.blocks + '**/*.js', '!' + paths.blocks + 'game/**/*.js'])
+    return gulp.src([paths.blocks + '**/*.js', '!' + paths.blocks + 'game/**/*.js', '!' + paths.blocks + 'birds/**/*.js'])
         .pipe(sort())
         .pipe(concat('main.js'))
         .pipe(gulp.dest(paths.devDir + 'js/'))
@@ -63,6 +62,34 @@ gulp.task('pixi', function () {
         .pipe(gulp.dest(paths.devDir + 'js/'))
 });
 
+gulp.task('three', function () {
+    return gulp.src(['node_modules/three/build/three.min.js'])
+        .pipe(concat('three.min.js'))
+        .pipe(gulp.dest(paths.devDir + 'js/'))
+});
+
+gulp.task('threeAdditional', function () {
+    return gulp.src([paths.blocks + 'birds/*.js', '!' + paths.blocks + 'birds/movement.js', '!' + paths.blocks + 'birds/birds.js'])
+        .pipe(sort())
+        .pipe(uglify())
+        .pipe(concat('threeAdditional.min.js'))
+        .pipe(gulp.dest(paths.devDir + 'js/'))
+});
+
+gulp.task('movement', function () {
+    return gulp.src([paths.blocks + 'birds/movement.js'])
+        .pipe(uglify())
+        .pipe(concat('movement.min.js'))
+        .pipe(gulp.dest(paths.devDir + 'js/'))
+});
+
+gulp.task('birds', function () {
+    return gulp.src([paths.blocks + 'birds/birds.js'])
+        .pipe(uglify())
+        .pipe(concat('birds.min.js'))
+        .pipe(gulp.dest(paths.devDir + 'js/'))
+});
+
 gulp.task('howler', function () {
     return gulp.src(['node_modules/howler/dist/howler.min.js'])
         .pipe(concat('howler.min.js'))
@@ -75,14 +102,6 @@ gulp.task('game', function () {
         .pipe(concat('game.js'))
         .pipe(gulp.dest(paths.devDir + 'js/'))
         .pipe(browserSync.stream());
-});
-
-//watch
-gulp.task('watch', function () {
-    gulp.watch(paths.blocks + '**/*.pug', ['pug']);
-    gulp.watch([paths.blocks + '**/*.sass', paths.blocks + '**/*.scss'], ['sass']);
-    gulp.watch([paths.blocks + '**/*.js', '!' + paths.blocks + 'game/**/*.js'], ['js']);
-    gulp.watch(paths.blocks + 'game/**/*.js', ['game']);
 });
 
 //server
@@ -103,33 +122,13 @@ gulp.task('img', function () {
         .pipe(gulp.dest('app/assets/images'))
 });
 
-//ftp
-gulp.task('send', function () {
-    let conn = ftp.create({
-        host: 'files.000webhost.com',
-        user: 'nazdratenko',
-        password: 'T9rquxhb',
-        parallel: 1,
-        maxConnections:1,
-        log: gutil.log
-    });
-
-    /* list all files you wish to ftp in the glob variable */
-    let globs = [
-        'app/**',
-        '!assets/**',
-        '!blocks/**',
-        '!node_modules/**',
-        'gulpfile.js',
-        'package.json',
-        'package-lock.json',
-        'README.md'
-    ];
-
-    return gulp.src(globs, {base: '.', buffer: false})
-        .pipe(conn.newer('/public_html/'))
-        .pipe(conn.dest('/public_html/'))
+//watch
+gulp.task('watch', function () {
+    gulp.watch(paths.blocks + '**/*.pug', ['pug']);
+    gulp.watch([paths.blocks + '**/*.sass', paths.blocks + '**/*.scss'], ['sass']);
+    gulp.watch([paths.blocks + '**/*.js', '!' + paths.blocks + 'game/**/*.js', '!' + paths.blocks + 'birds/**/*.js'], ['js']);
+    gulp.watch(paths.blocks + 'game/**/*.js', ['game']);
 });
 
 //default
-gulp.task('default', ['browser-sync', 'watch', 'pug', 'sass', 'js', 'dependencies', 'pixi', 'howler', 'game']);
+gulp.task('default', ['browser-sync', 'watch', 'pug', 'sass', 'js', 'dependencies', 'pixi', 'three', 'threeAdditional', 'movement', 'birds', 'howler', 'game']);
