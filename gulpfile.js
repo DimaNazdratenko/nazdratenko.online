@@ -7,6 +7,7 @@ let gulp = require('gulp'),
     prefix = require('gulp-autoprefixer'),
     imagemin = require('gulp-imagemin'),
     uglify = require('gulp-uglify'),
+    uglifyES6 = require('gulp-uglify-es').default,
     browserSync = require('browser-sync').create();
 
 let paths = {
@@ -45,7 +46,12 @@ gulp.task('sass', function () {
 gulp.task('js', function () {
     return gulp.src([paths.blocks + '**/*.js', '!' + paths.blocks + 'game/**/*.js', '!' + paths.blocks + 'birds/**/*.js'])
         .pipe(sort())
-        .pipe(concat('main.js'))
+        .pipe(uglifyES6())
+        .on('error', function(err) {
+            console.error('Error in compress task', err.toString());
+        })
+
+        .pipe(concat('main.min.js'))
         .pipe(gulp.dest(paths.devDir + 'js/'))
         .pipe(browserSync.stream());
 });
@@ -99,7 +105,8 @@ gulp.task('howler', function () {
 gulp.task('game', function () {
     return gulp.src([paths.blocks + 'game/*.js'])
         .pipe(sort())
-        .pipe(concat('game.js'))
+        .pipe(uglifyES6())
+        .pipe(concat('game.min.js'))
         .pipe(gulp.dest(paths.devDir + 'js/'))
         .pipe(browserSync.stream());
 });
