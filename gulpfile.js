@@ -138,4 +138,4 @@ gulp.task('watch', function () {
 });
 
 //default
-gulp.task('default', ['browser-sync', 'watch', 'pug', 'sass', 'js', 'dependencies', 'pixi', 'three', 'threeAdditional', 'movement', 'birds', 'howler', 'game']);
+gulp.task('default', gulp.series('browser-sync', 'watch', 'pug', 'sass', 'js', 'dependencies', 'pixi', 'three', 'threeAdditional', 'movement', 'birds', 'howler', 'game'));
