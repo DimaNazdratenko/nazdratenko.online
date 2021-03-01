@@ -27,7 +27,7 @@
     "path": "^0.12.7",
     "pixi.js": "^4.8.6",
     "popper.js": "^1.14.7",
-    "three": "^0.89.0"
+    "three": "^0.125.0"
   },
   "devDependencies": {
     "browser-sync": "^2.26.3",
